@@ -1,5 +1,7 @@
 <template>
+
   <main>
+    <UserProfile :class="[$route.params.bgsName !== undefined? '':'userProfile-gallery']"></UserProfile>
     <article>
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
@@ -81,7 +83,21 @@
   </main>
 </template>
 
+<script setup>
+
+import UserProfile from '../components/UserProfile.vue';
+
+
+</script>
+
 <style scoped>
+
+.userProfile-gallery{
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
 article {
   display: flex;
   flex-direction: column;
