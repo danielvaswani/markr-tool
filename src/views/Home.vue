@@ -16,4 +16,8 @@ import Sidebar from "../components/Sidebar.vue";
   min-height: 100vh;
   margin-left: 250px;
 }
+
+.home {
+  background-color: whitesmoke;
+}
 </style>
