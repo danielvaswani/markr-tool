@@ -10,7 +10,27 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #191827;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e9baedaf;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e9baed;
 }
 
 @font-face {

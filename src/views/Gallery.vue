@@ -1,6 +1,7 @@
 <template>
   <main>
-    <article>
+    <!-- <UserProfile></UserProfile> -->
+    <article class="gallery-container">
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
@@ -81,17 +82,23 @@
   </main>
 </template>
 
+<script setup>
+import UserProfile from '../components/UserProfile.vue';
+
+</script>
+
 <style scoped>
-article {
+.gallery-container {
   display: flex;
   flex-direction: column;
+  margin-left: 250px;
 }
 
 .title_bg {
   color: #191827;
   font-size: 2rem;
   /* margin-left: 330px; */
-  margin-left: 80px;
+  margin-left: 60px;
   margin-top: 120px;
   font-family: "Gilroy Extrabold";
 }
@@ -100,11 +107,11 @@ article {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  width: 90%;
+  width: 100%;
   /* position: absolute;
   left: 250px;
   top: 150px; */
-  padding: 80px;
+  padding: 60px;
 }
 
 .container a,
