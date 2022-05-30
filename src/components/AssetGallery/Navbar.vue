@@ -43,6 +43,119 @@
 
 <style scoped lang="scss">
 
+@import "bourbon"; 
+@import "bourbon-neat";
+
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+
+
+
+/// Provides an easy way to include a clearfix for containing floats.
+
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+/// CSS cubic-bezier timing functions.
+
+$ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$ease-in-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
+$ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-out-sine: cubic-bezier(0.39, 0.575, 0.565, 1);
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+$ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+$ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+$ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+$ease-in-out-sine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// breakpoints
+   
+$S:     480px;   
+$M:     768px;     
+$L:     1170px;   
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; } 
+  }
+}
+
+
+
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    transform:translateY(-50%);
+  }
+}
+
+
+// colors
+
+$color-1: #331d35; // Bleached Cedar
+$color-2: #41307c; // Minsk
+$color-3: #ffffff; // White
+$color-4: #9a9a9a; // Grey
+
+
+// tab-filter size
+
+$tab-filter-height: 50px;
+
+a {
+	color: $color-2;
+	text-decoration: none;
+}
+
 /* -------------------------------- 
 
 xtab-filter 
@@ -222,6 +335,241 @@ xtab-filter
     /* reduce width when filter is visible */
     width: 80%;
   }
+}
+
+
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+
+.cd-header {
+	position: relative;
+	height: 150px;
+	background-color: $color-1;
+
+	h1 {
+		color: $color-3;
+		line-height: 150px;
+		text-align: center;
+		font-size: 2.4rem;
+		font-weight: 300;
+	}
+
+	@include MQ(L) {
+		height: 180px;
+
+		h1 {
+			line-height: 180px;
+		}
+	}
+}
+
+.cd-main-content {
+	position: relative;
+	min-height: 100vh;
+	@include clearfix;
+
+	&.is-fixed {
+		.cd-tab-filter-wrapper {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+
+		.cd-gallery {
+			padding-top: 26px+$tab-filter-height;
+		}
+
+		.cd-filter {
+			position: fixed;
+			height: 100vh;
+			overflow: hidden;
+
+			form {
+				height: 100vh;
+				overflow: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+		}
+
+		.cd-filter-trigger {
+			position: fixed;
+		}
+
+		@include MQ(M) {
+			.cd-gallery {
+				padding-top: 40px+$tab-filter-height;
+			}
+		}
+
+		@include MQ(L) {
+			.cd-gallery {
+				padding-top: 50px+$tab-filter-height;
+			}
+		}
+	}
+}
+
+/* -------------------------------- 
+
+xtab-filter 
+
+-------------------------------- */
+
+.cd-tab-filter-wrapper {
+	background-color: $color-3;
+	box-shadow: 0 1px 1px rgba(#000, .08);
+	z-index: 1;
+	@include clearfix;
+}
+
+.cd-tab-filter {
+	/* tabbed navigation style on mobile - dropdown */
+	position: relative;
+	height: $tab-filter-height;
+	width: 140px;
+	margin: 0 auto;
+	z-index: 1;
+
+	&::after { 
+		/* small arrow icon */
+		content:'';
+		position: absolute;
+		right: 14px;
+		@include center(y); // see partials > mixins
+
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+
+		background: url('../img/cd-icon-arrow.svg') no-repeat center center;
+
+		transition:all .3s;
+		pointer-events: none;
+	}
+
+	ul {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		background-color: $color-3;
+		box-shadow: inset 0 -2px 0 $color-2;
+	}
+
+	li {
+		display: none; 
+
+		&:first-child {
+			/* this way the placehodler is alway visible */
+			display: block; 
+		}
+	}
+
+	a {
+		display: block;
+		/* set same size of the .cd-tab-filter */
+		height: $tab-filter-height;
+		width: 140px;
+		line-height: $tab-filter-height;
+		padding-left: 14px;
+
+		&.selected {
+			background: $color-2;
+			color: $color-3;
+		}
+	}
+
+	&.is-open {
+
+		&::after {
+			/* small arrow rotation */
+			transform: (translateY(-50%) rotate(-180deg));  
+		}
+
+		ul {
+			box-shadow: inset 0 -2px 0 $color-2, 0 2px 10px rgba(#000, .2);
+		}
+
+		ul li {
+			display: block;
+		}
+
+		.placeholder a {
+			/* reduces the opacity of the placeholder on mobile when the menu is open */
+			opacity: .4; 
+		}
+	}
+
+	@include MQ(M) {
+		/* tabbed navigation style on medium devices */
+		width: auto;
+		cursor: auto;
+
+		&::after {
+			/* hide the arrow */
+			display: none;
+		}
+
+		ul {
+			background: transparent;
+			position: static;
+			box-shadow: none;
+			text-align: center;
+		}
+
+		li {
+			display: inline-block;
+
+			&.placeholder {
+				display: none !important; 
+			}
+		}
+
+		a {
+			display: inline-block;
+			padding: 0 1em;
+			width: auto;
+
+			color: $color-4;
+			text-transform: uppercase;
+			font-weight: 700;
+			font-size: 1.3rem;
+
+			.no-touch &:hover {
+				color: $color-2;
+			}
+
+			&.selected {
+				background: transparent;
+				color: $color-2;
+				/* create border bottom using box-shadow property */
+				box-shadow: inset 0 -2px 0 $color-2;
+			}
+		}
+
+		&.is-open {
+			ul li {
+				display: inline-block;
+			}
+		}
+	}
+
+	@include MQ(L) {
+		/* tabbed navigation on big devices */
+		width: 100%;
+		float: right;
+		margin: 0;
+		transition:width .3s;
+
+		&.filter-is-visible {
+			/* reduce width when filter is visible */
+			width: 80%;
+		}
+	}
 }
 
 </style>
