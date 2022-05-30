@@ -9,8 +9,8 @@
 <script setup>
 import Sidebar from "../components/Sidebar.vue";
 import UserProfile from "../components/UserProfile.vue";
-import Container from "../components/Container.vue";
-import Asset from "../components/Asset.vue";
+import Container from "../components/BgsGallery/Container.vue";
+import Asset from "../components/BgsGallery/Asset.vue";
 </script>
 
 <style scoped>
