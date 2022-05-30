@@ -54,7 +54,7 @@
 
           <li>
             <router-link to="/stuurmen" id="add_b">
-              <button id="add_side"><i class="bi bi-plus"></i>Add</button>
+              <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
             </router-link>
           </li>
 
@@ -136,7 +136,7 @@
           <div style="display: none" class="new_element">
             <li onclick="showDropdown(event)" class="dropdownbtn">
               <a id="extra_element">
-                <button id="add_side"><i class="bi bi-plus"></i>Add</button>
+                <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
               </a>
             </li>
             <!-- menu -->
@@ -589,7 +589,7 @@ function toggleSidebar() {
    z-index: 3;
    position: fixed;
    cursor: pointer;
-   margin-top: 95px;
+   margin-top: 90px;
    /* transform: translateX(600%); */
 }
 

@@ -104,6 +104,7 @@ $border-color_1: transparent transparent #e9baed;
 	-webkit-box-shadow: 0 0 4px black;
 	box-shadow: 0 0 4px black;
 	border-bottom: #191827 1px solid;
+	z-index: 2;
 }
 
 .brand-title {

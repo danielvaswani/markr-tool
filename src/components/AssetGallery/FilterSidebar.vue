@@ -137,7 +137,81 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+
+@import "bourbon"; 
+@import "bourbon-neat";
+
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+
+
+// breakpoints
+   
+$S:     480px;   
+$M:     768px;     
+$L:     1170px;   
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; } 
+  }
+}
+
+
+
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    transform:translateY(-50%);
+  }
+}
+
+
+// colors
+
+$color-1: #331d35; // Bleached Cedar
+$color-2: #41307c; // Minsk
+$color-3: #ffffff; // White
+$color-4: #9a9a9a; // Grey
+
+
+// tab-filter size
+
+$tab-filter-height: 50px;
+
+a {
+	color: $color-2;
+	text-decoration: none;
+}
+
 
 /* -------------------------------- 
 
@@ -145,8 +219,8 @@ xfilter
 
 -------------------------------- */
 .cd-filter {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 90px;
   left: 0;
   width: 280px;
   height: 100%;
@@ -165,7 +239,7 @@ xfilter
   -moz-transform: translateX(400%);
   -ms-transform: translateX(400%);
   -o-transform: translateX(400%);
-  transform: translateX(500%);
+  transform: translateX(400%);
   -webkit-transition: -webkit-transform 0.3s, box-shadow 0.3s;
   -moz-transition: -moz-transform 0.3s, box-shadow 0.3s;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -226,7 +300,7 @@ xfilter
 
 .cd-filter-trigger {
   position: absolute;
-  top: 0;
+  top: 90px;
   text-align: end;
   height: 50px;
   line-height: 50px;
