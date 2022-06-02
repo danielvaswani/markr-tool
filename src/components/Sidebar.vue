@@ -4,15 +4,14 @@
       <!--Top menu -->
       <div v-if="showSidebar" class="sidebar">
         <div class="logo">
-          <span onclick="transitionToPage('../BGS_page/bgs_p.html')">
+          <span @click="transitionToPage('../BGS_page/bgs_p.html')">
             <img src="../assets/images/Markr_w.png" alt="logo" />
           </span>
         </div>
 
         <div v-if="$route.params.bgsName !== undefined">
-          <span onclick="editSide()" class="edit_ico"
-            ><i class="fa-solid fa-wand-magic-sparkles"></i
-          ></span>
+          <span @click="editSide" class="edit_ico"
+            ><font-awesome-icon class="magic-edit" icon="wand-magic-sparkles"/></span>
         </div>
         <!--menu item-->
         <ul v-if="$route.params.bgsName !== undefined" id="brand_con">
@@ -32,7 +31,7 @@
             </li>
 
             <div class="text_edit">
-              <i onclick="editText()" id="edit_t2" class="fa-solid fa-pen"></i>
+              <font-awesome-icon icon="pen"/>
             </div>
           </div>
           <div class="li-text">
@@ -48,7 +47,7 @@
               </router-link>
             </li>
             <div class="text_edit">
-              <i onclick="editText()" id="edit_t" class="fa-solid fa-pen"></i>
+              <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
@@ -95,7 +94,7 @@
               </router-link>
             </li>
             <div class="text_edit">
-              <i onclick="editText()" id="edit_t" class="fa-solid fa-pen"></i>
+              <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
@@ -112,7 +111,7 @@
               </router-link>
             </li>
             <div class="text_edit">
-              <i onclick="editText()" id="edit_t" class="fa-solid fa-pen"></i>
+              <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
@@ -129,7 +128,7 @@
               </router-link>
             </li>
             <div class="text_edit">
-              <i onclick="editText()" id="edit_t" class="fa-solid fa-pen"></i>
+              <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
@@ -202,6 +201,14 @@
               </a>
             </li> -->
         </ul>
+
+      <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
+        <div class="side-edit-color">
+          <font-awesome-icon class="brush" icon="brush"/>
+        </div>
+      </div>
+
+
       </div>
     </div>
 
@@ -215,6 +222,7 @@
 </template>
 
 <script setup>
+import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
 import { ref } from "vue";
 
 const showSidebar = ref(true);
@@ -284,10 +292,13 @@ function toggleSidebar() {
     scrollbar-highlight-color: #e9baed;
 }
 
+/*LOGO*/
+
 .logo {
     /* margin-bottom: 45px; */
     text-align: center;
     margin: 15px 15px;
+    margin-bottom: 80px;
 }
 
 .logo img {
@@ -309,6 +320,7 @@ function toggleSidebar() {
     gap: 90px;  
 }
 
+/*Edit text icons */
 .wrapper .sidebar .edit_ico {
     text-decoration: none;
     display: block;
@@ -319,13 +331,13 @@ function toggleSidebar() {
     margin-bottom: 20px;
 }
 
-.wrapper .sidebar .edit_ico .fa-solid {
+.wrapper .sidebar .edit_ico .magic-edit {
     color:#888 !important;
     font-size: 1.3em;
 }
 
 
-.wrapper .sidebar .edit_ico .fa-solid:hover{
+.wrapper .sidebar .edit_ico .magic-edit:hover{
     color: #e9baed !important;
     transform: scale(105%);
 }
@@ -358,6 +370,8 @@ function toggleSidebar() {
     font-size: 14px;
 }
 
+/*Menu Titles*/
+
 .brand_title{
     display: flex;
     height: 40px;
@@ -384,6 +398,8 @@ function toggleSidebar() {
     gap: 10px;
     padding-bottom: 150px;
 }
+
+/* Sidebar elements */
 
 .wrapper .sidebar ul li{
     /* display: flex; */
@@ -464,7 +480,7 @@ function toggleSidebar() {
     width: fit-content;
 }
 
-
+/* 
 .showLeft {
     color: #fff !important;
     padding: 10px;
@@ -495,7 +511,9 @@ function toggleSidebar() {
 .btn-right {
     position: absolute;
     top: 0.24em;
-}
+} */
+
+/*Extra elements Dropdown */
 
 .dropdownbtn {
     /* color: white;
@@ -617,5 +635,38 @@ function toggleSidebar() {
 }
 
 
+/*//////////EDIT COLOR SIDEBAR////////////// */
+
+.color-sidebar{
+  display: flex;
+  float: right;
+  align-content: flex-end;
+}
+
+
+.side-edit-color{
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  text-align: left;
+  margin-left: 15px;
+  width: fit-content;
+}
+
+
+.brush{
+  font-size: 1.8rem;
+  color:#888 !important;
+}
+
+.side-edit-color:hover{
+  transform: scale(105%);
+  transition: all .2s;
+}
+
+.side-edit-color .brush:hover{
+  color: #e9baed !important;
+}
 
 </style>

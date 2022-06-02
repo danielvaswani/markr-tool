@@ -1,6 +1,6 @@
 <template>
 <article class="user-profile">
-        <div v-if="$route.params.bgsName === undefined">bla bla</div>
+        <div v-if="$route.params.bgsName === undefined"></div>
         <div v-else style="display: flex">
           <div  class="brand-title">
             <img src="../assets/images/stuurmen.jpg" alt="" />

@@ -5,21 +5,14 @@
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
-        <div id="try_bgs">
-          <div class="bgs" id="bgs">
-            <span
-              class="hvr-border-fade"
-              onclick="transitionToPage('../BGS_page/Logo_page/logo_p.html')"
-            >
-              <img
-                class="prev"
-                src="../assets/images/341e5560369787.5bfc0508d0638.jpg"
-              />
-            </span>
+        
+          <div class="bgs" id="bgs" v-for='bgs in brandGuides' :key='bgs.name' >
+          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl"></BgsItem>
           </div>
-        </div>
+          <!-- <BgsItem :name=" s" :image-url=" d" ></BgsItem> -->
 
-        <div class="bgs">
+
+        <!-- <div class="bgs">
           <a>
             <img class="prev" src="../assets/images/stuurmen.jpg" />
           </a>
@@ -53,7 +46,7 @@
           <a>
             <img class="prev" src="../assets/images/stuurmen.jpg" />
           </a>
-        </div>
+        </div> -->
 
         <!--BGS Template-->
         <div id="bgs_template">
@@ -69,21 +62,41 @@
           </div>
         </div>
 
-        <div class="bgs" id="new_bgs" style="display: none"></div>
+        <!-- <div class="bgs" id="new_bgs" style="display: none"></div> -->
 
-        <!--Adding a new BGS-->
-        <div class="bgs" id="add_border">
-          <a id="add_bg">
-            <i class="bi bi-plus-circle-dotted"></i>
-          </a>
-        </div>
+        <AddBgs></AddBgs>
       </div>
     </article>
   </main>
 </template>
 
 <script setup>
+
+
 import UserProfile from '../components/UserProfile.vue';
+
+import { ref, onMounted, computed } from 'vue';
+import { useStore } from "vuex";
+import BgsItem from '../components/BgsGallery/BgsItem.vue';
+import AddBgs from '../components/BgsGallery/AddBgs.vue';
+const store = useStore();
+
+const showData = () => {
+  console.log(gettersBrandGuides.name)
+}
+
+const getBrandGuides = computed(() => {
+  return store.getters.getBrandGuides
+})
+
+const brandGuides = computed(() => {
+  return store.state.brandGuides
+})
+
+onMounted(() => {
+// dispatch the fetchBrandGuides action which commits a mutation to update the state
+  store.dispatch("fetchBrandGuides");
+})
 
 </script>
 
@@ -161,31 +174,6 @@ span {
   border: 4px solid #e9baed;
   color: #e9baed;
   /* background: #fff; */
-}
-
-#add_border {
-  border: #191827 2px solid;
-  background-color: whitesmoke;
-}
-
-.bi-plus-circle-dotted {
-  color: #e9baed;
-  font-size: 6rem;
-  margin: 10px;
-  padding: 50px;
-}
-
-.bi-plus-circle-dotted:hover {
-  font-size: 7rem;
-  transition: 0.2s;
-  margin: 5px;
-  padding: 45px;
-}
-
-#add_bg {
-  padding: 15px;
-  position: relative;
-  top: 115px;
 }
 
 #bgs_template {

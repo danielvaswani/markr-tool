@@ -37,7 +37,7 @@ const router = createRouter({
           ],
         },
        {
-        path: ":bgsName/asset-gallery",
+        path: "asset-gallery",
         name: "AssetGallery",
         component: AssetGallery,
         }, 

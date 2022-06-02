@@ -2,31 +2,20 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faBrush } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-createApp(App).use(router).use(store).mount("#app");
+library.add(faWandMagicSparkles, faPen, faBrush);
 
 
-/* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-/* import specific icons */
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-
-/* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-/* add icons to the library */
-library.add(faUserSecret)
-
-/* add font awesome icon component */
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-
-Vue.config.productionTip = false
+createApp(App).use(router).use(store).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  components: { App },
-  template: '<App/>'
-})
-
+// new Vue({
+//   el: "#box",
+//   components: { App },
+//   template: "<App/>"
+// });

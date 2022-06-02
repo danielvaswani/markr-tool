@@ -1,5 +1,6 @@
 <script setup>
 import "bootstrap-icons/font/bootstrap-icons.css";
+
 </script>
 
 <template>
@@ -44,7 +45,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Gilroy;
 }
 
 .main-router {

@@ -123,9 +123,10 @@ xtab-filter
 .cd-tab-filter-wrapper {
   background-color: #ffffff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 8);
-    position: fixed;
+  position: fixed;
   margin-top: 90px;
   width: 100%;
+  z-index: 2;
 }
 .cd-tab-filter-wrapper:after {
   content: "";

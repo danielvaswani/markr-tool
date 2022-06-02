@@ -1,54 +1,11 @@
 <template>
   <article class="gal-container">
       <main class="cd-main-content">
-        <Navbar></Navbar>
         <!-- cd-tab-filter-wrapper -->
-
-        <section class="cd-gallery">
-          <ul>
-            <li class="mix color-1 check1 radio2 option3">
-              <img src="img/jw_logo.png" alt="Image 1" />
-            </li>
-            <li class="mix color-2 check2 radio2 option2">
-              <img src="img/jw_logo2.png" alt="Image 2" />
-            </li>
-            <li class="mix color-1 check3 radio3 option1">
-              <img src="img/img-3.jpg" alt="Image 3" />
-            </li>
-            <li class="mix color-1 check3 radio2 option4">
-              <img src="img/img-4.jpg" alt="Image 4" />
-            </li>
-            <li class="mix color-1 check1 radio3 option2">
-              <img src="img/img-5.jpg" alt="Image 5" />
-            </li>
-            <li class="mix color-2 check2 radio3 option3">
-              <img src="img/img-6.jpg" alt="Image 6" />
-            </li>
-            <li class="mix color-2 check2 radio2 option1">
-              <img src="img/img-7.jpg" alt="Image 7" />
-            </li>
-            <li class="mix color-1 check1 radio3 option4">
-              <img src="img/img-8.jpg" alt="Image 8" />
-            </li>
-            <li class="mix color-2 check1 radio2 option3">
-              <img src="img/img-9.jpg" alt="Image 9" />
-            </li>
-            <li class="mix color-1 check3 radio2 option4">
-              <img src="img/img-10.jpg" alt="Image 10" />
-            </li>
-            <li class="mix color-1 check3 radio3 option2">
-              <img src="img/img-11.jpg" alt="Image 11" />
-            </li>
-            <li class="mix color-2 check1 radio3 option1">
-              <img src="img/img-12.jpg" alt="Image 12" />
-            </li>
-            <li class="gap"></li>
-            <li class="gap"></li>
-            <li class="gap"></li>
-          </ul>
-          <div class="cd-fail-message">No results found</div>
-        </section>
-        <!-- cd-gallery -->
+        <Navbar></Navbar>
+        
+        <GalleryContainer></GalleryContainer>
+        
 
        <FilterSidebar></FilterSidebar>
       </main>
@@ -58,7 +15,8 @@
 <script setup>
 import Navbar from '../components/AssetGallery/Navbar.vue';
 import FilterSidebar from '../components/AssetGallery/FilterSidebar.vue';
-
+import Container from '../components/BgsGallery/Container.vue';
+import GalleryContainer from '../components/AssetGallery/GalleryContainer.vue';
 
 </script>
 
@@ -67,11 +25,145 @@ import FilterSidebar from '../components/AssetGallery/FilterSidebar.vue';
 @import "bourbon"; 
 @import "bourbon-neat";
 
+
+// breakpoints
+   
+$S:     480px;   
+$M:     768px;     
+$L:     1170px;   
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; } 
+  }
+}
+
+
+
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    transform:translateY(-50%);
+  }
+}
+
+
+// colors
+
+$color-1: #331d35; // Bleached Cedar
+$color-2: #41307c; // Minsk
+$color-3: #ffffff; // White
+$color-4: #9a9a9a; // Grey
+
+
+// tab-filter size
+
+$tab-filter-height: 50px;
+
+a {
+	color: $color-2;
+	text-decoration: none;
+}
+
+
 /* -------------------------------- 
 
 Main Components 
 
 -------------------------------- */
+
+.cd-header {
+	position: relative;
+	height: 150px;
+	background-color: $color-1;
+
+	h1 {
+		color: $color-3;
+		line-height: 150px;
+		text-align: center;
+		font-size: 2.4rem;
+		font-weight: 300;
+	}
+
+	@include MQ(L) {
+		height: 180px;
+
+		h1 {
+			line-height: 180px;
+		}
+	}
+}
+
+.cd-main-content {
+	position: relative;
+	min-height: 100vh;
+	@include clearfix;
+
+	&.is-fixed {
+		.cd-tab-filter-wrapper {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+
+		.cd-gallery {
+			padding-top: 26px+$tab-filter-height;
+		}
+
+		.cd-filter {
+			position: fixed;
+			height: 100vh;
+			overflow: hidden;
+
+			form {
+				height: 100vh;
+				overflow: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+		}
+
+		.cd-filter-trigger {
+			position: fixed;
+		}
+
+		@include MQ(M) {
+			.cd-gallery {
+				padding-top: 40px+$tab-filter-height;
+			}
+		}
+
+		@include MQ(L) {
+			.cd-gallery {
+				padding-top: 50px+$tab-filter-height;
+			}
+		}
+	}
+}
+
 .gal-container{
   width: 100%;
   position: relative;

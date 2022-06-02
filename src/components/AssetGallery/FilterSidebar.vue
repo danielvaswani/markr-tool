@@ -219,14 +219,13 @@ xfilter
 
 -------------------------------- */
 .cd-filter {
-  position: fixed;
+  position: absolute;
   top: 90px;
   left: 0;
   width: 280px;
-  height: 100%;
   background: #ffffff;
   box-shadow: 4px 4px 20px transparent;
-  z-index: 2;
+  z-index: 1;
   /* Force Hardware Acceleration in WebKit */
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -239,7 +238,7 @@ xfilter
   -moz-transform: translateX(400%);
   -ms-transform: translateX(400%);
   -o-transform: translateX(400%);
-  transform: translateX(400%);
+  transform: translateX(500%);
   -webkit-transition: -webkit-transform 0.3s, box-shadow 0.3s;
   -moz-transition: -moz-transform 0.3s, box-shadow 0.3s;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -299,7 +298,7 @@ xfilter
 }
 
 .cd-filter-trigger {
-  position: absolute;
+  position: fixed;
   top: 90px;
   text-align: end;
   height: 50px;

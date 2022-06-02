@@ -26,4 +26,6 @@ import Asset from "../components/BgsGallery/Asset.vue";
   background-color: whitesmoke;
   display: flex;
 }
+
+
 </style>
