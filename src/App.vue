@@ -1,5 +1,6 @@
 <script setup>
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { BIconBootstrap } from 'bootstrap-icons-vue';
 
 </script>
 

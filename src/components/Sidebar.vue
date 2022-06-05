@@ -2,9 +2,9 @@
   <div id="box">
     <div class="wrapper">
       <!--Top menu -->
-      <div v-if="showSidebar" class="sidebar">
+      <div v-if="showSidebar" ref="thisSidebar" class="sidebar">
         <div class="logo">
-          <span @click="transitionToPage('../BGS_page/bgs_p.html')">
+          <span :to = "'/stuurmen'">
             <img src="../assets/images/Markr_w.png" alt="logo" />
           </span>
         </div>
@@ -133,7 +133,7 @@
           </div>
 
           <div style="display: none" class="new_element">
-            <li onclick="showDropdown(event)" class="dropdownbtn">
+            <li class="dropdownbtn">
               <a id="extra_element">
                 <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
               </a>
@@ -202,12 +202,41 @@
             </li> -->
         </ul>
 
-      <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
-        <div class="side-edit-color">
-          <font-awesome-icon class="brush" icon="brush"/>
-        </div>
-      </div>
+        <article  v-if="$route.params.bgsName !== undefined" class="user-profile">
+          <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
+          <!-- <div v-else style="display: flex">
+            <div  class="brand-title">
+              <img src="../assets/images/stuurmen.jpg" alt="" />
+            </div>
+          </div> -->
+          <ul class="user_bar">
+            <li>
+              <span class="user_icon" id="user_ico">
+                <img id="u-icon" src="../assets/images/user.png" alt="user icon" />
+              </span>
+            </li>
+            <li id="user_name" class="user_name">
+              
+              <a>
+                <span class="drop-btn" v-on:click="showUser = !showUser">User Name</span>
+                <span class="drop-btn">
+                  <i class="bi bi-caret-down"></i
+                ></span>
+              </a>
+            </li>
+            
+            
+            <div v-show="showUser" id="userDropdown" class="user-dropdown">
+              <UserDropdown ></UserDropdown>
+            </div>
+          </ul>
+        </article>
 
+        <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
+          <div class="side-edit-color">
+            <font-awesome-icon class="gear" icon="gear"/>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -223,16 +252,40 @@
 
 <script setup>
 import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
-import { ref } from "vue";
+import { ref, defineExpose } from "vue";
+import UserDropdown from "./UserDropdown.vue";
+const sidebar = ref(null)
+
+defineExpose({ sidebar })
 
 const showSidebar = ref(true);
 
 function toggleSidebar() {
   this.showSidebar = !this.showSidebar;
 }
+
+// const showUserDropdown = ref(false);
+
+// function toggleUser() {
+//   this.showUserDropdown = !this.showUserDropdown;  
+//   // console.log(this.$refs.sidebar);
+//   // this.$refs.userDropdown.scrollIntoView();
+// }
+
+
+function data() {
+  return{
+    showUser: true
+  }
+}
+
+props: {
+    msg: String;
+  }
+
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -290,6 +343,7 @@ function toggleSidebar() {
     scrollbar-color: #e9baedaf;
     scrollbar-base-color: #e9baedaf;
     scrollbar-highlight-color: #e9baed;
+    
 }
 
 /*LOGO*/
@@ -298,7 +352,7 @@ function toggleSidebar() {
     /* margin-bottom: 45px; */
     text-align: center;
     margin: 15px 15px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .logo img {
@@ -390,13 +444,12 @@ function toggleSidebar() {
 }
 
 #brand_con2{
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     display: flex;
     /* align-self: flex-start; */
     flex-direction: column;
     margin-left: 5px;
     gap: 10px;
-    padding-bottom: 150px;
 }
 
 /* Sidebar elements */
@@ -600,6 +653,148 @@ function toggleSidebar() {
 }
 
 
+/*/////////USER ICON MENU/////////*/
+
+
+$color_1: #e9baed;
+$color_2: #fff;
+$font-family_1: Gilroy, Extrabold;
+$background-color_1: #191827;
+$border-color_1: transparent transparent #e9baed;
+
+.showUser{
+  visibility: hidden;
+}
+
+.user-profile {
+  align-self: center;
+	display: flex;
+  flex-direction: column;
+	height: fit-content;
+	background-color: $background-color_1;
+	justify-content: space-between;
+	position: relative;
+	width: 200px;
+  margin-bottom: 80px;
+	// -moz-box-shadow: 0 0 4px black;
+	// -webkit-box-shadow: 0 0 4px black;
+	// box-shadow: 0 0 4px black;
+	// border-bottom: #191827 1px solid;
+	z-index: 2;
+}
+
+.brand-title {
+	vertical-align: middle;
+	text-align: center;
+	align-self: center;
+	font-family: $font-family_1;
+	color: $color_1;
+	gap: 10px;
+	display: flex;
+	width: fit-content;
+	margin-left: 260px;
+	img {
+		border: #e9baed 3px solid;
+		object-fit: cover;
+		width: 50px;
+		height: 50px;
+		border-radius: 20%;
+	}
+}
+.user_bar {
+  list-style-type:none;
+	border-radius: 10%;
+	position: relative;
+  height: fit-content;
+	text-align: center;
+	// top: 1%;
+	display: flex;
+  flex-direction: column;
+	gap: 5px;
+	padding: 10px;
+	align-self: center;
+	li {
+		align-self: center;
+	}
+	.bi {
+		color: $color_2;
+		align-self: baseline;
+		vertical-align: middle;
+	}
+}
+.user_icon {
+	align-self: flex-end;
+	width: 40px;
+	height: auto;
+	img {
+		width: 40px;
+		cursor: pointer;
+	}
+}
+.user_name {
+	cursor: pointer;
+	display: flex;
+	gap: 2px;
+  width: fit-content !important;
+  flex-direction: column;
+	align-items: center;
+	position: relative;
+	a {
+		align-self: center;
+		text-decoration: none;
+		color: $color_2;
+    cursor: pointer !important;
+		padding: 5px;
+    width: fit-content !important;
+	}
+  li{
+    width: fit-content !important;
+    cursor: pointer !important;
+  }
+	// :hover {
+	// 	.bi-caret-down {
+	// 		::before {
+	// 			content: url(../images/caret-down-fill.svg);
+	// 		}
+	// 	}
+	// }
+}
+.user-dropdown {
+	// ::before {
+	// 	-moz-border-color: none;
+	// 	border-color: $border-color_1;
+	// 	border-image: none;
+	// 	border-style: solid;
+	// 	border-width: 5px;
+	// 	content: "";
+	// 	display: block;
+	// 	height: 0;
+	// 	opacity: 1;
+	// 	width: 0;
+	// 	position: absolute;
+	// 	top: -12px;
+	// 	left: auto;
+	// 	right: 20px;
+	// }
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	position: absolute;
+	top: 112px;
+  width: 200px;
+  margin-bottom: 100px;
+  align-self: center;
+	background-color: $background-color_1;
+	padding: 10px;
+	// -moz-box-shadow: 0 0 4px black;
+	// -webkit-box-shadow: 0 0 4px black;
+	// box-shadow: 0 0 4px black;
+	border-top: 3px solid #e9baed;
+	z-index: 5;
+}
+
+
+
 /*//// HIDE/SHOW SIDEBAR ICON ////*/
 
 .hide_container{
@@ -607,7 +802,7 @@ function toggleSidebar() {
    z-index: 3;
    position: fixed;
    cursor: pointer;
-   margin-top: 90px;
+   margin-top: 0;
    /* transform: translateX(600%); */
 }
 
@@ -641,6 +836,7 @@ function toggleSidebar() {
   display: flex;
   float: right;
   align-content: flex-end;
+  margin-top: 20px;
 }
 
 
@@ -655,8 +851,8 @@ function toggleSidebar() {
 }
 
 
-.brush{
-  font-size: 1.8rem;
+.gear{
+  font-size: 1.5rem;
   color:#888 !important;
 }
 
@@ -665,7 +861,7 @@ function toggleSidebar() {
   transition: all .2s;
 }
 
-.side-edit-color .brush:hover{
+.side-edit-color .gear:hover{
   color: #e9baed !important;
 }
 

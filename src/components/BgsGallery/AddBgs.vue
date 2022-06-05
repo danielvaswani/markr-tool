@@ -2,7 +2,9 @@
   <!--Adding a new BGS-->
         <div class="bgs" id="add_border">
           <a id="add_bg">
+            <transition name="scale">
             <i class="bi bi-plus-circle-dotted"></i>
+            </transition>
           </a>
         </div>
 </template>
@@ -11,7 +13,7 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 a,
 span {
@@ -21,6 +23,8 @@ span {
 #add_border {
   border: #191827 2px solid;
   background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
 }
 
 .bi-plus-circle-dotted {
@@ -31,15 +35,23 @@ span {
 }
 
 .bi-plus-circle-dotted:hover {
-  font-size: 7rem;
-  transition: 0.2s;
   margin: 5px;
+  font-size: 6.5rem;
   padding: 45px;
+  transition: 0.2s;
+
+    .scale-enter-active, .scale-enter-leave{
+    transform: scale(120%) !important;
+    transition: 0.2s;
+  }
 }
+
+
 
 #add_bg {
   padding: 15px;
-  position: relative;
-  top: 115px;
+  position: absolute;
+  align-self: center;
+  margin: 100px auto;
 }
 </style>

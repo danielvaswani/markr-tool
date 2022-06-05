@@ -7,11 +7,44 @@
         <div class="logos" id="template_div">
           <h2 id="logo_t">TEMPLATE</h2>
 
+          <!--Edit Button-->
+        <div id="edit_sidebar" class="sidesnip">
+          <span @click="toggleEdit()" class="edit" id="edit_b">
+            <i class="bi bi-plus-square-dotted"></i>
+          </span>
+          <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
+
+            <span id="edit_icon"><i class="bi bi-paint-bucket"></i>
+              <!-- <p class="drop_p">Edit</p> -->
+            </span>
+
+            <a style="padding: 12px 8px;"><i style="font-size: 1.6rem" class="bi bi-fonts"></i></a>
+
+            <a><i class="bi bi-card-image"></i></a>
+
+            <a><i class="bi bi-film"></i></a>
+            
+            <div style="position: relative">
+              <a><i class="bi bi-grid-1x2"></i></a>
+              <i id="small_plus" class="bi bi-plus"></i>
+            </div>
+
+            <a><i class="bi bi-share-fill"></i></a>
+
+
+            <a onclick="printDiv('printIt')" value="print a div!"
+              ><i class="bi bi-printer-fill"></i
+            ></a>
+
+            <!-- <a id="delete"> <i id="delete_icon" class="bi bi-trash3"></i></a> -->
+          </div>
+        </div>
+
           <div id="printIt">
             <img
               onclick="clickModal()"
               id="logo_img" 
-              src="../assets/images/352932.png"
+              src="../assets/images/8CB5673.jpg"
               alt="LOGO PREVIEW"
             />
 
@@ -37,48 +70,35 @@
             nostrum! Adipisci laborum laboriosam accusantium in neque? Ipsam,
             modi veritatis pariatur voluptas debitis quidem!
           </p>
+
+          
         </div>
 
-        <!--Edit Button-->
-        <div id="edit_sidebar" class="sidesnip">
-          <button onclick="myFunction()" class="edit" id="edit_b">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-          <div id="myDropdown" class="dropdown-content">
-            <span
-              onclick="transitionToPage('../logo_gallery/index.html')"
-              id="edit_icon"
-              ><i class="bi bi-images"></i>
-              <!-- <p class="drop_p">Edit</p> -->
-            </span>
-
-            <a><i style="font-size: 2rem" class="bi bi-fonts"></i></a>
-
-            <div style="position: relative">
-              <a><i class="bi bi-grid-1x2"></i></a>
-              <i id="small_plus" class="bi bi-plus"></i>
-            </div>
-            <a><i class="bi bi-share-fill"></i></a>
-
-            <a href="../assets/images/352932.png" download="logo_preview"
-              ><i class="bi bi-box-arrow-down"></i
-            ></a>
-            <a onclick="printDiv('printIt')" value="print a div!"
-              ><i class="bi bi-printer-fill"></i
-            ></a>
-
-            <a id="delete"> <i id="delete_icon" class="bi bi-trash3"></i></a>
-          </div>
-        </div>
+        
       </div>
     </main>
 </template>
 
 <script setup>
 
+import { ref, defineExpose } from "vue";
+
+const dropdown = ref(null)
+
+defineExpose({ dropdown })
+
+const showDropdown = ref(false);
+
+function toggleEdit() {
+  this.showDropdown = !this.showDropdown; 
+  console.log("Im working") 
+  // console.log(this.$refs.sidebar);
+  // this.$refs.userDropdown.scrollIntoView();
+}
+
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /*//////////////////TEMPLATE CONTAINER//////////////////////*/
 
 
@@ -89,26 +109,24 @@ main {
 
 .container_logo{
     display: flex;
-    margin-top: 150px !important;
-    margin: auto 500px; 
+    margin-left:250px; 
 }
 
 #template_div {
     display: flex;
-    flex-wrap: wrap;
 }
 
 
 .logos {
-    width: 600px;
-    background-color: #fff;
+    width: 100%;
+    background-color: transparent;
     height: 850px;
     /* margin-left: 550px !important; */
-    margin: 10px 60px;
+    margin: 0;
     /* margin-top: 150px; */
     display: flex;
     flex-direction: column;
-    border: #191827 3px solid;
+    gap: 50px;
     /* -moz-box-shadow: 0 0 4px black;
         -webkit-box-shadow: 0 0 4px black;
         box-shadow: 0 0 4px black; */
@@ -120,7 +138,7 @@ main {
 
 #logo_t {
     margin-top: 50px !important;
-    margin-left: 80px;
+    margin-left: 130px;
     font-size: 4rem;
     color: #2c2a45;
 }
@@ -128,26 +146,29 @@ main {
 /*/////EDIT BUTTON/////*/
 
 #edit_b {
+    z-index: 3;
     cursor: pointer;
     color: #e9baed;
-    font-size: 2.8rem;
+    position: relative;
+    bottom: 10px;
+    font-size: 1.8rem;
+    padding: 10px 8px;
     margin-top: 8px !important;
-    margin: auto;
+    margin-left: 140px;
     border: transparent;
     vertical-align: middle;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border-color: rgba(233, 186, 237, 1);
+    // border-color: rgba(233, 186, 237, 1);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     box-shadow: inset 0px 1px 0px 0px rgba(233, 186, 237, 1);
     text-shadow: inset 0px 1px 0px rgba(233, 186, 237, 1);
-    background: linear-gradient(rgba(25, 24, 39, 1), rgba(32, 32, 51, 1));
+    background: #191827;
     border-radius: 10%;
-    padding: 3px;
     text-align: center;
     transition-timing-function: ease-out;
         transition: .8s;
@@ -181,37 +202,35 @@ main {
 
 #small_plus{
     position: absolute;
-    right: 0;
-    top: -3px;
+    right: -2px;
+    top: 4px;
 }
 
 
 /*////EDIT DROPDOWN////*/
 
 .sidesnip {
-    display: block;
+    display: flex;
     transition: all 0.25s ease;
     /* transition-timing-function: ease-out; */
     opacity: 1;
 }
 
 /* Dropdown Button */
-.dropbtn {
-    background-color: transparent;
-    color: #e9baed;
-    padding: 0;
-    font-size: 60px;
-    border: none;
-    cursor: pointer;
-}
+// .dropbtn {
+//     background-color: transparent;
+//     color: #e9baed;
+//     padding: 0;
+//     font-size: 60px;
+//     border: none;
+//     cursor: pointer;
+// }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin: 0 480px;
-    margin-top: 50px;
-}
+// /* The container <div> - needed to position the dropdown content */
+// .dropdown {
+//     position: relative;
+//     display: inline-block;
+// }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -220,14 +239,19 @@ main {
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border-top: #e9baed 2px solid;
-    display: none;
-    border-radius: 3%;
+    border-left: #e9baed 2px solid;
+    display: flex;
+    border-radius: 6px;
     position: absolute;
+    height: fit-content;
+    max-height: min-content;
+    margin-left: 195px;
+    align-items: center;
+    bottom: 508px;
     background-color: #191827;
-    min-width: min-content;
+    width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    z-index: 5;
     text-align: center;
     -moz-box-shadow: 0 0 4px black;
     -webkit-box-shadow: 0 0 4px black;
@@ -260,7 +284,7 @@ main {
 /* Links inside the dropdown */
 .dropdown-content a {
     color: #fff;
-    padding: 12px 10px;
+    padding: 15px 12px;
     text-decoration: none;
     display: block;
     cursor: pointer;
@@ -273,7 +297,7 @@ main {
 
 .dropdown-content span {
     color: #fff;
-    padding: 12px 10px;
+    padding: 14px 12px;
     text-decoration: none;
     display: block;
     cursor: pointer;
@@ -286,20 +310,20 @@ main {
 
 .dropdown-content .bi {
     color: #e9baed;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
-#edit_icon {
-    border-bottom: #fff 1px solid;
-}
+// #edit_icon {
+//     border-right: #fff 1px solid;
+// }
 
 #delete_icon {
     color: crimson;
 }
 
-#delete {
-    border-top: #fff 1px solid;
-}
+// #delete {
+//     border-left: #fff 1px solid;
+// }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show_edit {
@@ -325,7 +349,7 @@ main {
 /*///IMAGE CONTAINER AND MODAL///*/
 
 #printIt {
-    margin: auto;
+    margin-left: 140px;
 }
 
 #logo_img {

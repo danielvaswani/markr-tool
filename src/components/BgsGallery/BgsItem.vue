@@ -1,13 +1,16 @@
 <template>
-            <router-link 
-              class="hvr-border-fade"
-              :to = "'/stuurmen' + '/' + $props.name">
-              <img
-                class="prev"
-                :src="$props.imageUrl"
-              />
-            </router-link>
-
+      <div class="preview-icon"><span class="preview"><font-awesome-icon class="bi" icon="eye"/></span></div>
+      <router-link 
+        class="hvr-border-fade"
+        :to = "'/stuurmen' + '/' + $props.name">
+            <img
+              class="prev"
+              :src="$props.imageUrl"
+            />
+      </router-link>
+      <div class="edit-bgs">
+          <span class="edit-button">Edit <font-awesome-icon class="bi" id="pen" icon="pen"/></span>
+      </div>
 </template>
 
 <script setup>
@@ -56,13 +59,33 @@ defineProps({
 
 a,
 span {
-  cursor: pointer;
+  cursor: default;
+}
+
+.hvr-border-fade{
+    width: 250px;
+    height: 350px;
+    cursor: default !important; 
+    display: inline-block;
+    z-index: 2;
+    vertical-align: middle;
+    /* -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+    box-shadow: inset 0 0 0 4px #e1e1e1,
+    0 0 1px rgba(0, 0, 0, 0); */
 }
 
 .prev {
   width: 250px;
   height: 350px;
   object-fit: cover;
+  z-index: 2;
+  margin-bottom: 120px;
 }
 
 .prev:hover {
@@ -70,6 +93,54 @@ span {
   border: 4px solid #e9baed;
   color: #e9baed;
   /* background: #fff; */
+}
+
+/*Preview Icon */
+
+.preview-icon{
+  z-index: 3;
+  position: absolute;
+  align-self: flex-end;
+  margin: 15px;
+  width: fit-content;
+  
+}
+
+.preview{
+  cursor: pointer;
+  color:#e9baed;
+  /* opacity: 0.2; */
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+.preview:hover{
+  transform: scale(110%);
+}
+
+/*Edit button */
+.edit-bgs{
+  z-index: 3;
+  align-self:center;
+  text-align: center;
+  position: absolute;
+  margin: 300px;
+  
+}
+
+.edit-button{
+  color: #ffff;
+  border: #e9baed 2px solid;
+  background-color: #19182794;
+  padding: 10px 30px;
+  word-spacing: 0.3em;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#pen{
+  color: #e9baed;
 }
 
 

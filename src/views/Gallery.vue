@@ -7,8 +7,12 @@
       <div class="container" id="container">
         
           <div class="bgs" id="bgs" v-for='bgs in brandGuides' :key='bgs.name' >
+          
           <BgsItem :name="bgs.name" :image-url="bgs.imageUrl"></BgsItem>
+          
           </div>
+
+          
           <!-- <BgsItem :name=" s" :image-url=" d" ></BgsItem> -->
 
 
@@ -100,7 +104,7 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .gallery-container {
   display: flex;
   flex-direction: column;
@@ -127,15 +131,20 @@ onMounted(() => {
   padding: 60px;
 }
 
-.container a,
-span {
-  cursor: pointer;
-}
+// .container a,
+// span {
+//   cursor: pointer;
+// }
 
 .bgs {
   width: 250px;
   height: 350px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  align-content:center;
   object-position: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 7);
 }
@@ -175,6 +184,8 @@ span {
   color: #e9baed;
   /* background: #fff; */
 }
+
+
 
 #bgs_template {
   display: none;
