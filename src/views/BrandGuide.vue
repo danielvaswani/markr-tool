@@ -14,10 +14,6 @@
           </span>
           <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
 
-            <span id="edit_icon"><i class="bi bi-paint-bucket"></i>
-              <!-- <p class="drop_p">Edit</p> -->
-            </span>
-
             <a style="padding: 12px 8px;"><i style="font-size: 1.6rem" class="bi bi-fonts"></i></a>
 
             <a><i class="bi bi-card-image"></i></a>
@@ -28,6 +24,10 @@
               <a><i class="bi bi-grid-1x2"></i></a>
               <i id="small_plus" class="bi bi-plus"></i>
             </div>
+
+            <span style="padding: 12px 8px;" id="edit_icon"><i style="font-size: 1.6rem" class="bi bi-paint-bucket"></i>
+              <!-- <p class="drop_p">Edit</p> -->
+            </span>
 
             <a><i class="bi bi-share-fill"></i></a>
 

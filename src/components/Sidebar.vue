@@ -7,10 +7,14 @@
           <span :to = "'/stuurmen'">
             <img src="../assets/images/Markr_w.png" alt="logo" />
           </span>
+
+          <div v-if="showText" class="edit-logo">
+            <font-awesome-icon class="edit-logo-icon" icon="wand-magic"/>
+          </div>
         </div>
 
         <div v-if="$route.params.bgsName !== undefined">
-          <span @click="editSide" class="edit_ico"
+          <span @click="toggleText()" class="edit_ico"
             ><font-awesome-icon class="magic-edit" icon="wand-magic-sparkles"/></span>
         </div>
         <!--menu item-->
@@ -29,11 +33,12 @@
                 >
               </router-link>
             </li>
-
-            <div class="text_edit">
+            <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
+
+
           <div class="li-text">
             <li>
               <router-link to="/stuurmen">
@@ -46,12 +51,12 @@
                 >
               </router-link>
             </li>
-            <div class="text_edit">
+            <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
-          <li>
+          <li v-if="showText">
             <router-link to="/stuurmen" id="add_b">
               <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
             </router-link>
@@ -93,7 +98,7 @@
                 >
               </router-link>
             </li>
-            <div class="text_edit">
+            <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
@@ -110,7 +115,7 @@
                 >
               </router-link>
             </li>
-            <div class="text_edit">
+            <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
@@ -127,12 +132,12 @@
                 >
               </router-link>
             </li>
-            <div class="text_edit">
+            <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
-          <div style="display: none" class="new_element">
+          <div v-if="showText" class="new_element">
             <li class="dropdownbtn">
               <a id="extra_element">
                 <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
@@ -218,7 +223,7 @@
             <li id="user_name" class="user_name">
               
               <a>
-                <span class="drop-btn" v-on:click="showUser = !showUser">User Name</span>
+                <span class="drop-btn" @click="toggleUser()">User Name</span>
                 <span class="drop-btn">
                   <i class="bi bi-caret-down"></i
                 ></span>
@@ -226,7 +231,7 @@
             </li>
             
             
-            <div v-show="showUser" id="userDropdown" class="user-dropdown">
+            <div v-if="showUser" id="userDropdown" class="user-dropdown">
               <UserDropdown ></UserDropdown>
             </div>
           </ul>
@@ -264,13 +269,21 @@ function toggleSidebar() {
   this.showSidebar = !this.showSidebar;
 }
 
-// const showUserDropdown = ref(false);
+const showUser = ref(false);
 
-// function toggleUser() {
-//   this.showUserDropdown = !this.showUserDropdown;  
-//   // console.log(this.$refs.sidebar);
-//   // this.$refs.userDropdown.scrollIntoView();
-// }
+function toggleUser() {
+  this.showUser = !this.showUser;  
+  // console.log(this.$refs.sidebar);
+  // this.$refs.userDropdown.scrollIntoView();
+}
+
+const showText = ref(false);
+
+function toggleText() {
+  this.showText = !this.showText;  
+  // console.log(this.$refs.sidebar);
+  // this.$refs.userDropdown.scrollIntoView();
+}
 
 
 function data() {
@@ -361,6 +374,30 @@ props: {
     height: auto;
     margin: auto;
     cursor: pointer;
+}
+
+/*Edit logo Icon*/
+
+.edit-logo{
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    text-align: left;
+    width: fit-content;
+    left: 200px;
+    top: 15px;
+    
+}
+
+.wrapper .sidebar .edit-logo .edit-logo-icon{
+  color:#888 !important;
+  font-size: 1.3em;
+}
+
+.wrapper .sidebar .edit-logo .edit-logo-icon:hover{
+    color: #e9baed !important;
+    transform: scale(105%);
 }
 
 /*Sidebar Edit Icon*/
@@ -596,6 +633,7 @@ props: {
     z-index: 1;
     right: 40px;
     border-top: #e9baed 2px solid;
+    margin-bottom: 50px;
 }
 
 .dropdownPost-content a {
