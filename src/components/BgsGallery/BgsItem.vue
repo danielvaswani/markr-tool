@@ -3,12 +3,12 @@
         <div  class="preview-icon"><span class="preview"><font-awesome-icon class="bi" icon="eye"/></span></div>
 
         <div class="edit-bgs">
-            <span class="edit-button"><font-awesome-icon class="bi" id="pen" icon="pen"/></span>
+            
 
             <label for="uploadmyfile">
-            <p>Open the Upload dialog</p>
+              <span class="edit-button"><font-awesome-icon class="bi" id="pen" icon="paintbrush"/></span>
             </label>
-            <input type="file" id="uploadmyfile" />
+            <input style="display:none" type="file" id="uploadmyfile" />
         </div>
       </div>
       <router-link 

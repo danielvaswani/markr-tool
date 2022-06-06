@@ -34,7 +34,7 @@
               </router-link>
             </li>
             <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen"/>
+              <font-awesome-icon class="fa-pen" icon="pen"/>
             </div>
           </div>
 
@@ -429,7 +429,8 @@ props: {
 
 .li-text{
     display: flex;
-    gap: 90px;  
+    justify-content: space-between;
+width: 85%; 
 }
 
 /*Edit text icons */
@@ -465,6 +466,7 @@ props: {
     font-size: 1.2rem !important;
     align-self: center;
     position: absolute;
+    z-index: 3;
 }
 
 .fa-pen:hover{
@@ -487,7 +489,8 @@ props: {
 .brand_title{
     display: flex;
     height: 40px;
-    gap: 48px;
+    justify-content: space-between;
+    width: 85%;
     margin-bottom: 20px;
 }
 #brand_con {
@@ -514,7 +517,7 @@ props: {
 .wrapper .sidebar ul li{
     /* display: flex; */
     height: min-content;
-    width: 100px;
+    width: fit-content;
 }
 
 .wrapper .sidebar ul li a {
