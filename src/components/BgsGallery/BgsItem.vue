@@ -1,30 +1,40 @@
 <template>
-      <div class="preview-icon"><span class="preview"><font-awesome-icon class="bi" icon="eye"/></span></div>
+      <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
+        <div  class="preview-icon"><span class="preview"><font-awesome-icon class="bi" icon="eye"/></span></div>
+
+        <div class="edit-bgs">
+            <span class="edit-button"><font-awesome-icon class="bi" id="pen" icon="pen"/></span>
+
+            <label for="uploadmyfile">
+            <p>Open the Upload dialog</p>
+            </label>
+            <input type="file" id="uploadmyfile" />
+        </div>
+      </div>
       <router-link 
+        @mouseenter="hover = true" 
+        @mouseleave="hover = false" 
         class="hvr-border-fade"
         :to = "'/stuurmen' + '/' + $props.name">
-            <img
+            <img 
               class="prev"
               :src="$props.imageUrl"
             />
       </router-link>
-      <div class="edit-bgs">
-          <span class="edit-button">Edit <font-awesome-icon class="bi" id="pen" icon="pen"/></span>
-      </div>
+          
 </template>
 
 <script setup>
 
+import { ref } from 'vue';
+
 defineProps({
   name: String,
-  imageUrl: String
+  imageUrl: String,
 })
 
-// function data(){
-//   return {
-//       hover: false
-//     }
-// }
+const hover = ref(false)
+
 </script>
 
 <style scoped>
@@ -100,20 +110,26 @@ span {
   /* background: #fff; */
 }
 
+.bgs-icons{
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 20px;
+  gap: 10px;
+  position: absolute;
+  margin-left: 180px;
+}
+
 /*Preview Icon */
 
 .preview-icon{
   z-index: 3;
-  position: absolute;
+  /* position: absolute; */
   align-self: flex-end;
-  margin: 15px;
+  /* margin: 15px; */
   width: fit-content;
-  visibility: hidden;
 }
 
-.preview-icon:hover{
-  visibility: visible !important;
-}
+
 
 .active{
   visibility: visible;
@@ -131,30 +147,26 @@ span {
 /*Edit button */
 .edit-bgs{
   z-index: 3;
-  align-self:center;
   text-align: center;
-  position: absolute;
-  top: 522px;
+  /* position: absolute; */
 }
 
 .edit-button{
-  visibility: hidden;
-  color: #ffff;
-  border: #e9baed 2px solid;
-  background-color: #19182794;
-  padding: 10px 30px;
+  /* color: #ffff; */
+  /* border: #e9baed 2px solid;
+  background-color: #19182794; */
+  padding: 7px;
   word-spacing: 0.3em;
   border-radius: 10px;
   font-size: 1.2rem;
   cursor: pointer;
+
 }
 
-.edit-button:hover{
-  visibility: visible;
-}
 
 #pen{
   color: #e9baed;
+  margin-left: 5px !important;
 }
 
 

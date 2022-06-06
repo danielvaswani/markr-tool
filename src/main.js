@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRightFromBracket, faCircleQuestion, faEye, faGear, faTriangleExclamation, faWandMagic, faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faCircleQuestion, faEye, faGear, faPaintbrush, faTriangleExclamation, faWandMagic, faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faBrush } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,7 @@ import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faWandMagicSparkles, faPen, faBrush, faUser, faListCheck, faLock, faGear, faArrowRightFromBracket, faCircleQuestion, faTriangleExclamation, faEye, faWandMagic);
+library.add(faWandMagicSparkles, faPen, faBrush, faUser, faListCheck, faLock, faGear, faArrowRightFromBracket, faCircleQuestion, faTriangleExclamation, faEye, faWandMagic, faPaintbrush);
 
 import { BootstrapIconsPlugin } from 'bootstrap-icons-vue';
 

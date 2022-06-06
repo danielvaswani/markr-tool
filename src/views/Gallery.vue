@@ -151,6 +151,8 @@ onMounted(() => {
   box-shadow: 0 0 10px rgba(0, 0, 0, 7);
 }
 
+
+
 /* .hvr-border-fade{
     width: 250px;
     height: 350px;
