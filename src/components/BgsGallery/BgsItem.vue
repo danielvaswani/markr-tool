@@ -20,6 +20,11 @@ defineProps({
   imageUrl: String
 })
 
+// function data(){
+//   return {
+//       hover: false
+//     }
+// }
 </script>
 
 <style scoped>
@@ -103,7 +108,15 @@ span {
   align-self: flex-end;
   margin: 15px;
   width: fit-content;
-  
+  visibility: hidden;
+}
+
+.preview-icon:hover{
+  visibility: visible !important;
+}
+
+.active{
+  visibility: visible;
 }
 
 .preview{
@@ -114,9 +127,6 @@ span {
   padding: 5px;
 }
 
-.preview:hover{
-  transform: scale(110%);
-}
 
 /*Edit button */
 .edit-bgs{
@@ -124,11 +134,11 @@ span {
   align-self:center;
   text-align: center;
   position: absolute;
-  margin: 300px;
-  
+  top: 522px;
 }
 
 .edit-button{
+  visibility: hidden;
   color: #ffff;
   border: #e9baed 2px solid;
   background-color: #19182794;
@@ -137,6 +147,10 @@ span {
   border-radius: 10px;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.edit-button:hover{
+  visibility: visible;
 }
 
 #pen{

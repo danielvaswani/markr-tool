@@ -102,6 +102,8 @@ onMounted(() => {
   store.dispatch("fetchBrandGuides");
 })
 
+
+
 </script>
 
 <style scoped lang="scss">
