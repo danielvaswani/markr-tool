@@ -5,7 +5,6 @@
           <div class="sidebar">
             <div class="logo">
               <span onclick="transitionToPage('../BGS_page/bgs_p.html')">
-                <img src="images/Markr_w.png" alt="logo" />
               </span>
             </div>
 
@@ -250,7 +249,9 @@
       </div>
 </template>
 
-<script setup></script>
+<script setup>
+
+</script>
 
 <style scoped>
 
