@@ -6,7 +6,7 @@
         <div class="logo">
           <router-link :to = "'/stuurmen'">
           <span>
-            <img src="../assets/images/Markr_w.png" alt="logo" />
+            <img src="../../assets/images/Markr_w.png" alt="logo" />
           </span>
           </router-link>
           <div v-if="showText" class="edit-logo">
@@ -225,7 +225,7 @@
           <ul class="user_bar">
             <li>
               <span class="user_icon" id="user_ico">
-                <img id="u-icon" src="../assets/images/user.png" alt="user icon" />
+                <img id="u-icon" src="../../assets/images/user.png" alt="user icon" />
               </span>
             </li>
             <li id="user_name" class="user_name">
@@ -266,7 +266,7 @@
 <script setup>
 import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
 import { ref, defineExpose } from "vue";
-import UserDropdown from "./UserDropdown.vue";
+import UserDropdown from "../UserDropdown.vue";
 import VueDragResize from 'vue-drag-resize';
 
 

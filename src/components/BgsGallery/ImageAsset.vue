@@ -2,34 +2,34 @@
   <div id="printIt">
 
 
-            <div class="close">
-              
-            <div></div>
+      <div class="delete">
+        
+      <div></div>
 
-            <font-awesome-icon class="xmark" icon="xmark"/>
-            </div>
+      <font-awesome-icon class="xmark" icon="xmark"/>
+      </div>
 
-            
-            <div class="image-container">
-              <img
-              id="image" 
-              src="../../assets/images/photo-placeholder-icon-14.png"
-              alt="Image"/>
-            </div>
-            
+      
+      <div class="image-container">
+        <img
+        id="image" 
+        src="../../assets/images/photo-placeholder-icon-14.png"
+        alt="Image"/>
+      </div>
+      
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-              <!-- The Close Button -->
-              <span class="close">&times;</span>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
 
-              <!-- Modal Content (The Image) -->
-              <img class="modal-content" id="img01" />
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01" />
 
-              <!-- Modal Caption (Image Text) -->
-              <div id="caption"></div>
-            </div>
-          </div>
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+      </div>
+  </div>
 </template>
 
 <script setup>
@@ -43,6 +43,7 @@
 #printIt {
   margin-left: 140px;
   overflow: hidden;
+  width: fit-content;
 }
 
 .image-container{
@@ -51,7 +52,8 @@
   border: #191827 2px solid;
 }
 
-.close{
+.delete{
+  position: absolute;
   display: flex;
   justify-content: space-between;
 }
@@ -64,6 +66,7 @@
 }
 
 .xmark{
+  align-self: flex-end;
   position: relative;
   color: #e9baed;
   font-size: 2rem;

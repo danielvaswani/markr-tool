@@ -6,7 +6,7 @@
     <span class="field-value" v-show="!showField('text')" @click="focusField('text')">{{user.text}}</span>
     <input v-model="user.text" v-show="showField('text')" id="user-text" type="text" class="field-value form-control" @focus="focusField('text')" @blur="blurField">
     </div> -->
-    <p class="logo_p" id="logo_text">
+    <p class="logo_p" id="logo_text" contenteditable="true">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
             voluptates, nulla iusto eum molestias ipsam eveniet aperiam tempora
             rerum modi pariatur alias laboriosam eligendi sint illum facere ad
@@ -15,6 +15,8 @@
             nostrum! Adipisci laborum laboriosam accusantium in neque? Ipsam,
             modi veritatis pariatur voluptas debitis quidem!
     </p>
+
+  
   </div>
 </template>
 

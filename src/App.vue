@@ -9,10 +9,23 @@ import { BIconBootstrap } from 'bootstrap-icons-vue';
 </template>
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; 
+}
+
+
+
+@font-face{
+  src:url(../src/assets/fonts/Gilroy-ExtraBold.otf);
+  font-family: Gilroy Extrabold;
+}
+
+@font-face {
+  src: url(../src/assets/fonts/Gilroy-Light.otf);
+  font-family: Gilroy;
 }
 
 /* width */
@@ -35,7 +48,7 @@ import { BIconBootstrap } from 'bootstrap-icons-vue';
   background: #e9baed;
 }
 
-@font-face {
+/* @font-face {
   font-family: "Gilroy Extrabold";
   src: local("Gilroy Extrabold"), url(./assets/fonts/Gilroy-ExtraBold.otf);
 }
@@ -43,7 +56,7 @@ import { BIconBootstrap } from 'bootstrap-icons-vue';
 @font-face {
   font-family: "Gilroy Light";
   src: local("Gilroy Light"), url(./assets/fonts/Gilroy-Light.otf);
-}
+} */
 
 #app {
   font-family: Gilroy;
