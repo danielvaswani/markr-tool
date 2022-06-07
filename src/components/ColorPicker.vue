@@ -61,7 +61,8 @@ export default {
 }
 
 .btn-change {
-  padding: 10px;
+  margin-left: 20px;
+  padding: 9px;
   border: 1px solid #191827;
   border-radius: 5px;
   text-align: center;

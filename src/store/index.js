@@ -1,12 +1,17 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
+import pickedcolor from './pickedcolor';
 
-const store = createStore({
-  state() {},
-  mutations: {},
+export const storeConfig = {
+  modules: {
+    pickedcolor,
+  },
+   mutations: {},
   methods: {},
   getters: {},
   setters: {},
   actions: {},
-});
+};
+
+const store = createStore(storeConfig);
 
 export default store;

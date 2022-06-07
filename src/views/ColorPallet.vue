@@ -49,10 +49,12 @@ export default {
 
 
 
+
 .colorpicker {
   margin-top: 80px;
   padding: 10px;
   display: flex;
+  
 }
 
 .colors {
@@ -185,13 +187,18 @@ margin-left: 10px;}
   /* Black w/ opacity */
 }
 .palette-add-color {
-  margin-top: 20px;
-  line-height: 100px;
-  width: 60px;
-  height: 60px;
-  position: flex;
-    display: block;
-      margin: auto;
+margin-left: 350px;
+       margin-top: 40px;
+  margin-bottom: 20px;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  color: #191827;
+  background: #e9baed;
       
+}
+.del-icon{
+  width: 130px;
+  display:inline
 }
 </style>
