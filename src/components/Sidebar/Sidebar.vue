@@ -4,19 +4,25 @@
       <!--Top menu -->
       <div v-if="showSidebar" ref="thisSidebar" class="sidebar">
         <div class="logo">
-          <router-link :to = "'/stuurmen'">
-          <span>
-            <img src="../../assets/images/Markr_w.png" alt="logo" />
-          </span>
+          <router-link :to="'/stuurmen'">
+
+            <span>
+              <img src="../../assets/images/Markr_w.png" alt="logo" />
+            </span>
+
           </router-link>
-          <div v-if="showText" class="edit-logo">
-            <font-awesome-icon class="edit-logo-icon" icon="wand-magic"/>
+          <div v-if="showText && $route.params.bgsName !== undefined " class="edit-logo">
+            <label style="cursor:pointer" for="uploadmyfile">
+              <font-awesome-icon class="edit-logo-icon" icon="wand-magic" />
+            </label>
+            <input style="display:none" type="file" id="uploadmyfile" />
           </div>
         </div>
 
         <div v-if="$route.params.bgsName !== undefined">
-          <span @click="toggleText()" class="edit_ico"
-            ><font-awesome-icon class="magic-edit" icon="wand-magic-sparkles"/></span>
+          <span @click="toggleText()" class="edit_ico">
+            <font-awesome-icon class="magic-edit" icon="wand-magic-sparkles" />
+          </span>
         </div>
         <!--menu item-->
         <ul v-if="$route.params.bgsName !== undefined" id="brand_con">
@@ -29,31 +35,27 @@
           <div class="brand_title">
             <li id="t_1">
               <router-link to="/stuurmen">
-                <span class="item" id="brand_name" contenteditable="false"
-                  >YOUR BRAND</span
-                >
+                <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
               </router-link>
             </li>
             <div v-if="showText" class="text_edit">
-              <font-awesome-icon class="fa-pen" icon="pen"/>
+              <font-awesome-icon class="fa-pen" icon="pen" />
             </div>
           </div>
 
 
           <div class="li-text">
-            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
+            <div v-if="showText" class="move-element">
+              <font-awesome-icon class="grip-lines" icon="grip-lines" />
+            </div>
             <li>
               <router-link to="/stuurmen">
-                <span
-                  id="text1"
-                  contenteditable="false"
-                  class="item"
-                  >About</span>
+                <span id="text1" contenteditable="false" class="item">About</span>
               </router-link>
             </li>
             <div class="space-li"></div>
             <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen"/>
+              <font-awesome-icon icon="pen" />
             </div>
           </div>
 
@@ -66,17 +68,13 @@
 
           <li id="new_side" class="items">
             <router-link to="/stuurmen">
-              <span contenteditable="false" class="item"
-                >Item 2</span
-              >
+              <span contenteditable="false" class="item">Item 2</span>
             </router-link>
           </li>
 
           <li class="items" id="t_3">
             <router-link to="/stuurmen">
-              <span contenteditable="false" class="item"
-                >Item 3</span
-              >
+              <span contenteditable="false" class="item">Item 3</span>
             </router-link>
           </li>
         </ul>
@@ -89,59 +87,47 @@
           </li>
 
           <div class="li-text">
-            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
+            <div v-if="showText" class="move-element">
+              <font-awesome-icon class="grip-lines" icon="grip-lines" />
+            </div>
             <li>
               <router-link to="/stuurmen">
-                <span
-                  id="text2"
-                
-                  contenteditable="false"
-                  class="item"
-                  >Logo</span
-                >
+                <span id="text2" contenteditable="false" class="item">Logo</span>
               </router-link>
             </li>
             <div class="space-li"></div>
             <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen"/>
+              <font-awesome-icon icon="pen" />
             </div>
           </div>
 
           <div class="li-text">
-            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
+            <div v-if="showText" class="move-element">
+              <font-awesome-icon class="grip-lines" icon="grip-lines" />
+            </div>
             <li>
               <router-link to="/stuurmen">
-                <span
-                  id="text3"
-                
-                  contenteditable="false"
-                  class="item"
-                  >Color Palette</span
-                >
+                <span id="text3" contenteditable="false" class="item">Color Palette</span>
               </router-link>
             </li>
             <div class="space-li2"></div>
             <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen"/>
+              <font-awesome-icon icon="pen" />
             </div>
           </div>
 
           <div class="li-text">
-            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
+            <div v-if="showText" class="move-element">
+              <font-awesome-icon class="grip-lines" icon="grip-lines" />
+            </div>
             <li>
               <router-link to="/stuurmen">
-                <span
-                  id="text4"
-                
-                  contenteditable="false"
-                  class="item"
-                  >Typography</span
-                >
+                <span id="text4" contenteditable="false" class="item">Typography</span>
               </router-link>
             </li>
             <div class="space-li2"></div>
             <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen"/>
+              <font-awesome-icon icon="pen" />
             </div>
           </div>
 
@@ -162,25 +148,19 @@
 
           <li class="items">
             <router-link to="/stuurmen">
-              <span contenteditable="false" class="item"
-                >New Item</span
-              >
+              <span contenteditable="false" class="item">New Item</span>
             </router-link>
           </li>
 
           <li class="items">
             <router-link to="/stuurmen">
-              <span contenteditable="false" class="item"
-                >New Item</span
-              >
+              <span contenteditable="false" class="item">New Item</span>
             </router-link>
           </li>
 
           <li class="items">
             <router-link to="/stuurmen">
-              <span contenteditable="false" class="item"
-                >Extra Item</span
-              >
+              <span contenteditable="false" class="item">Extra Item</span>
             </router-link>
           </li>
 
@@ -215,7 +195,7 @@
             </li> -->
         </ul>
 
-        <article  v-if="$route.params.bgsName !== undefined" class="user-profile">
+        <article v-if="$route.params.bgsName !== undefined" class="user-profile">
           <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
           <!-- <div v-else style="display: flex">
             <div  class="brand-title">
@@ -229,25 +209,24 @@
               </span>
             </li>
             <li id="user_name" class="user_name">
-              
+
               <a>
                 <span class="drop-btn" @click="toggleUser()">User Name</span>
                 <span class="drop-btn">
-                  <i class="bi bi-caret-down"></i
-                ></span>
+                  <i class="bi bi-caret-down"></i></span>
               </a>
             </li>
-            
-            
+
+
             <div v-if="showUser" id="userDropdown" class="user-dropdown">
-              <UserDropdown ></UserDropdown>
+              <UserDropdown></UserDropdown>
             </div>
           </ul>
         </article>
 
         <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
           <div class="side-edit-color">
-            <font-awesome-icon class="gear" icon="gear"/>
+            <font-awesome-icon class="gear" icon="gear" />
           </div>
         </div>
 

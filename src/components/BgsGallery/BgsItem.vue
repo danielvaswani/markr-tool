@@ -2,7 +2,7 @@
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
 
     <div class="preview-icon"><span class="preview">
-        <a :href="'https://' + $props.subdomain + '.markrtool.nl'">
+        <a target="_blank" :href="'https://' + $props.subdomain + '.markrtool.nl'">
           <font-awesome-icon class="bi" icon="eye" />
         </a>
       </span>
@@ -14,7 +14,7 @@
 
       <label for="uploadmyfile">
         <span class="edit-button">
-          <font-awesome-icon class="bi" id="pen" icon="paintbrush" />
+          <font-awesome-icon class="bi" id="pen" icon="wand-magic-sparkles" />
         </span>
       </label>
       <input style="display:none" type="file" id="uploadmyfile" />
@@ -79,12 +79,14 @@ const hover = ref(false)
 a,
 span {
   cursor: default;
+  text-decoration: none;
+  list-style: none;
 }
 
 .hvr-border-fade{
     width: 250px;
     height: 350px;
-    cursor: default !important; 
+    cursor: pointer; 
     display: inline-block;
     z-index: 2;
     vertical-align: middle;
@@ -133,7 +135,11 @@ span {
   width: fit-content;
 }
 
-
+.preview-icon a{
+  text-decoration: none;
+  color: #e9baed;
+  cursor: pointer;
+}
 
 .active{
   visibility: visible;

@@ -6,15 +6,20 @@
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
-        
-          <div class="bgs" id="bgs" v-for='bgs in brandGuides' :key='bgs.name' >
-          
-          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
-          
-          </div>
 
-          
-          <!-- <BgsItem :name=" s" :image-url=" d" ></BgsItem> -->
+        <div class="bgs" id="bgs" v-for='bgs in brandGuides' :key='bgs.name'>
+
+          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
+
+        </div>
+
+        <div class="bgs" id="bgs">
+          <!--BGS Template-->
+          <BgsTemplate ></BgsTemplate>
+        </div>
+
+
+        <!-- <BgsItem :name=" s" :image-url=" d" ></BgsItem> -->
 
 
         <!-- <div class="bgs">
@@ -53,23 +58,9 @@
           </a>
         </div> -->
 
-        <!--BGS Template-->
-        <div id="bgs_template">
-          <div class="bgs" id="templ_bgs">
-            <a>
-              <img
-                class="prev"
-                id="temp_img"
-                src="../assets/images/pexels-junior-teixeira-2047905.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-        </div>
-
         <!-- <div class="bgs" id="new_bgs" style="display: none"></div> -->
 
-        <AddBgs></AddBgs>
+        <AddBgs @click="addComponent()"></AddBgs>
       </div>
     </article>
   </main>
@@ -84,6 +75,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useStore } from "vuex";
 import BgsItem from '../components/BgsGallery/BgsItem.vue';
 import AddBgs from '../components/BgsGallery/AddBgs.vue';
+import BgsTemplate from '../components/BgsGallery/BgsTemplate.vue';
 const store = useStore();
 
 const showData = () => {
@@ -103,6 +95,10 @@ onMounted(() => {
   store.dispatch("fetchBrandGuides");
 })
 
+
+function addComponent(){
+  this.components.push(Comp)
+}
 
 
 </script>

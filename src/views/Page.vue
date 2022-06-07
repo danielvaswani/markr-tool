@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import Asset from "../components/BgsGallery/Asset.vue";
+import Asset from "../components/BgsGallery/EditButton.vue";
 </script>
 
 <style scoped>

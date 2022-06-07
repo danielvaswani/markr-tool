@@ -1,61 +1,107 @@
 <template>
-  <div id="printIt">
+  <div class="image-container" id="printIt">
 
+    <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" class="image-icons">
+      <div class="edit-image">
+        <a class="edit-link">
+          <font-awesome-icon class="pencil" icon="wand-magic" />
+        </a>
+      </div>
+
+      <div class="space"></div>
 
       <div class="delete">
-        
-      <div></div>
-
-      <font-awesome-icon class="xmark" icon="xmark"/>
+        <a class="delete-button">
+          <font-awesome-icon class="xmark" icon="xmark" />
+        </a>
       </div>
+    </div>
 
-      
-      <div class="image-container">
-        <img
-        id="image" 
-        src="../../assets/images/photo-placeholder-icon-14.png"
-        alt="Image"/>
-      </div>
-      
 
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
-        <!-- The Close Button -->
-        <span class="close">&times;</span>
+    <div @mouseenter="hover = true" @mouseleave="hover = false" class="image-container">
+      <img id="image" src="../../assets/images/photo-placeholder-icon-14.png" alt="Image" />
+    </div>
 
-        <!-- Modal Content (The Image) -->
-        <img class="modal-content" id="img01" />
 
-        <!-- Modal Caption (Image Text) -->
-        <div id="caption"></div>
-      </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- The Close Button -->
+      <span class="close">&times;</span>
+
+      <!-- Modal Content (The Image) -->
+      <img class="modal-content" id="img01" />
+
+      <!-- Modal Caption (Image Text) -->
+      <div id="caption"></div>
+    </div>
   </div>
 </template>
 
 <script setup>
 
+import { ref } from 'vue';
+
+defineProps({
+  name: String,
+  imageUrl: String,
+  subdomain: String
+})
+
+const hover = ref(false)
+
 </script>
 
 <style scoped lang="scss">
 
+
+
+
 /*///IMAGE CONTAINER AND MODAL///*/
 
 #printIt {
-  margin-left: 140px;
+  // margin-left: 140px;
   overflow: hidden;
   width: fit-content;
+  
 }
 
 .image-container{
   width: 350px;
-  height: 350px;
+  height: auto;
   border: #191827 2px solid;
 }
 
-.delete{
-  position: absolute;
+.image-icons{
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  z-index: 3;
+  position: absolute;
+  width: 350px;
+}
+
+
+
+.edit-image{
+  position: relative;
+  margin: 20px 15px;
+  align-self: flex-start;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pencil{
+  align-self: flex-start;
+    position: relative;
+    color: #191827;
+    font-size: 1.4rem;
+}
+
+.delete{
+  cursor: pointer;
+  position: relative;
+  margin: 15px;
+  align-self: flex-end;
 }
 
 #image {
@@ -68,7 +114,7 @@
 .xmark{
   align-self: flex-end;
   position: relative;
-  color: #e9baed;
+  color:rgb(140, 10, 36);
   font-size: 2rem;
 }
 
