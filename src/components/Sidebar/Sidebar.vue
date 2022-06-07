@@ -903,13 +903,13 @@ $border-color_1: transparent transparent #e9baed;
     font-size: 0.8rem;
 }
 
-.hide_icon img{
-    border: #191827 3px solid;
-    object-fit: contain;
-    width: 50px;
-    border-bottom-right-radius: 40%;
-    border-top-right-radius: 40%;
-}
+// .hide_icon img{
+//     border: #191827 3px solid;
+//     object-fit: contain;
+//     width: 50px;
+//     border-bottom-right-radius: 40%;
+//     border-top-right-radius: 40%;
+// }
 
 
 /*//////////EDIT COLOR SIDEBAR////////////// */

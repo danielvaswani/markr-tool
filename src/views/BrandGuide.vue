@@ -8,7 +8,20 @@
 
                 <TitlePage></TitlePage>
 
-                <ImageAsset></ImageAsset>
+                <TitleAsset></TitleAsset>
+
+                <SubtitleAsset></SubtitleAsset>
+
+                <div class="small-image-container">
+                    <ImageAsset></ImageAsset>
+                    <ImageAsset></ImageAsset>
+                    <ImageAsset></ImageAsset>
+                </div>
+
+                <BannerImageAsset></BannerImageAsset>
+
+
+                <BigImageAsset></BigImageAsset>
 
 
                 <TextAsset></TextAsset>
@@ -31,6 +44,10 @@ import ImageAsset from "../components/BgsGallery/ImageAsset.vue";
 import TextAsset from "../components/BgsGallery/TextAsset.vue";
 import EditButton from "../components/BgsGallery/EditButton.vue";
 import TitlePage from "../components/BgsGallery/TitlePage.vue";
+import BannerImageAsset from "../components/BgsGallery/BannerImageAsset.vue";
+import BigImageAsset from "../components/BgsGallery/BigImageAsset.vue";
+import TitleAsset from "../components/BgsGallery/TitleAsset.vue";
+import SubtitleAsset from "../components/BgsGallery/SubtitleAsset.vue";
 
 const dropdown = ref(null)
 
@@ -62,7 +79,7 @@ function toggleEdit() {
 .logos {
     width: 100%;
     background-color: whitesmoke;
-    height: 850px;
+    height: 100%;
     /* margin-left: 550px !important; */
     margin: 0;
     /* margin-top: 150px; */
@@ -72,5 +89,12 @@ function toggleEdit() {
     /* -moz-box-shadow: 0 0 4px black;
         -webkit-box-shadow: 0 0 4px black;
         box-shadow: 0 0 4px black; */
+}
+
+.small-image-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: auto;
 }
 </style>

@@ -18,8 +18,8 @@
     </div>
 
 
-    <div @mouseenter="hover = true" @mouseleave="hover = false" class="image-container">
-      <img id="image" src="../../assets/images/photo-placeholder-icon-14.png" alt="Image" />
+    <div @mouseenter="hover = true" @mouseleave="hover = false" class="image-cont">
+      <img id="image" src="../../assets/images/image-placeholder-icon-14.png" alt="Image" />
     </div>
 
 
@@ -77,7 +77,7 @@ const hover = ref(false)
   justify-content: space-between;
   z-index: 3;
   position: absolute;
-  width: 350px;
+  width: 250px;
 }
 
 
@@ -93,7 +93,7 @@ const hover = ref(false)
 .pencil{
   align-self: flex-start;
     position: relative;
-    color: #191827;
+    color: #e9baed;
     font-size: 1.4rem;
 }
 
@@ -105,8 +105,8 @@ const hover = ref(false)
 }
 
 #image {
-    width: 350px;
-    height: auto;
+    width: 250px !important;
+    height: 250px;
     object-fit: cover;
     cursor: pointer;
 }
