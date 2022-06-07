@@ -120,6 +120,7 @@ main {
     margin-left: 130px;
     font-size: 4rem;
     color: #2c2a45;
+    font-family: Gilroy Extrabold;
 }
 
 /*/////EDIT BUTTON/////*/

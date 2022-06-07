@@ -9,7 +9,7 @@
         
           <div class="bgs" id="bgs" v-for='bgs in brandGuides' :key='bgs.name' >
           
-          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl"></BgsItem>
+          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
           
           </div>
 

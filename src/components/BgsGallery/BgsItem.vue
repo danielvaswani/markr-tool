@@ -1,27 +1,30 @@
 <template>
-      <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
-        <div  class="preview-icon"><span class="preview"><font-awesome-icon class="bi" icon="eye"/></span></div>
+  <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
 
-        <div class="edit-bgs">
-            
+    <div class="preview-icon"><span class="preview">
+        <a :href="'https://' + $props.subdomain + '.markrtool.nl'">
+          <font-awesome-icon class="bi" icon="eye" />
+        </a>
+      </span>
 
-            <label for="uploadmyfile">
-              <span class="edit-button"><font-awesome-icon class="bi" id="pen" icon="paintbrush"/></span>
-            </label>
-            <input style="display:none" type="file" id="uploadmyfile" />
-        </div>
-      </div>
-      <router-link 
-        @mouseenter="hover = true" 
-        @mouseleave="hover = false" 
-        class="hvr-border-fade"
-        :to = "'/stuurmen' + '/' + $props.name">
-            <img 
-              class="prev"
-              :src="$props.imageUrl"
-            />
-      </router-link>
-          
+    </div>
+
+    <div class="edit-bgs">
+
+
+      <label for="uploadmyfile">
+        <span class="edit-button">
+          <font-awesome-icon class="bi" id="pen" icon="paintbrush" />
+        </span>
+      </label>
+      <input style="display:none" type="file" id="uploadmyfile" />
+    </div>
+  </div>
+  <router-link @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade"
+    :to="'/stuurmen' + '/' + $props.name">
+    <img class="prev" :src="$props.imageUrl" />
+  </router-link>
+
 </template>
 
 <script setup>
@@ -31,6 +34,7 @@ import { ref } from 'vue';
 defineProps({
   name: String,
   imageUrl: String,
+  subdomain: String
 })
 
 const hover = ref(false)
