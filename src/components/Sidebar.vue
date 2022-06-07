@@ -4,10 +4,11 @@
       <!--Top menu -->
       <div v-if="showSidebar" ref="thisSidebar" class="sidebar">
         <div class="logo">
-          <span :to = "'/stuurmen'">
+          <router-link :to = "'/stuurmen'">
+          <span>
             <img src="../assets/images/Markr_w.png" alt="logo" />
           </span>
-
+          </router-link>
           <div v-if="showText" class="edit-logo">
             <font-awesome-icon class="edit-logo-icon" icon="wand-magic"/>
           </div>
@@ -40,21 +41,22 @@
 
 
           <div class="li-text">
+            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
             <li>
               <router-link to="/stuurmen">
                 <span
                   id="text1"
-                  onclick="newTemplate()"
                   contenteditable="false"
                   class="item"
-                  >About</span
-                >
+                  >About</span>
               </router-link>
             </li>
+            <div class="space-li"></div>
             <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
+
 
           <li v-if="showText">
             <router-link to="/stuurmen" id="add_b">
@@ -64,7 +66,7 @@
 
           <li id="new_side" class="items">
             <router-link to="/stuurmen">
-              <span onclick="newTemplate()" contenteditable="false" class="item"
+              <span contenteditable="false" class="item"
                 >Item 2</span
               >
             </router-link>
@@ -72,7 +74,7 @@
 
           <li class="items" id="t_3">
             <router-link to="/stuurmen">
-              <span onclick="newTemplate()" contenteditable="false" class="item"
+              <span contenteditable="false" class="item"
                 >Item 3</span
               >
             </router-link>
@@ -87,51 +89,57 @@
           </li>
 
           <div class="li-text">
+            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
             <li>
               <router-link to="/stuurmen">
                 <span
                   id="text2"
-                  onclick="newTemplate()"
+                
                   contenteditable="false"
                   class="item"
                   >Logo</span
                 >
               </router-link>
             </li>
+            <div class="space-li"></div>
             <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
           <div class="li-text">
+            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
             <li>
               <router-link to="/stuurmen">
                 <span
                   id="text3"
-                  onclick="newTemplate()"
+                
                   contenteditable="false"
                   class="item"
                   >Color Palette</span
                 >
               </router-link>
             </li>
+            <div class="space-li2"></div>
             <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
           </div>
 
           <div class="li-text">
+            <div v-if="showText" class="move-element"><font-awesome-icon class="grip-lines" icon="grip-lines"/></div>
             <li>
               <router-link to="/stuurmen">
                 <span
                   id="text4"
-                  onclick="newTemplate()"
+                
                   contenteditable="false"
                   class="item"
                   >Typography</span
                 >
               </router-link>
             </li>
+            <div class="space-li2"></div>
             <div v-if="showText" class="text_edit">
               <font-awesome-icon icon="pen"/>
             </div>
@@ -145,16 +153,16 @@
             </li>
             <!-- menu -->
             <div class="dropdownPost-content">
-              <a><span onclick="newTemplate()">Video</span> </a>
-              <a><span onclick="newTemplate()">Audio</span> </a>
-              <a><span onclick="newTemplate()">Text</span> </a>
-              <a><span onclick="newTemplate()">Others</span> </a>
+              <a><span>Video</span> </a>
+              <a><span>Audio</span> </a>
+              <a><span>Text</span> </a>
+              <a><span>Others</span> </a>
             </div>
           </div>
 
           <li class="items">
             <router-link to="/stuurmen">
-              <span contenteditable="false" onclick="newTemplate()" class="item"
+              <span contenteditable="false" class="item"
                 >New Item</span
               >
             </router-link>
@@ -162,7 +170,7 @@
 
           <li class="items">
             <router-link to="/stuurmen">
-              <span contenteditable="false" onclick="newTemplate()" class="item"
+              <span contenteditable="false" class="item"
                 >New Item</span
               >
             </router-link>
@@ -170,7 +178,7 @@
 
           <li class="items">
             <router-link to="/stuurmen">
-              <span contenteditable="false" onclick="newTemplate()" class="item"
+              <span contenteditable="false" class="item"
                 >Extra Item</span
               >
             </router-link>
@@ -259,6 +267,10 @@
 import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
 import { ref, defineExpose } from "vue";
 import UserDropdown from "./UserDropdown.vue";
+import VueDragResize from 'vue-drag-resize';
+
+
+
 const sidebar = ref(null)
 
 defineExpose({ sidebar })
@@ -295,6 +307,15 @@ function data() {
 props: {
     msg: String;
   }
+
+// const newRect = ref(false);
+
+// function resize(newRect) {
+//                 this.width = newRect.width;
+//                 this.height = newRect.height;
+//                 this.top = newRect.top;
+//                 this.left = newRect.left;
+//             }
 
 </script>
 
@@ -428,9 +449,10 @@ props: {
 }
 
 .li-text{
-    display: flex;
-    justify-content: space-between;
-width: 85%; 
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  list-style: none;
 }
 
 /*Edit text icons */
@@ -455,8 +477,36 @@ width: 85%;
     transform: scale(105%);
 }
 
+.space-li{
+  margin-left: 85px;
+}
+
+.space-li2{
+  margin-left: 20px;
+}
+
 .text_edit{
     display: flex;
+    list-style: none;
+}
+
+.move-element{
+  display: flex;
+}
+
+.grip-lines{
+  display: block !important;
+  color: #888 !important;
+  cursor: pointer !important;
+  font-size: 1.2rem !important;
+  align-self: center;
+  position: absolute;
+  z-index: 3;
+}
+
+.grip-lines:hover{
+    color: #e9baed !important;
+    transform: scale(105%);
 }
 
 .fa-pen{
@@ -491,6 +541,7 @@ width: 85%;
     height: 40px;
     justify-content: space-between;
     width: 85%;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 #brand_con {
@@ -528,7 +579,7 @@ width: 85%;
     position: relative;
     font-size: 1.2rem;
     font-weight: normal;
-    font-weight: 600;
+    // font-weight: 600;
     width: fit-content;
     cursor: pointer;
     text-decoration: none;
@@ -546,11 +597,10 @@ width: 85%;
     background-color: whitesmoke;
 } */
 
-.wrapper .sidebar ul li a:hover,
-.wrapper .sidebar ul li a.active {
+.wrapper .sidebar ul .li-text:hover {
 
-    color: #e9baed;
-    border-right: 2px solid #191827;
+text-decoration: underline #e9baed 2px;
+  
 }
 
 .wrapper .sidebar ul li a.active {

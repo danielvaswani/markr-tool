@@ -29,6 +29,8 @@
               <!-- <p class="drop_p">Edit</p> -->
             </span>
 
+            <a><i class="bi bi-palette-fill"></i></a>
+
             <a><i class="bi bi-share-fill"></i></a>
 
 
@@ -40,36 +42,11 @@
           </div>
         </div>
 
-          <div id="printIt">
-            <img
-              onclick="clickModal()"
-              id="logo_img" 
-              src="../assets/images/8CB5673.jpg"
-              alt="LOGO PREVIEW"
-            />
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-              <!-- The Close Button -->
-              <span class="close">&times;</span>
+        <ImageAsset></ImageAsset>
+          
 
-              <!-- Modal Content (The Image) -->
-              <img class="modal-content" id="img01" />
-
-              <!-- Modal Caption (Image Text) -->
-              <div id="caption"></div>
-            </div>
-          </div>
-
-          <p class="logo_p" id="logo_text" contenteditable="false">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-            voluptates, nulla iusto eum molestias ipsam eveniet aperiam tempora
-            rerum modi pariatur alias laboriosam eligendi sint illum facere ad
-            nam ut. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Aperiam velit impedit dignissimos adipisci, nulla voluptates ullam
-            nostrum! Adipisci laborum laboriosam accusantium in neque? Ipsam,
-            modi veritatis pariatur voluptas debitis quidem!
-          </p>
+        <TextAsset></TextAsset>
 
           
         </div>
@@ -82,6 +59,8 @@
 <script setup>
 
 import { ref, defineExpose } from "vue";
+import ImageAsset from "../components/BgsGallery/ImageAsset.vue";
+import TextAsset from "../components/BgsGallery/TextAsset.vue";
 
 const dropdown = ref(null)
 
@@ -242,12 +221,12 @@ main {
     border-left: #e9baed 2px solid;
     display: flex;
     border-radius: 6px;
-    position: absolute;
+    position: relative;
     height: fit-content;
     max-height: min-content;
-    margin-left: 195px;
+    margin-left: 15px;
     align-items: center;
-    bottom: 508px;
+    bottom: 1px;
     background-color: #191827;
     width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
@@ -346,121 +325,8 @@ main {
 }
 
 
-/*///IMAGE CONTAINER AND MODAL///*/
-
-#printIt {
-    margin-left: 140px;
-}
-
-#logo_img {
-    width: 450px;
-    height: fit-content;
-    object-fit: contain;
-    margin: auto;
-    cursor: pointer;
-    border: #191827 2px solid;
-    vertical-align: middle;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 4;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: #191827;
-    /* Fallback color */
-    background-color: #191827;
-    /* Black w/ opacity */
-}
-
-/* Modal Content (Image) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-
-/* Caption of Modal Image (Image Text) - Same Width as the Image */
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #e9baed;
-    padding: 10px 0;
-    height: 150px;
-    font-size: 2em;
-}
-
-/* Add Animation - Zoom in the Modal */
-.modal-content,
-#caption {
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-@keyframes zoom {
-    from {
-        transform: scale(0)
-    }
-
-    to {
-        transform: scale(1)
-    }
-}
-
-/* The Close Button */
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #fff;
-    font-size: 80px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #e9baed;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 100%;
-    }
-}
 
 
-/*///TEXT CONTAINER///*/
 
-#logo_text {
-    text-align: justify;
-    width: 80%;
-    margin: auto;
-    font-size: 1.2rem;
-}
 
-.logo_p:hover {
-    border: #e9baed 2px solid;
-    padding: 10px;
-}
 </style>

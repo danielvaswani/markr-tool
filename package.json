@@ -17,6 +17,7 @@
     "bootstrap-icons": "^1.8.2",
     "bootstrap-icons-vue": "^1.8.1",
     "vue": "^3.2.25",
+    "vue-drag-resize": "^1.5.4",
     "vue-router": "^4.0.15",
     "vuex": "^4.0.2"
   },
