@@ -6,8 +6,8 @@ import Signup from "../views/Signup.vue";
 import Gallery from "../views/Gallery.vue";
 import Page from "../views/Page.vue";
 import BrandGuide from "../views/BrandGuide.vue";
-import { createForLoopParams } from "@vue/compiler-core";
 import ColorPallet from "../views/ColorPallet.vue";
+import AssetGallery from "../views/AssetGallery.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,9 +33,16 @@ const router = createRouter({
               path: ":pageName",
               name: "Page",
               component: Page,
-            },
+              props: true,
+            },    
           ],
         },
+       {
+        path: "asset-gallery",
+        name: "AssetGallery",
+        component: AssetGallery,
+        }, 
+  
       ],
     },
     {

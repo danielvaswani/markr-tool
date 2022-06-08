@@ -1,8 +1,9 @@
 <template>
   <div class="palette"></div>
+  
   <div class="cardcontainer">
     <div>
-      <button class="btn-del" @click="">X</button>
+      <button class="btn-del" @click="deleteCard(color)">X</button>
       <div class="colorpicker-active"></div>
       <div class="pickedcolor"></div>
       <div class="colorpicker-preview" v-bind:style="bgc"></div>
@@ -13,37 +14,49 @@
 
     </div>
   </div>
-  <div v-if="toogleModal">
-    <ColorPicker :color="pickedcolor" @color-change="updateColor" />
-  </div>
+  <PickerModal :color="pickedcolor" :updateColor="updateColor" :show="displayModal" @close="showModal">
+    <template #header>
+      <h3>Pick color</h3>
+    </template>
+  </PickerModal>
 </template>
 
 <script>
-import { ColorPicker } from "vue-accessible-color-picker";
-import { ref, reactive } from "vue";
+import { ref, reactive, toRefs } from "vue";
+import PickerModal from "./Modals/PickerModal.vue";
+
+
 
 export default {
   components: {
-    ColorPicker,
+    PickerModal
   },
-  setup() {
-    let toogleModal = ref(false);
-    let pickedcolor = ref("#e9baed");
+  props:{
+    color: { type: String, required: true },
+    deleteCard:{type: Function, required: true}
+  },
+
+  setup(props) {
+    let pickedcolor = ref(props.color);
     let bgc = ref({ backgroundColor: pickedcolor.value })
+    let displayModal = ref(false)
 
     function showModal() {
-      toogleModal.value = !toogleModal.value;
+      displayModal.value = !displayModal.value;
     }
     function updateColor(eventData) {
-      console.log(eventData.colors?.hex)
       pickedcolor.value = eventData.colors?.hex;
       bgc.value.backgroundColor =pickedcolor.value;
     }
-    return { showModal, toogleModal, updateColor, pickedcolor, bgc};
+
+    
+    
+    return { showModal, updateColor, pickedcolor, displayModal, bgc};
   },
 };
 </script>
 <style scoped>
+
 
 
 .cardcontainer {
@@ -55,9 +68,7 @@ export default {
   padding: 20px;
   border-radius: 15px;
   background-color: #fff;
-}
-.btn-wrap{
-
+  box-sizing: border-box;
 }
 
 .btn-change {
@@ -103,7 +114,6 @@ top: 10px;
   border-radius: 50%;
   margin: 0 auto;
   cursor: pointer;
-  background-color: aqua;
 }
 
 .color-picker-info {

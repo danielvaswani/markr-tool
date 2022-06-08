@@ -1,39 +1,61 @@
 <template>
   <div class="container_color">
+    <Sidebar />
+
     <div class="colors">
       <div class="dropdown2">
-        <img @click="myFunction" class="dropbtn" src="../assets/images/icons8-edit-64.png" />
+        <img
+          @click="myFunction"
+          class="dropbtn"
+          src="../assets/images/icons8-edit-64.png"
+        />
         <div id="myDropdown" class="dropdown-content">
           <a><i class="bi bi-share-fill"></i> Share</a>
-          <a href="images/jw_logo.png" download="logo_preview"><i class="bi bi-box-arrow-down"></i> Download</a>
-          <a onclick="printDiv('printIt')" value="print a div!"><i class="bi bi-printer-fill"></i> Print</a>
+          <a href="images/jw_logo.png" download="logo_preview"
+            ><i class="bi bi-box-arrow-down"></i> Download</a
+          >
+          <a onclick="printDiv('printIt')" value="print a div!"
+            ><i class="bi bi-printer-fill"></i> Print</a
+          >
           <a id="delete">
-            <i id="delete_icon" class="bi bi-trash3"></i> Delete</a>
+            <i id="delete_icon" class="bi bi-trash3"></i> Delete</a
+          >
         </div>
 
         <div id="printIt"></div>
       </div>
-      <div class="colortext">
-        <h2 id="color_t">Colour Pallet</h2>
+      <div class="addtemp" @click="createPalette">
+        <img class="addtemp-icon" src="../assets/images/add.png" />
       </div>
-      <div class="colorpicker">
-        <ColorPicker />
-        <ColorPicker />
-      </div>
-      <div class="palette-add-color" @click="X">
-        <img class="del-icon" src="../assets/images/add.png" />
+      <div v-for="colors in predefindeColors">
+        <ColorTemp :predefindeColors="colors" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ColorPicker from "../components/ColorPicker.vue";
+import Sidebar from "../components/Sidebar/Sidebar.vue";
+import ColorTemp from "../components/ColorTemp.vue";
+import { ref, reactive } from "vue";
 
 export default {
   components: {
-    ColorPicker,
+    Sidebar,
+    ColorTemp,
   },
+  setup() {
+    let predefindeColors = ref([["#101B37", "#f6f6e3", "#ffd700"]]);
+
+    function createPalette() {
+      let newPalette = predefindeColors.value[0].slice(0);
+      console.log(newPalette);
+      predefindeColors.value.push(newPalette);
+      console.log(predefindeColors.value);
+    }
+    return { predefindeColors, createPalette };
+  },
+
   methods: {
     myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
@@ -43,33 +65,17 @@ export default {
 </script>
 
 <style scoped>
-
-
-
-
-
-
-
-.colorpicker {
-  margin-top: 80px;
-  padding: 10px;
-  display: flex;
-  
+.container_color {
 }
 
 .colors {
-  width: 800px;
+  width: 900px;
+  align-self: right;
   background-color: #e7cee9;
   height: auto;
-  margin: 10px 500px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
-}
-.colortext {
-margin-left: 10px;}
-#color_t {
-  font-size: 4rem;
-  color: #2c2a45;
 }
 
 /* Dropdown Button */
@@ -86,8 +92,8 @@ margin-left: 10px;}
 .dropdown2 {
   position: relative;
   display: inline-block;
-  margin: 0 700px;
   margin-top: 50px;
+  margin-left: 670px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -186,19 +192,17 @@ margin-left: 10px;}
   background-color: #191827;
   /* Black w/ opacity */
 }
-.palette-add-color {
-margin-left: 350px;
-       margin-top: 40px;
-  margin-bottom: 20px;
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  color: #191827;
-  background: #e9baed;
-      
+.addtemp {
+  margin-left: 650px;
+  border-radius: 50px;
+  cursor: pointer;
+  background: #5c1962;
+  display: inline;
+  position: relative;
+  width: 100px;
 }
-.del-icon{
-  width: 130px;
-  display:inline
+.addtemp-icon {
+  width: 100px;
+  display: inline;
 }
 </style>

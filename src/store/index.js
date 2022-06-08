@@ -1,17 +1,29 @@
-import { createStore } from 'vuex';
-import pickedcolor from './pickedcolor';
+import { createStore } from "vuex";
+import brandGuideService from "../services/brandGuideService";
 
-export const storeConfig = {
-  modules: {
-    pickedcolor,
+const store = createStore({
+  state() { 
+    brandGuides: []
   },
-   mutations: {},
+  mutations: {
+    SET_BRANDGUIDES(state, brandGuides) {
+          state.brandGuides = brandGuides
+      }
+  },
   methods: {},
-  getters: {},
+  getters: {
+    getBrandGuides: (state) => state.brandGuides
+  },
   setters: {},
-  actions: {},
-};
-
-const store = createStore(storeConfig);
+  actions: {
+    async fetchBrandGuides({commit}) {
+      // Use the eventService to call the getEventSingle() method
+      brandGuideService.getBrandGuides()
+      .then(
+        (data) => commit('SET_BRANDGUIDES', data )
+      );
+    }
+  },
+});
 
 export default store;
