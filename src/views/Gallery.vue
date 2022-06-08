@@ -1,26 +1,23 @@
 <template>
-
   <main>
     <!-- <UserProfile></UserProfile> -->
     <article class="gallery-container">
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
-
-        <div class="bgs" id="bgs" v-for='bgs in brandGuides' :key='bgs.name'>
-
-          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
-
+        <div class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
+          <BgsItem
+            :name="bgs.name"
+            :image-url="bgs.imageUrl"
+            :subdomain="bgs.subdomain"
+          ></BgsItem>
         </div>
 
-        <div class="bgs" id="bgs">
-          <!--BGS Template-->
+        <!-- <div class="bgs" id="bgs">
           <BgsTemplate ></BgsTemplate>
-        </div>
-
+        </div> -->
 
         <!-- <BgsItem :name=" s" :image-url=" d" ></BgsItem> -->
-
 
         <!-- <div class="bgs">
           <a>
@@ -60,62 +57,63 @@
 
         <!-- <div class="bgs" id="new_bgs" style="display: none"></div> -->
 
-        <AddBgs @click="addComponent()"></AddBgs>
+        <AddBgs @click="addBrandGuide()"></AddBgs>
       </div>
     </article>
   </main>
+  <BGSInfo />
 </template>
 
 <script setup>
+import UserProfile from "../components/UserProfile.vue";
 
-
-import UserProfile from '../components/UserProfile.vue';
-
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
-import BgsItem from '../components/BgsGallery/BgsItem.vue';
-import AddBgs from '../components/BgsGallery/AddBgs.vue';
-import BgsTemplate from '../components/BgsGallery/BgsTemplate.vue';
+import BgsItem from "../components/BgsGallery/BgsItem.vue";
+import AddBgs from "../components/BgsGallery/AddBgs.vue";
+import BgsTemplate from "../components/BgsGallery/BgsTemplate.vue";
+import BGSInfo from "../components/BgsGallery/BGSInfo.vue";
+
 const store = useStore();
 
 const showData = () => {
-  console.log(gettersBrandGuides.name)
-}
+  console.log(gettersBrandGuides.name);
+};
 
 const getBrandGuides = computed(() => {
-  return store.getters.getBrandGuides
-})
+  return store.getters.getBrandGuides;
+});
 
 const brandGuides = computed(() => {
-  return store.state.brandGuides
-})
+  return store.state.brandGuides;
+});
 
 onMounted(() => {
-// dispatch the fetchBrandGuides action which commits a mutation to update the state
+  // dispatch the fetchBrandGuides action which commits a mutation to update the state
   store.dispatch("fetchBrandGuides");
-})
+});
 
-
-function addComponent(){
-  this.components.push(Comp)
+// function addComponent() {
+//   this.components.push(Comp);
+// }
+function addBrandGuide(bgsName) {
+  store.dispatch("addBrandGuide", bgsName);
 }
-
-
 </script>
 
 <style scoped lang="scss">
 .gallery-container {
   display: flex;
   flex-direction: column;
-  margin-left: 250px;
+  // margin-left: 250px;
 }
 
 .title_bg {
   color: #191827;
   font-size: 2rem;
-  /* margin-left: 330px; */
-  margin-left: 60px;
-  margin-top: 120px;
+  margin-left: 310px;
+  // margin-left: 60px;
+  margin-top: 50px;
   font-family: "Gilroy Extrabold";
 }
 
@@ -123,7 +121,8 @@ function addComponent(){
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  width: 100%;
+  max-width: 100%;
+  margin-left: 250px;
   /* position: absolute;
   left: 250px;
   top: 150px; */
@@ -143,12 +142,10 @@ function addComponent(){
   flex-direction: column;
   text-align: center;
   align-items: center;
-  align-content:center;
+  align-content: center;
   object-position: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 7);
 }
-
-
 
 /* .hvr-border-fade{
     width: 250px;
@@ -185,8 +182,6 @@ function addComponent(){
   color: #e9baed;
   /* background: #fff; */
 }
-
-
 
 #bgs_template {
   display: none;
