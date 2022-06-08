@@ -1,48 +1,48 @@
 <template>
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
-
-    <div class="preview-icon"><span class="preview">
-        <a target="_blank" :href="'https://' + $props.subdomain + '.markrtool.nl'">
+    <div class="preview-icon">
+      <span class="preview">
+        <a
+          target="_blank"
+          :href="'https://' + $props.subdomain + '.markrtool.nl'"
+        >
           <font-awesome-icon class="bi" icon="eye" />
         </a>
       </span>
-
     </div>
 
     <div class="edit-bgs">
-
-
       <label for="uploadmyfile">
         <span class="edit-button">
           <font-awesome-icon class="bi" id="pen" icon="wand-magic-sparkles" />
         </span>
       </label>
-      <input style="display:none" type="file" id="uploadmyfile" />
+      <input style="display: none" type="file" id="uploadmyfile" />
     </div>
   </div>
-  <router-link @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade"
-    :to="'/stuurmen' + '/' + $props.name">
+  <router-link
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
+    class="hvr-border-fade"
+    :to="'/stuurmen' + '/' + $props.name"
+  >
     <img class="prev" :src="$props.imageUrl" />
   </router-link>
-
 </template>
 
 <script setup>
-
-import { ref } from 'vue';
+import { ref } from "vue";
 
 defineProps({
   name: String,
   imageUrl: String,
-  subdomain: String
-})
+  subdomain: String,
+});
 
-const hover = ref(false)
-
+const hover = ref(false);
 </script>
 
 <style scoped>
-
 .gallery-container {
   display: flex;
   flex-direction: column;
@@ -83,14 +83,14 @@ span {
   list-style: none;
 }
 
-.hvr-border-fade{
-    width: 250px;
-    height: 350px;
-    cursor: pointer; 
-    display: inline-block;
-    z-index: 2;
-    vertical-align: middle;
-    /* -webkit-transform: perspective(1px) translateZ(0);
+.hvr-border-fade {
+  width: 250px;
+  height: 350px;
+  cursor: pointer;
+  display: inline-block;
+  z-index: 2;
+  vertical-align: middle;
+  /* -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     -webkit-transition-duration: 0.3s;
@@ -116,7 +116,7 @@ span {
   /* background: #fff; */
 }
 
-.bgs-icons{
+.bgs-icons {
   display: flex !important;
   flex-direction: column !important;
   padding: 20px;
@@ -127,7 +127,7 @@ span {
 
 /*Preview Icon */
 
-.preview-icon{
+.preview-icon {
   z-index: 3;
   /* position: absolute; */
   align-self: flex-end;
@@ -135,33 +135,32 @@ span {
   width: fit-content;
 }
 
-.preview-icon a{
+.preview-icon a {
   text-decoration: none;
   color: #e9baed;
   cursor: pointer;
 }
 
-.active{
+.active {
   visibility: visible;
 }
 
-.preview{
+.preview {
   cursor: pointer;
-  color:#e9baed;
+  color: #e9baed;
   /* opacity: 0.2; */
   font-size: 1.2rem;
   padding: 5px;
 }
 
-
 /*Edit button */
-.edit-bgs{
+.edit-bgs {
   z-index: 3;
   text-align: center;
   /* position: absolute; */
 }
 
-.edit-button{
+.edit-button {
   /* color: #ffff; */
   /* border: #e9baed 2px solid;
   background-color: #19182794; */
@@ -170,15 +169,10 @@ span {
   border-radius: 10px;
   font-size: 1.2rem;
   cursor: pointer;
-
 }
 
-
-#pen{
+#pen {
   color: #e9baed;
   margin-left: 5px !important;
 }
-
-
-
 </style>

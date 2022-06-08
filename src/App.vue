@@ -1,7 +1,6 @@
 <script setup>
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { BIconBootstrap } from 'bootstrap-icons-vue';
-
+import { BIconBootstrap } from "bootstrap-icons-vue";
 </script>
 
 <template>
@@ -9,17 +8,14 @@ import { BIconBootstrap } from 'bootstrap-icons-vue';
 </template>
 
 <style>
-
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-
-
-@font-face{
-  src:url(../src/assets/fonts/Gilroy-ExtraBold.otf);
+@font-face {
+  src: url(../src/assets/fonts/Gilroy-ExtraBold.otf);
   font-family: Gilroy Extrabold;
 }
 

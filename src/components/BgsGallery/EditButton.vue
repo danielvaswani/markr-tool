@@ -5,8 +5,13 @@
       <i class="bi bi-plus-square-dotted"></i>
     </span>
     <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
-
-      <a style="padding: 12px 8px;"><i style="font-size: 1.6rem" class="bi bi-fonts"></i></a>
+      <a
+        @mouseenter="hover = true"
+        @mouseleave="hover = false"
+        style="padding: 12px 8px"
+      >
+        <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
+      </a>
 
       <a><i class="bi bi-card-image"></i></a>
 
@@ -17,7 +22,8 @@
         <i id="small_plus" class="bi bi-plus"></i>
       </div>
 
-      <span style="padding: 12px 8px;" id="edit_icon"><i style="font-size: 1.6rem" class="bi bi-paint-bucket"></i>
+      <span style="padding: 12px 8px" id="edit_icon"
+        ><i style="font-size: 1.6rem" class="bi bi-paint-bucket"></i>
         <!-- <p class="drop_p">Edit</p> -->
       </span>
 
@@ -25,34 +31,58 @@
 
       <a><i class="bi bi-share-fill"></i></a>
 
-
-      <a onclick="printDiv('printIt')" value="print a div!"><i class="bi bi-printer-fill"></i></a>
+      <a onclick="printDiv('printIt')" value="print a div!"
+        ><i class="bi bi-printer-fill"></i
+      ></a>
 
       <!-- <a id="delete"> <i id="delete_icon" class="bi bi-trash3"></i></a> -->
     </div>
+  </div>
+
+  <!--Texts Dropdown-->
+  <div
+    v-if="hover"
+    @mouseenter="hover = true"
+    id="textsDropdown"
+    class="dropdown-content-texts dropdown"
+  >
+    <a class="title-a">
+      <h2>Title</h2>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+
+    <a class="subtitle-a">
+      <h3>Subtitle</h3>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+
+    <a class="paragraph">
+      <p>Paragraph</p>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
   </div>
 </template>
 
 <script setup>
 import { ref, defineExpose } from "vue";
 
+const hover = ref(false);
 
-const dropdown = ref(null)
+const dropdown = ref(null);
 
-defineExpose({ dropdown })
+defineExpose({ dropdown });
 
-const showDropdown = ref(false);
+let showDropdown = ref(false);
 
 function toggleEdit() {
-  this.showDropdown = !this.showDropdown;
-  console.log("Im working")
+  showDropdown.value = !showDropdown.value;
+  console.log("Im working");
   // console.log(this.$refs.sidebar);
   // this.$refs.userDropdown.scrollIntoView();
 }
 </script>
 
 <style scoped lang="scss">
-
 /*/////EDIT BUTTON/////*/
 
 #edit_b {
@@ -81,11 +111,10 @@ function toggleEdit() {
   border-radius: 10%;
   text-align: center;
   transition-timing-function: ease-out;
-  transition: .8s;
+  transition: 0.8s;
   -moz-box-shadow: 0 0 4px black;
   -webkit-box-shadow: 0 0 4px black;
   box-shadow: 0 0 4px black;
-
 }
 
 .edit:hover {
@@ -100,7 +129,8 @@ function toggleEdit() {
   background: linear-gradient(to top, whitesmoke 0%, #fff 6px);
   transition: all 0.078s ease-out;
   z-index: -1;
-  box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.3), 0 5px 2.4px rgba(0, 0, 0, 0.5), 0 10.8px 9px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.3), 0 5px 2.4px rgba(0, 0, 0, 0.5),
+    0 10.8px 9px rgba(0, 0, 0, 0.2);
 }
 
 /* .edit:hover{
@@ -109,13 +139,11 @@ function toggleEdit() {
         box-shadow: 0 0 5px black;
 } */
 
-
 #small_plus {
   position: absolute;
   right: -2px;
   top: 4px;
 }
-
 
 /*////EDIT DROPDOWN////*/
 
@@ -168,15 +196,13 @@ function toggleEdit() {
   box-shadow: 0 0 4px black;
 }
 
-
-
 @keyframes up {
   from {
-    transform: translateY(2%)
+    transform: translateY(2%);
   }
 
   to {
-    transform: translateY(-1%)
+    transform: translateY(-1%);
   }
 }
 
@@ -235,6 +261,73 @@ function toggleEdit() {
 //     border-left: #fff 1px solid;
 // }
 
+/*Texts Dropdown */
+
+.dropdown-content-texts {
+  /* transform: translateY(-100%);
+    will-change: transform; */
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  border-top: #e9baed 2px solid;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  position: relative;
+  height: fit-content;
+  margin-left: 56px;
+  align-items: center;
+  bottom: 100px;
+  background-color: #191827;
+  width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  text-align: center;
+  -moz-box-shadow: 0 0 4px black;
+  -webkit-box-shadow: 0 0 4px black;
+  box-shadow: 0 0 4px black;
+}
+
+.dropdown-content-texts a {
+  color: #fff;
+  padding: 8px 30px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: #e9baed 1px solid;
+  width: inherit;
+}
+
+.chevron {
+  color: #e9baed;
+}
+
+.title-a {
+  display: flex;
+  align-items: baseline;
+  gap: 50px;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.subtitle-a {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  font-size: 1.2rem;
+}
+
+.paragraph {
+  display: flex;
+  align-items: baseline;
+  gap: 45px;
+  font-size: 1rem;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content-texts a:hover {
+  background-color: #2c2a45;
+}
+
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show_edit {
   display: block;
@@ -247,12 +340,11 @@ function toggleEdit() {
 
 @keyframes drop {
   from {
-    transform: translateY(-1%)
+    transform: translateY(-1%);
   }
 
   to {
-    transform: translateY(2%)
+    transform: translateY(2%);
   }
 }
-
 </style>

@@ -28,21 +28,19 @@ const router = createRouter({
           name: "BrandGuide",
           component: BrandGuide,
           props: true,
-          children: [
-            {
-              path: ":pageName",
-              name: "Page",
-              component: Page,
-              props: true,
-            },    
-          ],
+          children: [],
         },
-       {
-        path: "asset-gallery",
-        name: "AssetGallery",
-        component: AssetGallery,
-        }, 
-  
+        {
+          path: ":bgsName/:pageName",
+          name: "Page",
+          component: Page,
+          props: true,
+        },
+        {
+          path: ":bgsName/asset-gallery",
+          name: "AssetGallery",
+          component: AssetGallery,
+        },
       ],
     },
     {

@@ -17,12 +17,12 @@
     "bootstrap": "^5.2.0-beta1",
     "bootstrap-icons": "^1.8.2",
     "bootstrap-icons-vue": "^1.8.1",
-    "chunk": "^0.0.3",
-    "vue": "^3.2.25",
-    "vue-accessible-color-picker": "^4.0.3",
+    "bootstrap-vue": "^2.22.0",
+    "vue": "^3.2.37",
     "vue-drag-resize": "^1.5.4",
     "vue-router": "^4.0.15",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "vue-accessible-color-picker": "^4.0.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",

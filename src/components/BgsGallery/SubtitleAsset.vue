@@ -1,0 +1,41 @@
+<template>
+
+    <div class="subtitle-container">
+        <h3 class="template-subtitle" id="template_subtitle" contenteditable="true">
+            Subtitle me this</h3>
+    </div>
+
+</template>
+
+<script setup>
+
+</script>
+
+<style scoped lang="scss">
+.subtitle-container {
+    text-align: justify;
+    width: 90%;
+    word-wrap: break-word;
+    padding: 5px;
+    font-size: 1.2rem;
+
+}
+
+.template-subtitle {
+    padding: 5px;
+    border: transparent;
+    width: 300px;
+    font-weight: 600;
+    word-wrap: break-word;
+    height: fit-content;
+    // border: 1px solid #19182753;
+    // border-radius: 5px;
+    // box-shadow: 1px 1px 1px #888888 inset;
+}
+
+
+.template-subtitle:hover {
+    border: #e9baed 2px solid;
+    padding: 5px;
+}
+</style>
