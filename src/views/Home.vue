@@ -22,13 +22,11 @@
 <script setup>
 import Sidebar from "../components/Sidebar/Sidebar.vue";
 import { ref } from "vue";
-const showSidebar = ref(true);
+let showSidebar = ref(true);
 
 function toggleSidebar() {
-  this.showSidebar = !this.showSidebar;
+  showSidebar.value = !showSidebar.value;
 }
-
-
 </script>
 
 <style scoped>

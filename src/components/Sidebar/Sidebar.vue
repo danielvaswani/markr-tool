@@ -259,10 +259,10 @@ const sidebar = ref(null);
 
 defineExpose({ sidebar });
 
-const showText = ref(false);
+let showText = ref(false);
 
 function toggleText() {
-  this.showText = !this.showText;
+  showText.value = showText.value;
   // console.log(this.$refs.sidebar);
   // this.$refs.userDropdown.scrollIntoView();
 }
@@ -273,10 +273,10 @@ function data() {
   };
 }
 
-const showUser = ref(false);
+let showUser = ref(false);
 
 function toggleUser() {
-  this.showUser = !this.showUser;
+  showUser.value = !showUser.value;
   // console.log(this.$refs.sidebar);
   // this.$refs.userDropdown.scrollIntoView();
 }
@@ -860,10 +860,10 @@ $border-color_1: transparent transparent #e9baed;
   z-index: 5;
 }
 
-.hide_icon i{
-    color: #fff;
-    align-self: center;
-    font-size: 0.8rem;
+.hide_icon i {
+  color: #fff;
+  align-self: center;
+  font-size: 0.8rem;
 }
 
 // .hide_icon img{
@@ -873,7 +873,6 @@ $border-color_1: transparent transparent #e9baed;
 //     border-bottom-right-radius: 40%;
 //     border-top-right-radius: 40%;
 // }
-
 
 /*//////////EDIT COLOR SIDEBAR////////////// */
 

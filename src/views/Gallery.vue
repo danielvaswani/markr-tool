@@ -88,13 +88,12 @@ const brandGuides = computed(() => {
   return store.state.brandGuides;
 });
 
-const showBGSInfo = ref(false);
-
 onMounted(() => {
   // dispatch the fetchBrandGuides action which commits a mutation to update the state
   store.dispatch("fetchBrandGuides");
 });
 
+let showBGSInfo = ref(false);
 // function addComponent() {
 //   this.components.push(Comp);
 // }
@@ -102,7 +101,7 @@ onMounted(() => {
 //   store.dispatch("addBrandGuide", bgsName);
 // }
 function toggleBrandGuide() {
-  this.showBGSInfo = !this.showBGSInfo;
+  showBGSInfo.value = !showBGSInfo.value;
 }
 </script>
 

@@ -44,10 +44,10 @@ const dropdown = ref(null);
 
 defineExpose({ dropdown });
 
-const showDropdown = ref(false);
+let showDropdown = ref(false);
 
 function toggleEdit() {
-  this.showDropdown = !this.showDropdown;
+  showDropdown.value = !showDropdown.value;
   console.log("Im working");
   // console.log(this.$refs.sidebar);
   // this.$refs.userDropdown.scrollIntoView();
