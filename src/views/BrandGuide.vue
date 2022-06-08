@@ -1,13 +1,9 @@
 <template>
   <!--MAIN PAGE-->
   <main>
-    <div id="new_template"></div>
-
     <div class="container_logo">
       <div class="logos" id="template_div">
         <TitlePage></TitlePage>
-
-        <ImageAsset></ImageAsset>
 
         <TitleAsset></TitleAsset>
 
@@ -22,6 +18,8 @@
         <BannerImageAsset></BannerImageAsset>
 
         <BigImageAsset></BigImageAsset>
+
+        <TextAsset></TextAsset>
 
         <EditButton></EditButton>
       </div>
@@ -39,6 +37,7 @@ import BannerImageAsset from "../components/BgsGallery/BannerImageAsset.vue";
 import BigImageAsset from "../components/BgsGallery/BigImageAsset.vue";
 import TitleAsset from "../components/BgsGallery/TitleAsset.vue";
 import SubtitleAsset from "../components/BgsGallery/SubtitleAsset.vue";
+import TextAsset1 from "../components/BgsGallery/TextAsset.vue";
 
 const dropdown = ref(null);
 
@@ -55,18 +54,22 @@ function toggleEdit() {
 </script>
 
 <style scoped lang="scss">
+
+
+
 /*//////////////////TEMPLATE CONTAINER//////////////////////*/
 
 .container_logo {
   display: flex;
   //   margin-left: 250px;
-  padding: 100px;
+  padding: 80px;
+  width: -moz-available;
 }
 
 .logos {
-  width: 100%;
   background-color: whitesmoke;
-  height: 850px;
+  height: 100%;
+  width: 1200px;
   /* margin-left: 550px !important; */
   margin: 0;
   /* margin-top: 150px; */

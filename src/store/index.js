@@ -5,6 +5,7 @@ const store = createStore({
   state() {
     brandGuides: [];
     currentBGSIndex: [];
+    showSidebar: true;
   },
   mutations: {
     SET_BRANDGUIDES(state, brandGuides) {

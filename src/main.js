@@ -5,6 +5,7 @@ import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faArrowRightFromBracket,
+  faChevronRight,
   faCircleQuestion,
   faClapperboard,
   faEye,
@@ -41,7 +42,8 @@ library.add(
   faPencil,
   faClapperboard,
   faGripLines,
-  faXmark
+  faXmark,
+  faChevronRight
 );
 
 import { BootstrapIconsPlugin } from "bootstrap-icons-vue";

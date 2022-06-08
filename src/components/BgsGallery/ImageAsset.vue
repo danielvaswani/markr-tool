@@ -56,18 +56,20 @@ const hover = ref(false)
 
 
 
+
 /*///IMAGE CONTAINER AND MODAL///*/
 
 #printIt {
   // margin-left: 140px;
   overflow: hidden;
   width: fit-content;
-  
+  margin: auto;
 }
 
 .image-container{
   width: 350px;
   height: auto;
+
   border: #191827 2px solid;
 }
 
@@ -81,9 +83,7 @@ const hover = ref(false)
 }
 
 
-
 .edit-image{
-  position: relative;
   margin: 20px 15px;
   align-self: flex-start;
   text-align: center;
@@ -99,7 +99,6 @@ const hover = ref(false)
 
 .delete{
   cursor: pointer;
-  position: relative;
   margin: 15px;
   align-self: flex-end;
 }

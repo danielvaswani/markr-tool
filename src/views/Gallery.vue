@@ -66,7 +66,7 @@
 
 <script setup>
 import UserProfile from "../components/UserProfile.vue";
-
+import Sidebar from "../components/Sidebar/Sidebar.vue";
 import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 import BgsItem from "../components/BgsGallery/BgsItem.vue";

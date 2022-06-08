@@ -52,9 +52,10 @@
 
 #text {
     text-align: justify;
-    width: 90%;
+    width: 80%;
     word-wrap: break-word;
     padding: 5px;
+    margin: auto;
     font-size: 1.2rem;
 }
 
