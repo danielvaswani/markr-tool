@@ -9,24 +9,19 @@
 
         <ImageAsset></ImageAsset>
 
-<<<<<<< HEAD
-        <TextAsset></TextAsset>
-=======
-                <TitleAsset></TitleAsset>
+        <TitleAsset></TitleAsset>
 
-                <SubtitleAsset></SubtitleAsset>
+        <SubtitleAsset></SubtitleAsset>
 
-                <div class="small-image-container">
-                    <ImageAsset></ImageAsset>
-                    <ImageAsset></ImageAsset>
-                    <ImageAsset></ImageAsset>
-                </div>
+        <div class="small-image-container">
+          <ImageAsset></ImageAsset>
+          <ImageAsset></ImageAsset>
+          <ImageAsset></ImageAsset>
+        </div>
 
-                <BannerImageAsset></BannerImageAsset>
+        <BannerImageAsset></BannerImageAsset>
 
-
-                <BigImageAsset></BigImageAsset>
->>>>>>> 833f5b06494f4143a2d40dfca4f41de821959e44
+        <BigImageAsset></BigImageAsset>
 
         <EditButton></EditButton>
       </div>
@@ -69,7 +64,6 @@ function toggleEdit() {
 }
 
 .logos {
-<<<<<<< HEAD
   width: 100%;
   background-color: whitesmoke;
   height: 850px;
@@ -80,26 +74,14 @@ function toggleEdit() {
   flex-direction: column;
   gap: 100px;
   /* -moz-box-shadow: 0 0 4px black;
-=======
-    width: 100%;
-    background-color: whitesmoke;
-    height: 100%;
-    /* margin-left: 550px !important; */
-    margin: 0;
-    /* margin-top: 150px; */
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    /* -moz-box-shadow: 0 0 4px black;
->>>>>>> 833f5b06494f4143a2d40dfca4f41de821959e44
         -webkit-box-shadow: 0 0 4px black;
         box-shadow: 0 0 4px black; */
 }
 
-.small-image-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: auto;
+.small-image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: auto;
 }
 </style>
