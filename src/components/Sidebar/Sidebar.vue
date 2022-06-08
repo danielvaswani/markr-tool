@@ -860,6 +860,24 @@ $border-color_1: transparent transparent #e9baed;
   z-index: 5;
 }
 
+<<<<<<< HEAD
+=======
+.hide_icon i{
+    color: #fff;
+    align-self: center;
+    font-size: 0.8rem;
+}
+
+// .hide_icon img{
+//     border: #191827 3px solid;
+//     object-fit: contain;
+//     width: 50px;
+//     border-bottom-right-radius: 40%;
+//     border-top-right-radius: 40%;
+// }
+
+
+>>>>>>> 833f5b06494f4143a2d40dfca4f41de821959e44
 /*//////////EDIT COLOR SIDEBAR////////////// */
 
 .color-sidebar {

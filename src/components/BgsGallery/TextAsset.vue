@@ -6,7 +6,8 @@
     <span class="field-value" v-show="!showField('text')" @click="focusField('text')">{{user.text}}</span>
     <input v-model="user.text" v-show="showField('text')" id="user-text" type="text" class="field-value form-control" @focus="focusField('text')" @blur="blurField">
     </div> -->
-    <input class="template-text" id="template_text" contenteditable="true" placeholder="Write here..." />
+    <p class="template-text" id="template_text" contenteditable="true" placeholder="Write here...">
+      You can write here...</p>
           
 
   
@@ -47,14 +48,12 @@
 
 
 
-
 /*///TEXT CONTAINER///*/
 
 #text {
     text-align: justify;
     width: 90%;
     word-wrap: break-word;
-    word-break: break-all;
     padding: 5px;
     font-size: 1.2rem;
 }
@@ -63,6 +62,11 @@
   padding: 10px;
   border: transparent;
   width: 100%;
+  word-wrap: break-word;
+  height: fit-content;
+  border: 1px solid #19182753;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #888888 inset;
 }
 
 

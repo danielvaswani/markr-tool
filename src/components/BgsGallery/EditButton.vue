@@ -6,7 +6,11 @@
     </span>
     <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
 
-      <a style="padding: 12px 8px;"><i style="font-size: 1.6rem" class="bi bi-fonts"></i></a>
+      <a @mouseenter="hover = true" @mouseleave="hover = false" style="padding: 12px 8px;">
+        <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
+      </a>
+
+
 
       <a><i class="bi bi-card-image"></i></a>
 
@@ -30,11 +34,34 @@
 
       <!-- <a id="delete"> <i id="delete_icon" class="bi bi-trash3"></i></a> -->
     </div>
+
+  </div>
+
+  <!--Texts Dropdown-->
+  <div v-if="hover" @mouseenter="hover = true" id="textsDropdown" class="dropdown-content-texts dropdown">
+
+    <a class="title-a">
+      <h2>Title</h2>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+
+    <a class="subtitle-a">
+      <h3>Subtitle</h3>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+
+    <a class="paragraph">
+      <p>Paragraph</p>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+
   </div>
 </template>
 
 <script setup>
 import { ref, defineExpose } from "vue";
+
+const hover = ref(false)
 
 
 const dropdown = ref(null)
@@ -52,6 +79,13 @@ function toggleEdit() {
 </script>
 
 <style scoped lang="scss">
+
+
+
+
+
+
+
 
 /*/////EDIT BUTTON/////*/
 
@@ -169,7 +203,6 @@ function toggleEdit() {
 }
 
 
-
 @keyframes up {
   from {
     transform: translateY(2%)
@@ -234,6 +267,74 @@ function toggleEdit() {
 // #delete {
 //     border-left: #fff 1px solid;
 // }
+
+/*Texts Dropdown */
+
+.dropdown-content-texts {
+  /* transform: translateY(-100%);
+    will-change: transform; */
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  border-top: #e9baed 2px solid;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  position: relative;
+  height: fit-content;
+  margin-left: 56px;
+  align-items: center;
+  bottom: 100px;
+  background-color: #191827;
+  width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  text-align: center;
+  -moz-box-shadow: 0 0 4px black;
+  -webkit-box-shadow: 0 0 4px black;
+  box-shadow: 0 0 4px black;
+}
+
+.dropdown-content-texts a {
+  color: #fff;
+  padding: 8px 30px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: #e9baed 1px solid;
+  width: inherit;
+}
+
+.chevron{
+  color: #e9baed;
+}
+
+.title-a{
+  display: flex;
+  align-items: baseline;
+  gap: 50px;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.subtitle-a{
+  display: flex;
+    align-items: baseline;
+    gap: 40px;
+  font-size: 1.2rem;
+}
+
+.paragraph{
+  display: flex;
+    align-items: baseline;
+    gap: 45px;
+  font-size: 1rem;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content-texts a:hover {
+  background-color: #2c2a45;
+}
+
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show_edit {
