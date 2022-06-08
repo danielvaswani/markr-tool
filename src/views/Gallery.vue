@@ -57,11 +57,11 @@
 
         <!-- <div class="bgs" id="new_bgs" style="display: none"></div> -->
 
-        <AddBgs @click="addBrandGuide()"></AddBgs>
+        <AddBgs @click="toggleBrandGuide()"></AddBgs>
       </div>
     </article>
   </main>
-  <BGSInfo />
+  <BGSInfo v-if="showBGSInfo" />
 </template>
 
 <script setup>
@@ -88,6 +88,8 @@ const brandGuides = computed(() => {
   return store.state.brandGuides;
 });
 
+const showBGSInfo = ref(false);
+
 onMounted(() => {
   // dispatch the fetchBrandGuides action which commits a mutation to update the state
   store.dispatch("fetchBrandGuides");
@@ -96,8 +98,11 @@ onMounted(() => {
 // function addComponent() {
 //   this.components.push(Comp);
 // }
-function addBrandGuide(bgsName) {
-  store.dispatch("addBrandGuide", bgsName);
+// function addBrandGuide(bgsName) {
+//   store.dispatch("addBrandGuide", bgsName);
+// }
+function toggleBrandGuide() {
+  this.showBGSInfo = !this.showBGSInfo;
 }
 </script>
 
