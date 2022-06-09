@@ -1,9 +1,16 @@
 <script setup>
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BIconBootstrap } from "bootstrap-icons-vue";
+import ColorPalette from "./components/BgsGallery/ColorPalette.vue";
+
+function getColors(){
+  return ["#191827", "#ffffffff"]
+}
+
 </script>
 
 <template>
+  <ColorPalette :colors="getColors()"></ColorPalette>
   <router-view class="main-router"></router-view>
 </template>
 

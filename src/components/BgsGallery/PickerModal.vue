@@ -1,6 +1,6 @@
 <template>
   <Transition name="modal">
-    <div v-if="show" class="modal-mask">
+    <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
@@ -8,12 +8,12 @@
           </div>
 
           <div class="modal-body">
-            <ColorPicker :color="pickedcolor" @color-change="updateColor" />
+            <ColorPicker :color="color" @color-change="updateColor" />
         </div>
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="modal-default-button" @click="$emit('close')">
+            <button class="modal-default-button">
               Confirm
             </button>
           </slot>
@@ -24,27 +24,25 @@
   </Transition>
 </template>
 
-<script>
+<script setup>
+import ColorAsset from "./ColorAsset.vue";
 import { ColorPicker } from "vue-accessible-color-picker";
 import { ref, reactive, toRefs } from "vue";
 
 
-export default {
-  props: {
-    show: Boolean,
-    color: { type: String, required: true },
-    updateColor: { type: Function, required: true },
 
-  },
-  components: { ColorPicker },
-  setup(props) {
-    let pickedcolor = ref(props.color);
+  defineProps ({
+    color: String,
+  })
 
-    return {pickedcolor}
+  // components: { ColorPicker },
+  // setup(props) {
+  //   let pickedcolor = ref(props.color);
 
-  }
+  //   return {pickedcolor}
+
+  // }
   
-};
 </script>
 
 <style>

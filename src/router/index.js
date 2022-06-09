@@ -6,7 +6,6 @@ import Signup from "../views/Signup.vue";
 import Gallery from "../views/Gallery.vue";
 import Page from "../views/Page.vue";
 import BrandGuide from "../views/BrandGuide.vue";
-import ColorPallet from "../views/ColorPallet.vue";
 import AssetGallery from "../views/AssetGallery.vue";
 
 const router = createRouter({
@@ -57,11 +56,6 @@ const router = createRouter({
       path: "/stuurmen",
       name: "Gallery",
       component: Gallery,
-    },
-    {
-      path: "/colorpallet",
-      name: "ColorPallet",
-      component: ColorPallet,
     },
   ],
 });
