@@ -10,8 +10,19 @@ export default {
     let res = await axios.get(API + bgsName);
     return res.data;
   },
-  async postBrandGuide(bgsName) {
+  // return brandGuide
+  async postBrandGuide(bgsName, subdomain) {
     let res = await axios.post(API + bgsName);
     return res.data;
+  },
+  // return imageUrl
+  async uploadBrandGuideImage(bgsName) {
+    let res = await axios.post(API + bgsName);
+    return res.data;
+  },
+  //change backend get brandguide request with subdomain and data
+  async isSubdomainAvailable() {
+    let res = await axios.get(API + `${bgsName}?subdomain=true&nodata=true`);
+    return res.status === 404;
   },
 };

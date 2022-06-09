@@ -22,13 +22,47 @@
           <input type="text" placeholder="Write here... " />
         </div>
         <h5 class="subdomainUrl">example.markrtool.nl</h5>
+        <div class="field-row">
+          <h5>Online Status</h5>
+          <div style="width: 45%">
+            <Toggle
+              @click="toggleLive()"
+              :value="isLive"
+              style="margin-right: auto"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import Toggle from "../Toggle.vue";
+
+let brandName = ref("Johnnyt564645@#$%^& Walker");
+let subdomainName = ref("");
+
+defineProps({
+  isEdit: Boolean,
+});
+
+let generatedSubdomain = computed(() => {
+  return brandName.value
+    .toLowerCase()
+    .split(" ")
+    .join("")
+    .replace(/[^\w\s]/gi, "");
+});
+
+console.log(generatedSubdomain.value);
+
+let isLive = ref(false);
+
+function toggleLive() {
+  isLive.value = !isLive.value;
+}
 </script>
 
 <style scoped>
