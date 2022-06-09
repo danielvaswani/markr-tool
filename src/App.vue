@@ -23,7 +23,7 @@ function toggleSidebar() {
 
     <Transition name="slide-fade">
       <router-view class="app-router-view"
-        :style="{ 'transform': 'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')', 'transition': 'all 0.3s ease-in-out'}">
+        :style="{ 'width': store.state.showSidebar ? '100% - 250px': '100%', 'transform': 'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')', 'transition': 'all 0.3s ease-in-out'}">
       </router-view>
     </Transition>
   </div>
@@ -75,6 +75,8 @@ function toggleSidebar() {
 .home {
   background-color: whitesmoke;
   overflow-x: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
 }
 
 /* width */

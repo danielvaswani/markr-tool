@@ -37,7 +37,8 @@
 
 
   <!--Texts Dropdown-->
-  <div v-if="hover" @mouseenter="hover = true" id="textsDropdown" class="dropdown-content-texts dropdown">
+  <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" id="textsDropdown"
+    class="dropdown-content-texts dropdown">
     <a class="title-a">
       <h2>Title</h2>
       <font-awesome-icon class="chevron" icon="chevron-right" />
@@ -267,9 +268,9 @@ function toggleEdit() {
   border-radius: 6px;
   position: relative;
   height: fit-content;
-  margin-left: 56px;
+  margin-left: 65px;
   align-items: center;
-  bottom: 100px;
+  bottom: 57px;
   background-color: #191827;
   width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);

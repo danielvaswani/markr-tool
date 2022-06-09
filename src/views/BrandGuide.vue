@@ -1,30 +1,29 @@
 <template>
-  <!--MAIN PAGE-->
-  <main>
-    <div class="container_logo">
-      <div class="logos" id="template_div">
-        <TitlePage></TitlePage>
+    <!--MAIN PAGE-->
+    <main>
+        <div class="container_logo">
+            <div class="logos" id="template_div">
+                <TitlePage></TitlePage>
 
-        <TitleAsset></TitleAsset>
+                <TitleAsset></TitleAsset>
 
-        <SubtitleAsset></SubtitleAsset>
+                <SubtitleAsset></SubtitleAsset>
 
-        <div class="small-image-container">
-          <ImageAsset></ImageAsset>
-          <ImageAsset></ImageAsset>
-          <ImageAsset></ImageAsset>
+                <TextAsset></TextAsset>
+
+                <!-- <SubtitleAsset></SubtitleAsset> -->
+
+                <div class="small-image-container">
+                    <ImageAsset></ImageAsset>
+                    <ImageAsset></ImageAsset>
+                </div>
+
+
+
+                <EditButton></EditButton>
+            </div>
         </div>
-
-        <BannerImageAsset></BannerImageAsset>
-
-        <BigImageAsset></BigImageAsset>
-
-        <TextAsset></TextAsset>
-
-        <EditButton></EditButton>
-      </div>
-    </div>
-  </main>
+    </main>
 </template>
 
 <script setup>
@@ -65,7 +64,7 @@ function toggleEdit() {
   padding: 80px;
   width: -moz-available;
 }
-
+    
 .logos {
   background-color: whitesmoke;
   height: 100%;
@@ -75,7 +74,7 @@ function toggleEdit() {
   /* margin-top: 150px; */
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 50px;
   /* -moz-box-shadow: 0 0 4px black;
         -webkit-box-shadow: 0 0 4px black;
         box-shadow: 0 0 4px black; */

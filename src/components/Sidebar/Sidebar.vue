@@ -1,7 +1,6 @@
 <template>
 
   <div id="box">
-
     <div class="wrapper">
       <!--Top menu -->
       <Transition name="slide-fade">
@@ -38,11 +37,11 @@
             <div class="brand_title">
               <li id="t_2">
                 <router-link to="/stuurmen">
-                  <span class="item" id="brand_name2">BRAND IDENTITY</span>
+                  <span contenteditable="false" class="item" id="brand_name2">BRAND IDENTITY</span>
                 </router-link>
               </li>
               <div v-if="showText" class="text_edit">
-                <font-awesome-icon class="fa-pen" icon="pen" />
+                <font-awesome-icon @click="contenteditable = !contenteditable" class="fa-pen" icon="pen" />
               </div>
             </div>
 
@@ -207,7 +206,7 @@
 </template>
 
 <script setup>
-import { ref, defineExpose } from "vue";
+import { ref, defineExpose, onMounted } from "vue";
 import UserDropdown from "../UserDropdown.vue";
 import VueDragResize from "vue-drag-resize";
 import { h, Transition } from "vue";
@@ -232,6 +231,13 @@ function toggleText() {
   console.log(showText.value)
   showText.value = !showText.value;
   // this.$refs.userDropdown.scrollIntoView();
+}
+
+store.state.showSidebar = true;
+
+
+function data(){
+  return {contenteditable: false}
 }
 
 // function getShowText(){
@@ -832,7 +838,7 @@ $border-color_1: transparent transparent #e9baed;
   display: flex;
   float: right;
   align-content: flex-end;
-  margin-top: 20px;
+  margin-top: 180px;
 }
 
 .side-edit-color {
