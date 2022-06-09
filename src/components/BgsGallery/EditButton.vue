@@ -1,51 +1,44 @@
 <template>
   <!--Edit Button-->
-  <div id="edit_sidebar" class="sidesnip">
-    <span @click="toggleEdit()" class="edit" id="edit_b">
-      <i class="bi bi-plus-square-dotted"></i>
-    </span>
-    <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
-      <a
-        @mouseenter="hover = true"
-        @mouseleave="hover = false"
-        style="padding: 12px 8px"
-      >
-        <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
-      </a>
-
-      <a><i class="bi bi-card-image"></i></a>
-
-      <a><i class="bi bi-film"></i></a>
-
-      <div style="position: relative">
-        <a><i class="bi bi-grid-1x2"></i></a>
-        <i id="small_plus" class="bi bi-plus"></i>
-      </div>
-
-      <span style="padding: 12px 8px" id="edit_icon"
-        ><i style="font-size: 1.6rem" class="bi bi-paint-bucket"></i>
-        <!-- <p class="drop_p">Edit</p> -->
+  <Transition>
+    <div id="edit_sidebar" class="sidesnip"
+      :style="{ 'transform': 'translateX(10px)', 'transition': 'all 0.3s ease-in-out'}">
+      <span @click="toggleEdit()" class="edit" id="edit_b">
+        <i class="bi bi-plus-square-dotted"></i>
       </span>
+      <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
+        <a @mouseenter="hover = true" @mouseleave="hover = false" style="padding: 12px 8px">
+          <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
+        </a>
 
-      <a><i class="bi bi-palette-fill"></i></a>
+        <a><i class="bi bi-card-image"></i></a>
 
-      <a><i class="bi bi-share-fill"></i></a>
+        <a><i class="bi bi-film"></i></a>
 
-      <a onclick="printDiv('printIt')" value="print a div!"
-        ><i class="bi bi-printer-fill"></i
-      ></a>
+        <div style="position: relative">
+          <a><i class="bi bi-grid-1x2"></i></a>
+          <i id="small_plus" class="bi bi-plus"></i>
+        </div>
 
-      <!-- <a id="delete"> <i id="delete_icon" class="bi bi-trash3"></i></a> -->
+        <span style="padding: 12px 8px" id="edit_icon"><i style="font-size: 1.6rem" class="bi bi-paint-bucket"></i>
+          <!-- <p class="drop_p">Edit</p> -->
+        </span>
+
+        <a><i class="bi bi-palette-fill"></i></a>
+
+        <a><i class="bi bi-share-fill"></i></a>
+
+        <a onclick="printDiv('printIt')" value="print a div!"><i class="bi bi-printer-fill"></i></a>
+
+        <!-- <a id="delete"> <i id="delete_icon" class="bi bi-trash3"></i></a> -->
+      </div>
     </div>
-  </div>
+  </Transition>
+
 
   <!--Texts Dropdown-->
-  <div
-    v-if="hover"
-    @mouseenter="hover = true"
-    id="textsDropdown"
-    class="dropdown-content-texts dropdown"
-  >
+  <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" id="textsDropdown"
+    class="dropdown-content-texts dropdown">
     <a class="title-a">
       <h2>Title</h2>
       <font-awesome-icon class="chevron" icon="chevron-right" />
@@ -174,16 +167,16 @@ function toggleEdit() {
 .dropdown-content {
   /* transform: translateY(-100%);
     will-change: transform; */
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border-left: #e9baed 2px solid;
   display: flex;
   border-radius: 6px;
   position: relative;
   height: fit-content;
   max-height: min-content;
-  margin-left: 10px;
+  transform: translateX(10px);
   align-items: center;
   bottom: 10px;
   background-color: #191827;
@@ -275,9 +268,9 @@ function toggleEdit() {
   border-radius: 6px;
   position: relative;
   height: fit-content;
-  margin-left: 56px;
+  margin-left: 65px;
   align-items: center;
-  bottom: 100px;
+  bottom: 57px;
   background-color: #191827;
   width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);

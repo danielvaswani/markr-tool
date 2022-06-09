@@ -1,183 +1,133 @@
 <template>
+
   <div id="box">
     <div class="wrapper">
       <!--Top menu -->
-      <div ref="thisSidebar" class="sidebar">
-        <div class="logo">
-          <router-link :to="'/stuurmen'">
-            <span>
-              <img src="../../assets/images/Markr_w.png" alt="logo" />
+      <Transition name="slide-fade">
+        <div v-if="store.state.showSidebar"
+          :style="{ 'transform': 'translateX(' + (store.state.showSidebar ? '0px' : '250px') + ')', 'transition': 'all 0.3s ease-in-out'}"
+          class="sidebar">
+
+          <Logo :showText="showText"></Logo>
+
+
+          <div v-if="$route.params.bgsName !== undefined">
+            <span @click="toggleText()" class="edit_ico">
+              <font-awesome-icon class="magic-edit" icon="wand-magic-sparkles" />
             </span>
-          </router-link>
-          <div
-            v-if="showText && $route.params.bgsName !== undefined"
-            class="edit-logo"
-          >
-            <label style="cursor: pointer" for="uploadmyfile">
-              <font-awesome-icon class="edit-logo-icon" icon="wand-magic" />
-            </label>
-            <input style="display: none" type="file" id="uploadmyfile" />
           </div>
-        </div>
 
-        <div v-if="$route.params.bgsName !== undefined">
-          <span @click="toggleText()" class="edit_ico">
-            <font-awesome-icon class="magic-edit" icon="wand-magic-sparkles" />
-          </span>
-        </div>
-        <!--menu item-->
-        <ul v-if="$route.params.bgsName !== undefined" id="brand_con">
-          <!-- <li>
-                    <a href="#" class="active">
-                        <span class="icon"><i class="fas fa-home"></i></span>
-                        <span class="item" id="home">HOME</span>
-                    </a>
-                </li> -->
-          <div class="brand_title">
-            <li id="t_1">
+          <CategoryContainer :showText="showText"></CategoryContainer>
+
+          <!-- <li id="new_side" class="items">
               <router-link to="/stuurmen">
-                <span class="item" id="brand_name" contenteditable="false"
-                  >YOUR BRAND</span
-                >
+                <span contenteditable="false" class="item">Item 2</span>
               </router-link>
             </li>
-            <div v-if="showText" class="text_edit">
-              <font-awesome-icon class="fa-pen" icon="pen" />
-            </div>
-          </div>
 
-          <div class="li-text">
-            <div v-if="showText" class="move-element">
-              <font-awesome-icon class="grip-lines" icon="grip-lines" />
-            </div>
-            <li>
+            <li class="items" id="t_3">
               <router-link to="/stuurmen">
-                <span id="text1" contenteditable="false" class="item"
-                  >About</span
-                >
+                <span contenteditable="false" class="item">Item 3</span>
+              </router-link>
+            </li>-->
+
+
+          <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
+
+            <div class="brand_title">
+              <li id="t_2">
+                <router-link to="/stuurmen">
+                  <span contenteditable="false" class="item" id="brand_name2">BRAND IDENTITY</span>
+                </router-link>
+              </li>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon @click="contenteditable = !contenteditable" class="fa-pen" icon="pen" />
+              </div>
+            </div>
+
+            <div class="li-text">
+              <div v-if="showText" class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+              </div>
+              <li>
+                <router-link to="/stuurmen">
+                  <span id="text2" contenteditable="false" class="item">Logo</span>
+                </router-link>
+              </li>
+              <div class="space-li"></div>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon icon="pen" />
+              </div>
+            </div>
+
+            <div class="li-text">
+              <div v-if="showText" class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+              </div>
+              <li>
+                <router-link to="/stuurmen">
+                  <span id="text3" contenteditable="false" class="item">Color Palette</span>
+                </router-link>
+              </li>
+              <div class="space-li2"></div>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon icon="pen" />
+              </div>
+            </div>
+
+            <div class="li-text">
+              <div v-if="showText" class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+              </div>
+              <li>
+                <router-link to="/stuurmen">
+                  <span id="text4" contenteditable="false" class="item">Typography</span>
+                </router-link>
+              </li>
+              <div class="space-li2"></div>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon icon="pen" />
+              </div>
+            </div>
+
+            <div v-if="showText" class="new_element">
+              <li class="dropdownbtn">
+                <a id="extra_element">
+                  <button id="add_side">
+                    <i class="bi bi-plus"></i>Add Page
+                  </button>
+                </a>
+              </li>
+              <!-- menu -->
+              <div class="dropdownPost-content">
+                <a><span>Video</span> </a>
+                <a><span>Audio</span> </a>
+                <a><span>Text</span> </a>
+                <a><span>Others</span> </a>
+              </div>
+            </div>
+
+            <li class="items">
+              <router-link to="/stuurmen">
+                <span contenteditable="false" class="item">New Item</span>
               </router-link>
             </li>
-            <div class="space-li"></div>
-            <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen" />
-            </div>
-          </div>
 
-          <li v-if="showText">
-            <router-link to="/stuurmen" id="add_b">
-              <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
-            </router-link>
-          </li>
-
-          <li id="new_side" class="items">
-            <router-link to="/stuurmen">
-              <span contenteditable="false" class="item">Item 2</span>
-            </router-link>
-          </li>
-
-          <li class="items" id="t_3">
-            <router-link to="/stuurmen">
-              <span contenteditable="false" class="item">Item 3</span>
-            </router-link>
-          </li>
-        </ul>
-
-        <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
-          <li id="t_2">
-            <router-link to="/stuurmen">
-              <span class="item" id="brand_name2">BRAND IDENTITY</span>
-            </router-link>
-          </li>
-
-          <div class="li-text">
-            <div v-if="showText" class="move-element">
-              <font-awesome-icon class="grip-lines" icon="grip-lines" />
-            </div>
-            <li>
+            <li class="items">
               <router-link to="/stuurmen">
-                <span id="text2" contenteditable="false" class="item"
-                  >Logo</span
-                >
+                <span contenteditable="false" class="item">New Item</span>
               </router-link>
             </li>
-            <div class="space-li"></div>
-            <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen" />
-            </div>
-          </div>
 
-          <div class="li-text">
-            <div v-if="showText" class="move-element">
-              <font-awesome-icon class="grip-lines" icon="grip-lines" />
-            </div>
-            <li>
+            <li class="items">
               <router-link to="/stuurmen">
-                <span id="text3" contenteditable="false" class="item"
-                  >Color Palette</span
-                >
+                <span contenteditable="false" class="item">Extra Item</span>
               </router-link>
             </li>
-            <div class="space-li2"></div>
-            <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen" />
-            </div>
-          </div>
 
-          <div class="li-text">
-            <div v-if="showText" class="move-element">
-              <font-awesome-icon class="grip-lines" icon="grip-lines" />
-            </div>
-            <li>
-              <router-link to="/stuurmen">
-                <span id="text4" contenteditable="false" class="item"
-                  >Typography</span
-                >
-              </router-link>
-            </li>
-            <div class="space-li2"></div>
-            <div v-if="showText" class="text_edit">
-              <font-awesome-icon icon="pen" />
-            </div>
-          </div>
-
-          <div v-if="showText" class="new_element">
-            <li class="dropdownbtn">
-              <a id="extra_element">
-                <button id="add_side">
-                  <i class="bi bi-plus"></i>Add Page
-                </button>
-              </a>
-            </li>
-            <!-- menu -->
-            <div class="dropdownPost-content">
-              <a><span>Video</span> </a>
-              <a><span>Audio</span> </a>
-              <a><span>Text</span> </a>
-              <a><span>Others</span> </a>
-            </div>
-          </div>
-
-          <li class="items">
-            <router-link to="/stuurmen">
-              <span contenteditable="false" class="item">New Item</span>
-            </router-link>
-          </li>
-
-          <li class="items">
-            <router-link to="/stuurmen">
-              <span contenteditable="false" class="item">New Item</span>
-            </router-link>
-          </li>
-
-          <li class="items">
-            <router-link to="/stuurmen">
-              <span contenteditable="false" class="item">Extra Item</span>
-            </router-link>
-          </li>
-
-          <!-- three dot menu -->
-          <!-- <div class="dropdownPosts"> -->
-          <!-- three dots
+            <!-- three dot menu -->
+            <!-- <div class="dropdownPosts"> -->
+            <!-- three dots
                 <ul
                   class="dropdownbtn icons btn-right showLeft"
                   
@@ -187,7 +137,7 @@
                   <li></li>
                 </ul> -->
 
-          <!-- <li>
+            <!-- <li>
               <a href="#">
                 <span class="item">Application Examples</span>
               </a>
@@ -204,74 +154,102 @@
                 <span class="item">Application Examples</span>
               </a>
             </li> -->
-        </ul>
+          </ul>
 
-        <article
-          v-if="$route.params.bgsName !== undefined"
-          class="user-profile"
-        >
-          <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
-          <!-- <div v-else style="display: flex">
+          <article v-if="$route.params.bgsName !== undefined" class="user-profile">
+            <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
+            <!-- <div v-else style="display: flex">
             <div  class="brand-title">
               <img src="../assets/images/stuurmen.jpg" alt="" />
             </div>
           </div> -->
-          <ul class="user_bar">
-            <li>
-              <span class="user_icon" id="user_ico">
-                <img
-                  id="u-icon"
-                  src="../../assets/images/user.png"
-                  alt="user icon"
-                />
-              </span>
-            </li>
-            <li id="user_name" class="user_name">
-              <a>
-                <span class="drop-btn" @click="toggleUser()">User Name</span>
-                <span class="drop-btn"> <i class="bi bi-caret-down"></i></span>
-              </a>
-            </li>
+            <ul class="user_bar">
+              <li>
+                <span class="user_icon" id="user_ico">
+                  <img id="u-icon" src="../../assets/images/user.png" alt="user icon" />
+                </span>
+              </li>
+              <li id="user_name" class="user_name">
+                <a>
+                  <span class="drop-btn" @click="toggleUser()">User Name</span>
+                  <span class="drop-btn"> <i class="bi bi-caret-down"></i></span>
+                </a>
+              </li>
 
-            <div v-if="showUser" id="userDropdown" class="user-dropdown">
-              <UserDropdown></UserDropdown>
+              <div v-if="showUser" id="userDropdown" class="user-dropdown">
+                <UserDropdown></UserDropdown>
+              </div>
+            </ul>
+          </article>
+
+          <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
+            <div class="side-edit-color">
+              <font-awesome-icon class="gear" icon="gear" />
             </div>
-          </ul>
-        </article>
-
-        <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
-          <div class="side-edit-color">
-            <font-awesome-icon class="gear" icon="gear" />
           </div>
         </div>
+      </Transition>
+    </div>
+
+  </div>
+
+  <!--HIDE/SHOW SIDEBAR-->
+  <Transition name="slide-fade">
+    <div v-if="$route.params.bgsName !== undefined" class="hide_container"
+      :style="{ 'transform': 'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')', 'transition': 'all 0.3s ease-in-out' }"
+      @click="toggleSidebar()">
+      <div class="hide_icon">
+        <i class="bi bi-caret-left-fill"></i>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup>
-import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
-import { ref, defineExpose } from "vue";
+import { ref, defineExpose, onMounted } from "vue";
 import UserDropdown from "../UserDropdown.vue";
 import VueDragResize from "vue-drag-resize";
+import { h, Transition } from "vue";
+import { useStore } from "vuex";
+import Logo from "./Logo.vue";
+import CategoryContainer from "./CategoryContainer.vue";
 
-const sidebar = ref(null);
+const store = useStore();
+// const sidebar = ref(null);
 
-defineExpose({ sidebar });
+// defineExpose({ sidebar });
 
+let showSidebar = ref(true);
+
+function toggleSidebar() {
+  store.state.showSidebar = !store.state.showSidebar;
+
+}
 let showText = ref(false);
 
 function toggleText() {
-  showText.value = showText.value;
-  // console.log(this.$refs.sidebar);
+  console.log(showText.value)
+  showText.value = !showText.value;
   // this.$refs.userDropdown.scrollIntoView();
 }
 
-function data() {
-  return {
-    showUser: true,
-  };
+store.state.showSidebar = true;
+
+
+function data(){
+  return {contenteditable: false}
 }
+
+// function getShowText(){
+//   return showText.value
+// }
+
+// function data() {
+//   return {
+//     showUser: true,
+//     showText: true
+//   };
+// }
 
 let showUser = ref(false);
 
@@ -296,6 +274,25 @@ props: {
 </script>
 
 <style scoped lang="scss">
+
+
+
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-fade-enter-active {
+  transition: all 0.1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s ease-in;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-250px) !important;
+}
 /* width */
 
 ::-webkit-scrollbar {
@@ -373,45 +370,6 @@ props: {
   scrollbar-highlight-color: #e9baed;
 }
 
-/*LOGO*/
-
-.logo {
-  /* margin-bottom: 45px; */
-  text-align: center;
-  margin: 15px 15px;
-  margin-bottom: 50px;
-}
-
-.logo img {
-  display: block;
-  width: 180px;
-  height: auto;
-  margin: auto;
-  cursor: pointer;
-}
-
-/*Edit logo Icon*/
-
-.edit-logo {
-  text-decoration: none;
-  display: block;
-  position: absolute;
-  cursor: pointer;
-  text-align: left;
-  width: fit-content;
-  left: 200px;
-  top: 15px;
-}
-
-.wrapper .sidebar .edit-logo .edit-logo-icon {
-  color: #888 !important;
-  font-size: 1.3em;
-}
-
-.wrapper .sidebar .edit-logo .edit-logo-icon:hover {
-  color: #e9baed !important;
-  transform: scale(105%);
-}
 
 /*Sidebar Edit Icon*/
 
@@ -880,7 +838,7 @@ $border-color_1: transparent transparent #e9baed;
   display: flex;
   float: right;
   align-content: flex-end;
-  margin-top: 20px;
+  margin-top: 180px;
 }
 
 .side-edit-color {
@@ -906,4 +864,41 @@ $border-color_1: transparent transparent #e9baed;
 .side-edit-color .gear:hover {
   color: #e9baed !important;
 }
+
+/*//// HIDE/SHOW SIDEBAR ICON ////*/
+
+.hide_container {
+  z-index: 3;
+  width: fit-content;
+  cursor: pointer;
+  position: fixed;
+  margin-top: 0;
+  transform: translateX(250px);
+}
+
+.hide_icon {
+  border-left: #e9baed 1px solid;
+  display: flex;
+  width: fit-content;
+  height: 50px;
+  padding: 2px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #191827;
+  z-index: 2;
+}
+
+.hide_icon i {
+  color: #fff;
+  align-self: center;
+  font-size: 0.8rem;
+}
+
+/* .hide_icon img {
+  border: #191827 3px solid;
+  object-fit: contain;
+  width: 50px;
+  border-bottom-right-radius: 40%;
+  border-top-right-radius: 40%;
+} */
 </style>

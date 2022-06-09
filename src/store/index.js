@@ -4,7 +4,9 @@ import brandGuideService from "../services/brandGuideService";
 const store = createStore({
   state() {
     brandGuides: [];
-    currentBGSIndex: [];
+    currentBGSName: [];
+    currentBrandGuide: {};
+    showSidebar: true;
   },
   mutations: {
     SET_BRANDGUIDES(state, brandGuides) {
@@ -13,11 +15,18 @@ const store = createStore({
     SUBMIT_BRANDGUIDE(state, brandGuide) {
       state.brandGuides.push(brandGuide);
     },
+    SET_CURRENTBRANDGUIDE(state, brandGuide){
+      state.currentBrandGuide = brandGuide;
+      console.log(state.currentBrandGuide)
+    }
   },
   methods: {},
   getters: {
     getBrandGuides: (state) => state.brandGuides,
+    getcurrentBrandGuide: (state) => state.currentBrandGuide,
+    getcurrentBGSName: (state) => state.currentBGSName
   },
+
   setters: {},
   actions: {
     async fetchBrandGuides({ commit }) {
@@ -27,11 +36,18 @@ const store = createStore({
         .then((data) => commit("SET_BRANDGUIDES", data));
     },
     async addBrandGuide({ commit }, payload) {
-      console.log();
       brandGuideService.postBrandGuide(payload).then((data) => {
         commit("SUBMIT_BRANDGUIDE", data);
       });
     },
+    async fetchBrandGuide({ commit, state }, bgsName){
+      brandGuideService.getBrandGuide(bgsName)
+      .then((data) => {
+        commit("SET_CURRENTBRANDGUIDE", data);
+        console.log(data)
+      });
+        
+    }
   },
 });
 

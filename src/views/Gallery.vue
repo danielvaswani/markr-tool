@@ -5,12 +5,8 @@
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
-        <div class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
-          <BgsItem
-            :name="bgs.name"
-            :image-url="bgs.imageUrl"
-            :subdomain="bgs.subdomain"
-          ></BgsItem>
+        <div @click="updateCurrentBGS(bgs.name)" class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
+          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
         </div>
 
         <!-- <div class="bgs" id="bgs">
@@ -66,7 +62,7 @@
 
 <script setup>
 import UserProfile from "../components/UserProfile.vue";
-
+import Sidebar from "../components/Sidebar/Sidebar.vue";
 import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 import BgsItem from "../components/BgsGallery/BgsItem.vue";
@@ -80,9 +76,9 @@ const showData = () => {
   console.log(gettersBrandGuides.name);
 };
 
-const getBrandGuides = computed(() => {
-  return store.getters.getBrandGuides;
-});
+// const getBrandGuides = computed(() => {
+//   return store.getters.getBrandGuides;
+// });
 
 const brandGuides = computed(() => {
   return store.state.brandGuides;
@@ -102,6 +98,13 @@ let showBGSInfo = ref(false);
 // }
 function toggleBrandGuide() {
   showBGSInfo.value = !showBGSInfo.value;
+}
+
+function updateCurrentBGS(name) {
+  console.log(name)
+  store.state.currentBGSName = name
+  store.dispatch("fetchBrandGuide", name);
+  console.log(store.state.currentBGSName)
 }
 </script>
 

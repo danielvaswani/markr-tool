@@ -1,6 +1,10 @@
 <template>
 
     <div class="subtitle-container">
+        <div class="move-element">
+            <font-awesome-icon class="grip-lines" icon="grip-lines" />
+        </div>
+
         <h3 class="template-subtitle" id="template_subtitle" contenteditable="true">
             Subtitle me this</h3>
     </div>
@@ -12,13 +16,33 @@
 </script>
 
 <style scoped lang="scss">
+
 .subtitle-container {
     text-align: justify;
     width: 90%;
+    display: flex;
+    gap: 25px;
     word-wrap: break-word;
     padding: 5px;
     font-size: 1.2rem;
+}
 
+.move-element {
+    margin-top: 8px;
+}
+
+.grip-lines {
+    display: block !important;
+    color: #888 !important;
+    cursor: pointer !important;
+    font-size: 1.5rem !important;
+    position: absolute;
+    z-index: 3;
+}
+
+.grip-lines:hover {
+    color: #e9baed !important;
+    transform: scale(105%);
 }
 
 .template-subtitle {

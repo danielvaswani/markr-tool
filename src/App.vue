@@ -1,6 +1,7 @@
 <script setup>
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BIconBootstrap } from "bootstrap-icons-vue";
+<<<<<<< HEAD
 import ColorPalette from "./components/BgsGallery/ColorPalette.vue";
 
 function getColors(){
@@ -12,9 +13,41 @@ function getColors(){
 <template>
   <ColorPalette :colors="getColors()"></ColorPalette>
   <router-view class="main-router"></router-view>
+=======
+import Sidebar from "./components/Sidebar/Sidebar.vue";
+import { ref } from "vue";
+import { h, Transition } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+let showSidebar = ref(true);
+
+function toggleSidebar() {
+  showSidebar.value = !showSidebar.value;
+}
+</script>
+
+<template>
+  <div class="home">
+    <Transition name="slide-fade">
+      <Sidebar>
+      </Sidebar>
+    </Transition>
+
+    <Transition name="slide-fade">
+      <router-view class="app-router-view"
+        :style="{ 'width': store.state.showSidebar ? '100% - 250px': '100%', 'transform': 'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')', 'transition': 'all 0.3s ease-in-out'}">
+      </router-view>
+    </Transition>
+  </div>
+>>>>>>> main
 </template>
 
 <style>
+
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -31,9 +64,38 @@ function getColors(){
   font-family: Gilroy;
 }
 
+.slide-fade-enter-active {
+  transition: all 0.1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s ease-in;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-250px);
+  /* opacity: 0; */
+}
+
+.app-router-view {
+  background-color: whitesmoke;
+  /* min-height: 100vh; */
+  overflow-x: hidden;
+  /* transform: translateX(250px); */
+  overscroll-behavior: none;
+}
+
+.home {
+  background-color: whitesmoke;
+  overflow-x: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: thin;
 }
 
 /* Track */
@@ -65,7 +127,7 @@ function getColors(){
   font-family: Gilroy;
 }
 
-.main-router {
+.app-router {
   min-height: 100vh;
 }
 </style>
