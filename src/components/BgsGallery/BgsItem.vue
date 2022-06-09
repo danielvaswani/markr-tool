@@ -2,10 +2,7 @@
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
     <div class="preview-icon">
       <span class="preview">
-        <a
-          target="_blank"
-          :href="'https://' + $props.subdomain + '.markrtool.nl'"
-        >
+        <a target="_blank" :href="'https://' + $props.subdomain + '.markrtool.nl'">
           <font-awesome-icon class="bi" icon="eye" />
         </a>
       </span>
@@ -20,18 +17,17 @@
       <input style="display: none" type="file" id="uploadmyfile" />
     </div>
   </div>
-  <router-link
-    @mouseenter="hover = true"
-    @mouseleave="hover = false"
-    class="hvr-border-fade"
-    :to="'/stuurmen' + '/' + $props.name"
-  >
+  <router-link @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade"
+    :to="'/stuurmen' + '/' + $props.name + '/' + pageName() "  >
     <img class="prev" :src="$props.imageUrl" />
   </router-link>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
 
 defineProps({
   name: String,
@@ -40,6 +36,11 @@ defineProps({
 });
 
 const hover = ref(false);
+
+function pageName(){
+  return store.state.currentBrandGuide.pages[0].name
+}
+
 </script>
 
 <style scoped>

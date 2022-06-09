@@ -5,8 +5,7 @@
             <font-awesome-icon class="grip-lines" icon="grip-lines" />
         </div>
 
-        <h2 class="template-title" id="template_title" contenteditable="true">
-            Title Me This</h2>
+        <h2 class="template-title" id="template_title" contenteditable="true"></h2>
     </div>
 
 </template>

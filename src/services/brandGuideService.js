@@ -7,7 +7,9 @@ export default {
     return res.data;
   },
   async getBrandGuide(bgsName) {
+    console.log(bgsName);
     let res = await axios.get(API + bgsName);
+    
     return res.data;
   },
   async postBrandGuide(bgsName) {

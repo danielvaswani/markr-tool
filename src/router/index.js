@@ -4,7 +4,7 @@ import Signup from "../views/Signup.vue";
 
 import Gallery from "../views/Gallery.vue";
 import Page from "../views/Page.vue";
-import BrandGuide from "../views/BrandGuide.vue";
+// import BrandGuide from "../views/BrandGuide.vue";
 import AssetGallery from "../views/AssetGallery.vue";
 
 const router = createRouter({
@@ -25,13 +25,13 @@ const router = createRouter({
       name: "Gallery",
       component: Gallery,
     },
-    {
-      path: "/:user/:bgsName",
-      name: "BrandGuide",
-      component: BrandGuide,
-      props: true,
-      children: [],
-    },
+    // {
+    //   path: "/:user/:bgsName",
+    //   name: "BrandGuide",
+    //   component: BrandGuide,
+    //   props: true,
+    //   children: [],
+    // },
     {
       path: "/:user/:bgsName/:pageName",
       name: "Page",
