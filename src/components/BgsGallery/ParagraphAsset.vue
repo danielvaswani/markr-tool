@@ -1,5 +1,4 @@
 <template>
-
   <div id="text">
     <div v-if="showDrag" class="move-element">
       <font-awesome-icon class="grip-lines" icon="grip-lines" />
@@ -9,25 +8,31 @@
     <span class="field-value" v-show="!showField('text')" @click="focusField('text')">{{user.text}}</span>
     <input v-model="user.text" v-show="showField('text')" id="user-text" type="text" class="field-value form-control" @focus="focusField('text')" @blur="blurField">
     </div> -->
-    <p @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-text" id="template_text"
-      contenteditable="true" placeholder="Write here...">
-      You can write here...</p>
-
-
-
+    <p
+      @mouseenter="toggleDrag()"
+      @mouseleave="toggleDrag()"
+      class="template-text"
+      id="template_text"
+      contenteditable="true"
+      placeholder="Write here..."
+    >
+      {{ $props.value }}
+    </p>
   </div>
 </template>
 
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 
-let showDrag = ref(false)
+let showDrag = ref(false);
 
 function toggleDrag() {
-  showDrag.value = !showDrag.value
+  showDrag.value = !showDrag.value;
 }
 
-
+defineProps({
+  value: String,
+});
 
 // new Vue({
 //   el: '#text',
@@ -51,28 +56,22 @@ function toggleDrag() {
 //     }
 //   }
 // })
-
 </script>
 
 <style scoped lang="scss">
-
-
-
-
-
 /*///TEXT CONTAINER///*/
 
 #text {
-    text-align: justify;
-    width: 80%;
-    padding: 5px;
-    margin: auto 0;
-    display: flex;
-    gap: 30px;
-    font-size: 1.2rem;
+  text-align: justify;
+  width: 80%;
+  padding: 5px;
+  margin: auto 0;
+  display: flex;
+  gap: 30px;
+  font-size: 1.2rem;
 }
 
-.move-element{
+.move-element {
   margin-top: 9px;
 }
 
@@ -90,7 +89,7 @@ function toggleDrag() {
   transform: scale(105%);
 }
 
-.template-text{
+.template-text {
   padding: 10px;
   border: transparent;
   width: 100%;
@@ -100,11 +99,9 @@ function toggleDrag() {
   border-radius: 5px;
 }
 
-
 .template-text:hover {
-    box-shadow: 2px 1px 1px 1px #8888 inset;
-    border: #e9baed 2px solid;
-    padding: 10px;
+  box-shadow: 2px 1px 1px 1px #8888 inset;
+  border: #e9baed 2px solid;
+  padding: 10px;
 }
-
 </style>

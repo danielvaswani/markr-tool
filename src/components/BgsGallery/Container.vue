@@ -1,19 +1,30 @@
 <template>
-
   <!-- <TitleAsset  :name="$props.name"></TitleAsset> -->
 
-  <SubtitleAsset v-if="$props.type === 'text' && $props.content.variant === 'subtitle' "></SubtitleAsset>
+  <SubtitleAsset
+    v-if="$props.type === 'text' && $props.content.variant === 'subtitle'"
+    :value="$props.content.value"
+  ></SubtitleAsset>
 
-  <ParagraphAsset v-if="$props.type === 'text' && $props.content.variant === 'paragraph' "></ParagraphAsset>
+  <ParagraphAsset
+    v-if="$props.type === 'text' && $props.content.variant === 'paragraph'"
+    :value="$props.content.value"
+  ></ParagraphAsset>
 
-  <ImageAsset v-if="$props.type === 'image' && $props.content.variant === 'image' "></ImageAsset>
+  <ImageAsset
+    v-if="$props.type === 'image' && $props.content.variant === 'regular'"
+    :url="$props.content.url"
+  ></ImageAsset>
 
-  <BigImageAsset v-if="$props.type === 'image' && $props.content.variant === 'big' "></BigImageAsset>
+  <BigImageAsset
+    v-if="$props.type === 'image' && $props.content.variant === 'big'"
+    :url="$props.content.url"
+  ></BigImageAsset>
 
-  <BannerImageAsset v-if="$props.type === 'image' && $props.content.variant === 'banner' "></BannerImageAsset>
-
-  <EditButton></EditButton>
-
+  <BannerImageAsset
+    v-if="$props.type === 'image' && $props.content.variant === 'banner'"
+    :url="$props.content.url"
+  ></BannerImageAsset>
 </template>
 
 <script setup>
@@ -29,17 +40,13 @@ import SubtitleAsset from "./SubtitleAsset.vue";
 import EditButton from "./EditButton.vue";
 import VideoAsset from "./VideoAsset.vue";
 
-
 const store = useStore();
 
 const props = defineProps({
   name: String,
   content: Object,
-  type: String
-})
-
+  type: String,
+});
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

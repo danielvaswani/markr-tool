@@ -1,17 +1,19 @@
 <template>
-
   <div class="container_logo">
     <div class="logos" id="template_div">
-
       <TitlePage :name="$props.pageName"></TitlePage>
 
-
-      <Container v-for="asset in assets" :key="asset" :name="asset.name" :content="asset.content" :type="asset.type">
+      <Container
+        v-for="asset in assets"
+        :key="asset"
+        :name="asset.name"
+        :content="asset.content"
+        :type="asset.type"
+      >
       </Container>
-
+      <EditButton></EditButton>
     </div>
   </div>
-
 </template>
 
 <script setup>
@@ -19,21 +21,20 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import TitlePage from "../components/BgsGallery/TitlePage.vue";
 import Container from "../components/BgsGallery/Container.vue";
-
+import EditButton from "../components/BgsGallery/EditButton.vue";
 
 const store = useStore();
 
 // const dropdown = ref(null);
 
-
 // defineExpose({ dropdown });
 
 const props = defineProps({
   pageName: String,
-  assets: Array
-})
+  assets: Array,
+});
 
-const assets = ref(props.assets)
+const assets = ref(props.assets);
 
 let showDropdown = ref(false);
 
@@ -48,9 +49,9 @@ function toggleEdit() {
 //     return store.state.currentBrandGuide
 // }
 
-function getCurrentBgsName(){
-    // console.log(store.state.currentBGSName)
-    return store.state.currentBGSName
+function getCurrentBgsName() {
+  // console.log(store.state.currentBGSName)
+  return store.state.currentBGSName;
 }
 
 // const getBrandGuide = computed(() => {
@@ -58,22 +59,17 @@ function getCurrentBgsName(){
 // });
 
 const brandGuide = computed(() => {
-    return store.state.currentBrandGuide;
+  return store.state.currentBrandGuide;
 });
 
+const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
 
-const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"]
-
-function getColors(){
-  return colors
+function getColors() {
+  return colors;
 }
-
 </script>
 
 <style scoped lang="scss">
-
-
-
 /*//////////////////TEMPLATE CONTAINER//////////////////////*/
 
 .container_logo {
