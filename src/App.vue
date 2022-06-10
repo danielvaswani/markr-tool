@@ -1,19 +1,6 @@
 <script setup>
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BIconBootstrap } from "bootstrap-icons-vue";
-<<<<<<< HEAD
-import ColorPalette from "./components/BgsGallery/ColorPalette.vue";
-
-function getColors(){
-  return ["#191827", "#ffffffff"]
-}
-
-</script>
-
-<template>
-  <ColorPalette :colors="getColors()"></ColorPalette>
-  <router-view class="main-router"></router-view>
-=======
 import Sidebar from "./components/Sidebar/Sidebar.vue";
 import { ref } from "vue";
 import { h, Transition } from "vue";
@@ -40,7 +27,6 @@ function toggleSidebar() {
       </router-view>
     </Transition>
   </div>
->>>>>>> main
 </template>
 
 <style>

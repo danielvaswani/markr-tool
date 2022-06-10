@@ -21,12 +21,6 @@ const router = createRouter({
       component: Signup,
     },
     {
-<<<<<<< HEAD
-      path: "/stuurmen",
-      name: "Gallery",
-      component: Gallery,
-    },
-=======
       path: "/:user/gallery",
       name: "Gallery",
       component: Gallery,
@@ -49,7 +43,6 @@ const router = createRouter({
       name: "AssetGallery",
       component: AssetGallery,
     },
->>>>>>> main
   ],
 });
 

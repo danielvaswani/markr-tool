@@ -7,6 +7,14 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { useStore } from "vuex";
+
+// defineProps({
+//     page: {}
+// })
+
+const store = useStore();
 
 </script>
 
@@ -17,6 +25,7 @@
 
 .page-title{
     width: fit-content;
+    padding: 5px;
 }
 
 

@@ -5,7 +5,7 @@
             <font-awesome-icon class="grip-lines" icon="grip-lines" />
         </div>
 
-        <h2 class="template-title" id="template_title" contenteditable="true"></h2>
+        <h2 class="template-title" id="template_title" contenteditable="true">Title Me This</h2>
     </div>
 
 </template>
@@ -49,7 +49,7 @@
 .template-title {
     padding: 5px;
     border: transparent;
-    width: 300px;
+    width: fit-content;
     font-weight: 600;
     word-wrap: break-word;
     height: fit-content;

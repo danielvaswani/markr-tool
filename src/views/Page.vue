@@ -1,27 +1,29 @@
 <template>
 
-    <div class="container_logo">
-        <div class="logos" id="template_div">
+  <div class="container_logo">
+    <div class="logos" id="template_div">
 
 
-            <Container :page="page" :key="page.name" ></Container>
+      <ColorPalette :colors ="getColors()"></ColorPalette>
 
-            <!-- <TitlePage></TitlePage>
+      <!-- <Container :page="page" :key="page.name" ></Container> -->
+
+      <!-- <TitlePage></TitlePage>
 
             <SubtitleAsset></SubtitleAsset>
 
             <TextAsset></TextAsset> -->
 
-            <!-- <SubtitleAsset></SubtitleAsset> -->
+      <!-- <SubtitleAsset></SubtitleAsset> -->
 
-            <!-- <div class="small-image-container">
+      <!-- <div class="small-image-container">
                 <ImageAsset></ImageAsset>
                 <ImageAsset></ImageAsset>
             </div>
 
             <EditButton></EditButton> -->
-        </div>
     </div>
+  </div>
 
 </template>
 
@@ -38,6 +40,7 @@ import TitleAsset from "../components/BgsGallery/TitleAsset.vue";
 import SubtitleAsset from "../components/BgsGallery/SubtitleAsset.vue";
 import TextAsset1 from "../components/BgsGallery/TextAsset.vue";
 import Container from "../components/BgsGallery/Container.vue";
+import ColorPalette from "../components/BgsGallery/ColorPalette.vue";
 
 const store = useStore();
 
@@ -72,6 +75,12 @@ const brandGuide = computed(() => {
     return store.state.currentBrandGuide;
 });
 
+
+const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456"]
+
+function getColors(){
+  return colors
+}
 
 </script>
 

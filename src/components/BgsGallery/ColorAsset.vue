@@ -2,20 +2,25 @@
   <div class="palette"></div>
 
   <div class="cardcontainer">
-    <div>
-      <!-- <button class="btn-del" @click="deleteCard(color)">X</button> -->
-      <div class="colorpicker-active"></div>
-      <div class="pickedcolor"></div>
-      <div class="colorpicker-preview" :style="{'background-color' : $props.color }"></div>
-    </div>
-    <div class="btn-wrap">
-      <!-- <button class="btn-select">Select</button> -->
-      <button class="btn-change" @click="showModal()">Change</button>
+    <div class="trio-container">
+      <div class="color-name" contenteditable="true">Name</div>
 
+      <div>
+        <!-- <button class="btn-del" @click="deleteCard(color)">X</button> -->
+        <div class="colorpicker-active"></div>
+        <div class="pickedcolor"></div>
+        <div class="colorpicker-preview" :style="{'background-color' : $props.color }"></div>
+      </div>
+      <div class="btn-wrap">
+        <!-- <button class="btn-select">Select</button> -->
+        <font-awesome-icon @click="showModal()" class="paintbrush" icon="paintbrush" />
+
+      </div>
     </div>
+    <PickerModal :color="color" v-if="displayModal">
+    </PickerModal>
   </div>
-  <PickerModal :color="color" v-if="displayModal">
-  </PickerModal>
+
 </template>
 
 <script setup>
@@ -47,16 +52,39 @@ import PickerModal from "./PickerModal.vue";
 
 </script>
 <style scoped>
+
+
 .cardcontainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 330px;
-  margin: 0px 5px 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  /* min-height: fit-content; */
+  height: fit-content;
+  /* margin: 0px 5px 20px; */
   padding: 20px;
+  width: 220px;
   border-radius: 15px;
   background-color: #fff;
   box-sizing: border-box;
+}
+
+.trio-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.color-name{
+  font-size: 1.2rem;
+  padding: 2px;
+}
+
+.color-name:hover{
+  border: #e9baed 2px solid;
+  padding: 2px;
 }
 
 .btn-change {
@@ -119,4 +147,20 @@ import PickerModal from "./PickerModal.vue";
   margin-right: 5px;
   font-size: 16px;
 }
+
+.btn-wrap{
+  display: flex;
+}
+
+.paintbrush{
+  cursor: pointer;
+  color: rgba(136, 136, 136, 0.414);
+  font-size: 1.3rem;
+}
+
+.paintbrush:hover{
+  color: #e9baed;
+  transform: scale(120%);
+}
+
 </style>
