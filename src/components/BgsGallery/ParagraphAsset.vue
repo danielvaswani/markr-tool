@@ -1,7 +1,7 @@
 <template>
 
   <div id="text">
-    <div class="move-element">
+    <div v-if="showDrag" class="move-element">
       <font-awesome-icon class="grip-lines" icon="grip-lines" />
     </div>
     <!-- <p>Text</p>
@@ -9,7 +9,8 @@
     <span class="field-value" v-show="!showField('text')" @click="focusField('text')">{{user.text}}</span>
     <input v-model="user.text" v-show="showField('text')" id="user-text" type="text" class="field-value form-control" @focus="focusField('text')" @blur="blurField">
     </div> -->
-    <p class="template-text" id="template_text" contenteditable="true" placeholder="Write here...">
+    <p @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-text" id="template_text"
+      contenteditable="true" placeholder="Write here...">
       You can write here...</p>
 
 
@@ -18,7 +19,13 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
 
+let showDrag = ref(false)
+
+function toggleDrag() {
+  showDrag.value = !showDrag.value
+}
 
 
 

@@ -18,7 +18,7 @@
     </div>
   </div>
   <router-link @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade"
-    :to="'/stuurmen' + '/' + $props.name + '/' + pageName() "  >
+    :to="'/stuurmen' + '/' + $props.name"  >
     <img class="prev" :src="$props.imageUrl" />
   </router-link>
 </template>
@@ -37,9 +37,9 @@ defineProps({
 
 const hover = ref(false);
 
-function pageName(){
-  return store.state.currentBrandGuide.pages[0].name
-}
+// function pageName(){
+//   return store.state.currentBrandGuide.pages[0].name
+// }
 
 </script>
 

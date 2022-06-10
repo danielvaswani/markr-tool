@@ -5,7 +5,7 @@
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
-        <div @click="updateCurrentBGS(bgs.name)" class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
+        <div class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
           <BgsItem :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
         </div>
 
@@ -100,12 +100,14 @@ function toggleBrandGuide() {
   showBGSInfo.value = !showBGSInfo.value;
 }
 
-function updateCurrentBGS(name) {
-  console.log(name)
-  store.state.currentBGSName = name
-  store.dispatch("fetchBrandGuide", name);
-  console.log(store.state.currentBGSName)
-}
+// function updateCurrentBGS(name) {
+//   console.log(name)
+//   store.state.currentBGSName = name
+//   store.dispatch("fetchBrandGuide", name);
+//   console.log(store.state.currentBGSName)
+// }
+
+
 </script>
 
 <style scoped lang="scss">

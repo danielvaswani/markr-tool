@@ -1,7 +1,6 @@
 <template>
   <div class="color-temp">
     <div class="colortext">
-      <TitlePage></TitlePage>
     </div>
 
     <div class="colors">

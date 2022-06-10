@@ -10,7 +10,6 @@
 
           <Logo :showText="showText"></Logo>
 
-
           <div v-if="$route.params.bgsName !== undefined">
             <span @click="toggleText()" class="edit_ico">
               <font-awesome-icon class="magic-edit" icon="wand-magic-sparkles" />

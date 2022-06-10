@@ -40,8 +40,8 @@ const store = createStore({
         commit("SUBMIT_BRANDGUIDE", data);
       });
     },
-    async fetchBrandGuide({ commit, state }, bgsName){
-      brandGuideService.getBrandGuide(bgsName)
+    async fetchBrandGuide({ commit, state }){
+      brandGuideService.getBrandGuide(state.currentBGSName)
       .then((data) => {
         commit("SET_CURRENTBRANDGUIDE", data);
         console.log(data)

@@ -1,16 +1,27 @@
 <template>
 
     <div class="title-container">
-        <div class="move-element">
+        <div v-if="showDrag" class="move-element">
             <font-awesome-icon class="grip-lines" icon="grip-lines" />
         </div>
 
-        <h2 class="template-title" id="template_title" contenteditable="true">Title Me This</h2>
+        <h2 @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-title" id="template_title" contenteditable="true">{{$props.name}}QUACK</h2>
     </div>
 
 </template>
 
 <script setup>
+import { ref } from "vue";
+
+defineProps({
+    name: String
+})
+
+let showDrag = ref(false)
+
+function toggleDrag(){
+    showDrag.value = !showDrag.value
+}
 
 </script>
 

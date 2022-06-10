@@ -1,17 +1,26 @@
 <template>
 
     <div class="subtitle-container">
-        <div class="move-element">
+        <div v-if="showDrag" class="move-element">
             <font-awesome-icon class="grip-lines" icon="grip-lines" />
         </div>
 
-        <h3 class="template-subtitle" id="template_subtitle" contenteditable="true">
+        <h3 @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-subtitle" id="template_subtitle"
+            contenteditable="true">
             Subtitle me this</h3>
     </div>
 
 </template>
 
 <script setup>
+import { ref } from "vue";
+
+let showDrag = ref(false)
+
+function toggleDrag() {
+    showDrag.value = !showDrag.value
+}
+
 
 </script>
 

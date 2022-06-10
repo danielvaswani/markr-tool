@@ -3,4 +3,5 @@
     <h1>Video Asset</h1>
   </div>
 </template>
-<script setup></script>
+<script setup>
+</script>
