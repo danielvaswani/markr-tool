@@ -28,7 +28,6 @@ function toggleDrag() {
 }
 
 
-
 // new Vue({
 //   el: '#text',
 //   data(){
@@ -55,6 +54,7 @@ function toggleDrag() {
 </script>
 
 <style scoped lang="scss">
+
 
 
 
@@ -88,6 +88,7 @@ function toggleDrag() {
 .grip-lines:hover {
   color: #e9baed !important;
   transform: scale(105%);
+  cursor: pointer;
 }
 
 .template-text{

@@ -9,7 +9,7 @@
                 </li> -->
         <div class="brand_title">
             <li id="t_1">
-                <router-link to="/stuurmen">
+                <router-link :to="'/stuurmen' + '/' + $props.name">
                     <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
                 </router-link>
             </li>
@@ -23,7 +23,7 @@
                 <font-awesome-icon class="grip-lines" icon="grip-lines" />
             </div>
             <li>
-                <router-link to="/stuurmen">
+                <router-link :to="'/stuurmen' + '/' + $props.name + '/' + $props.pageName">
                     <span id="text1" contenteditable="false" class="item">About</span>
                 </router-link>
             </li>

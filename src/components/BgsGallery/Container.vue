@@ -6,7 +6,7 @@
 
   <ParagraphAsset v-if="$props.type === 'text' && $props.content.variant === 'paragraph' "></ParagraphAsset>
 
-  <ImageAsset v-if="$props.type === 'image' && $props.content.variant === 'image' "></ImageAsset>
+  <ImageAsset v-if="$props.type === 'image' && $props.content.variant === 'regular' "></ImageAsset>
 
   <BigImageAsset v-if="$props.type === 'image' && $props.content.variant === 'big' "></BigImageAsset>
 
