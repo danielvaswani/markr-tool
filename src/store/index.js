@@ -4,27 +4,34 @@ import brandGuideService from "../services/brandGuideService";
 const store = createStore({
   state() {
     brandGuides: [];
-    currentBGSName: [];
-    currentBrandGuide: {};
+    currentBGSName: "";
+    currentBGSImageUrl: "";
+    currentBGSSubdomain: "";
+    currentBGSPages: [];
     showSidebar: true;
   },
   mutations: {
     SET_BRANDGUIDES(state, brandGuides) {
+      console.log(brandGuides);
       state.brandGuides = brandGuides;
     },
     SUBMIT_BRANDGUIDE(state, brandGuide) {
       state.brandGuides.push(brandGuide);
     },
-    SET_CURRENTBRANDGUIDE(state, brandGuide){
-      state.currentBrandGuide = brandGuide;
-      console.log(state.currentBrandGuide)
-    }
+    SET_CURRENTBRANDGUIDE(state, brandGuide) {
+      state.currentBGSName = brandGuide.name;
+      state.currentBGSImageUrl = brandGuide.imageUrl;
+      state.currentBGSSubdomain = brandGuide.subdomain;
+      state.currentBGSPages = brandGuide.pages;
+    },
   },
   methods: {},
   getters: {
     getBrandGuides: (state) => state.brandGuides,
-    getcurrentBrandGuide: (state) => state.currentBrandGuide,
-    getcurrentBGSName: (state) => state.currentBGSName
+    getcurrentBGSName: (state) => state.currentBGSName,
+    getcurrentBGSImageUrl: (state) => state.currentBGSImageUrl,
+    getcurrentBGSSubdomain: (state) => state.currentBGSSubdomain,
+    getcurrentBGSPages: (state) => state.currentBGSPages,
   },
 
   setters: {},
@@ -40,14 +47,13 @@ const store = createStore({
         commit("SUBMIT_BRANDGUIDE", data);
       });
     },
-    async fetchBrandGuide({ commit, state }){
-      brandGuideService.getBrandGuide(state.currentBGSName)
-      .then((data) => {
+    async fetchBrandGuide({ commit, state }) {
+      console.log("fetch brandguide " + state.currentBGSName);
+      brandGuideService.getBrandGuide(state.currentBGSName).then((data) => {
         commit("SET_CURRENTBRANDGUIDE", data);
-        console.log(data)
+        console.log(data);
       });
-        
-    }
+    },
   },
 });
 

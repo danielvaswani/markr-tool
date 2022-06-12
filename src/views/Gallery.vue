@@ -6,7 +6,11 @@
 
       <div class="container" id="container">
         <div class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
-          <BgsItem :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
+          <BgsItem
+            :name="bgs.name"
+            :image-url="bgs.imageUrl"
+            :subdomain="bgs.subdomain"
+          ></BgsItem>
         </div>
 
         <!-- <div class="bgs" id="bgs">
@@ -106,8 +110,6 @@ function toggleBrandGuide() {
 //   store.dispatch("fetchBrandGuide", name);
 //   console.log(store.state.currentBGSName)
 // }
-
-
 </script>
 
 <style scoped lang="scss">

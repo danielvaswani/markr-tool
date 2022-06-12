@@ -2,7 +2,10 @@
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
     <div class="preview-icon">
       <span class="preview">
-        <a target="_blank" :href="'https://' + $props.subdomain + '.markrtool.nl'">
+        <a
+          target="_blank"
+          :href="'https://' + $props.subdomain + '.markrtool.nl'"
+        >
           <font-awesome-icon class="bi" icon="eye" />
         </a>
       </span>
@@ -17,30 +20,92 @@
       <input style="display: none" type="file" id="uploadmyfile" />
     </div>
   </div>
-  <router-link @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade"
-    :to="'/stuurmen' + '/' + $props.name"  >
-    <img class="prev" :src="$props.imageUrl" />
-  </router-link>
+  <!-- <router-link
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
+    class="hvr-border-fade"
+    :to="'/stuurmen' + '/' + $props.name"
+  >
+  </router-link> -->
+  <img
+    class="prev"
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
+    :src="$props.imageUrl"
+    @click="handleRouteChange"
+  />
 </template>
 
+//
 <script setup>
+// import { ref } from "vue";
+// import { useStore } from "vuex";
+// import { useRouter, useRoute } from "vue-router";
+
+// const router = useRouter();
+// const route = useRoute();
+
+// const store = useStore();
+
+// const props = defineProps({
+//   name: String,
+//   imageUrl: String,
+//   subdomain: String,
+// });
+
+// const hover = ref(false);
+
+// const handleRouteChange = async () => {
+//   console.log("i am clicked");
+//   store.state.currentBGSName = props.name;
+//   await store.dispatch("fetchBrandGuide");
+//   const brandGuide = await store.state.currentBrandGuide;
+//   const firstPageName = brandGuide.pages[0].name;
+//   console.log(brandGuide.name);
+//   router.push(`/stuurmen/${brandGuide.name}/${firstPageName}`);
+// };
+
+// // function pageName(){
+// //   return store.state.currentBrandGuide.pages[0].name
+// // }
+//
+</script>
+
+<script>
 import { ref } from "vue";
 import { useStore } from "vuex";
+import { useRouter, useRoute } from "vue-router";
 
-const store = useStore();
+export default {
+  props: {
+    name: String,
+    imageUrl: String,
+    subdomain: String,
+    pages: Array,
+  },
+  setup(props) {
+    // const router = useRouter();
+    // const route = useRoute();
 
-defineProps({
-  name: String,
-  imageUrl: String,
-  subdomain: String,
-});
+    const store = useStore();
 
-const hover = ref(false);
-
-// function pageName(){
-//   return store.state.currentBrandGuide.pages[0].name
-// }
-
+    const hover = ref(false);
+  },
+  methods: {
+    async handleRouteChange() {
+      // console.log("i am clicked");
+      this.$store.state.currentBGSName = this.$props.name;
+      this.$store.dispatch("fetchBrandGuide");
+      console.log(this.$store.currentBGSName);
+      console.log(this.$store.currentBGSImageUrl);
+      console.log(this.$store.currentBGSSubdomain);
+      console.log(this.$store.currentBGSPages);
+      // const firstPageName = brandGuide.pages[0].name;
+      // console.log(brandGuide.name);
+      this.$router.push(`/stuurmen/${this.$store.state.currentBGSName}`);
+    },
+  },
+};
 </script>
 
 <style scoped>
