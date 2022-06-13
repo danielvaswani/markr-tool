@@ -5,6 +5,11 @@ import Sidebar from "./components/Sidebar/Sidebar.vue";
 import { ref } from "vue";
 import { h, Transition } from "vue";
 import { useStore } from "vuex";
+import { useRouter, useRoute } from 'vue-router'
+
+
+const router = useRouter()
+const route = useRoute()
 
 const store = useStore();
 let showSidebar = ref(true);
@@ -12,6 +17,32 @@ let showSidebar = ref(true);
 function toggleSidebar() {
   showSidebar.value = !showSidebar.value;
 }
+
+return {
+
+  data() {
+    return {
+      searchInitialized: false
+    }
+  },
+  methods: {
+    initializeSearch() {
+      setTimeout(() => {
+        this.searchInitialized = true;
+      }, 1000)
+    }
+  },
+
+  beforeRouteEnter(to, from, next){
+    next(vm => {
+      // access to component's instance using `vm` . this is done because this navigation guard is called before the component is created.
+
+      vm.initializeSearch();
+      next();
+    }) 
+  }
+}
+
 </script>
 
 <template>

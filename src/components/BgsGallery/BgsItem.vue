@@ -2,10 +2,7 @@
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
     <div class="preview-icon">
       <span class="preview">
-        <a
-          target="_blank"
-          :href="'https://' + $props.subdomain + '.markrtool.nl'"
-        >
+        <a target="_blank" :href="'https://' + $props.subdomain + '.markrtool.nl'">
           <font-awesome-icon class="bi" icon="eye" />
         </a>
       </span>
@@ -27,13 +24,9 @@
     :to="'/stuurmen' + '/' + $props.name"
   >
   </router-link> -->
-  <img
-    class="prev"
-    @mouseenter="hover = true"
-    @mouseleave="hover = false"
-    :src="$props.imageUrl"
-    @click="handleRouteChange"
-  />
+  <a @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade">
+    <img class="prev" :src="$props.imageUrl" @click="handleRouteChange" />
+  </a>
 </template>
 
 //
@@ -44,7 +37,6 @@
 
 // const router = useRouter();
 // const route = useRoute();
-
 // const store = useStore();
 
 // const props = defineProps({
@@ -77,6 +69,12 @@ import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
 
 export default {
+
+  data() {
+    return {
+      hover: false,
+    };
+  },
   props: {
     name: String,
     imageUrl: String,
@@ -86,25 +84,23 @@ export default {
   setup(props) {
     // const router = useRouter();
     // const route = useRoute();
+    // const store = useStore();
 
-    const store = useStore();
-
-    const hover = ref(false);
   },
   methods: {
     async handleRouteChange() {
-      // console.log("i am clicked");
       this.$store.state.currentBGSName = this.$props.name;
       this.$store.dispatch("fetchBrandGuide");
-      console.log(this.$store.currentBGSName);
-      console.log(this.$store.currentBGSImageUrl);
-      console.log(this.$store.currentBGSSubdomain);
-      console.log(this.$store.currentBGSPages);
+      console.log(this.$props.name)
+      // console.log(this.$store.currentBGSName);
+      // console.log(this.$store.currentBGSImageUrl);
+      // console.log(this.$store.currentBGSSubdomain);
+      // console.log(this.$store.currentBGSPages);
       // const firstPageName = brandGuide.pages[0].name;
-      // console.log(brandGuide.name);
-      this.$router.push(`/stuurmen/${this.$store.state.currentBGSName}`);
+      this.$router.push(`/stuurmen/${this.$props.name}`);
     },
   },
+
 };
 </script>
 

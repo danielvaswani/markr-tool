@@ -1,5 +1,6 @@
 <template>
     <!--menu item-->
+
     <ul class="category1" v-if="$route.params.bgsName !== undefined" id="brand_con">
         <!-- <li>
                     <a href="#" class="active">
@@ -9,7 +10,7 @@
                 </li> -->
         <div class="brand_title">
             <li id="t_1">
-                <router-link to="/stuurmen">
+                <router-link :to="'/stuurmen/' + $props.pageNames[0]">
                     <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
                 </router-link>
             </li>
@@ -18,12 +19,15 @@
             </div>
         </div>
 
-        <div class="li-text">
+
+        <SidebarElement v-for="p in pageNames" :key="p.name"></SidebarElement>
+
+        <!-- <div class="li-text">
             <div v-if="$props.showText" class="move-element">
                 <font-awesome-icon class="grip-lines" icon="grip-lines" />
             </div>
             <li>
-                <router-link to="/stuurmen">
+                <router-link>
                     <span id="text1" contenteditable="false" class="item">About</span>
                 </router-link>
             </li>
@@ -31,22 +35,29 @@
             <div v-if="$props.showText" class="text_edit">
                 <font-awesome-icon icon="pen" />
             </div>
-        </div>
+        </div> -->
 
-        <li v-if="$props.showText">
-            <router-link to="/stuurmen" id="add_b">
-                <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
-            </router-link>
-        </li>
+
+        <SidebarElement :showText="showText"></SidebarElement>
+
+
+        <AddElement :showText="showText"></AddElement>
+
+
+
     </ul>
 </template>
 
 <script setup>
 import { ref, defineExpose, onMounted } from "vue";
+import AddElement from "./AddElement.vue";
+import SidebarElement from "./SidebarElement.vue";
 
-defineProps({
-    showText: Boolean
-});
+
+const props = defineProps({
+    showText: Boolean,
+    pageNames: Array
+})
 
 
 // onMounted(() => {

@@ -18,12 +18,20 @@ const store = createStore({
     SUBMIT_BRANDGUIDE(state, brandGuide) {
       state.brandGuides.push(brandGuide);
     },
-    SET_CURRENTBRANDGUIDE(state, brandGuide) {
-      state.currentBGSName = brandGuide.name;
-      state.currentBGSImageUrl = brandGuide.imageUrl;
-      state.currentBGSSubdomain = brandGuide.subdomain;
-      state.currentBGSPages = brandGuide.pages;
+    // SET_CURRENTBRANDGUIDE(state, brandGuide) {
+    //   state.currentBGSName = brandGuide.name;
+    //   state.currentBGSImageUrl = brandGuide.imageUrl;
+    //   state.currentBGSSubdomain = brandGuide.subdomain;
+      
+    // },
+    SET_CURRENTPAGES(state, pages){
+      state.currentBGSPages = pages;
+      console.log(state.currentBGSPages)
     },
+
+    SET_CURRENTBGSNAME(state, bgsName){
+      state.currentBGSName = bgsName;
+    }
   },
   methods: {},
   getters: {
@@ -34,7 +42,9 @@ const store = createStore({
     getcurrentBGSPages: (state) => state.currentBGSPages,
   },
 
-  setters: {},
+  setters: {
+    
+  },
   actions: {
     async fetchBrandGuides({ commit }) {
       // Use the eventService to call the getEventSingle() method
@@ -50,10 +60,19 @@ const store = createStore({
     async fetchBrandGuide({ commit, state }) {
       console.log("fetch brandguide " + state.currentBGSName);
       brandGuideService.getBrandGuide(state.currentBGSName).then((data) => {
-        commit("SET_CURRENTBRANDGUIDE", data);
+        // commit("SET_CURRENTBRANDGUIDE", data);
+        commit("SET_CURRENTPAGES", data.pages);
         console.log(data);
       });
     },
+
+    // async fetchBrandGuide({ commit, state }) {
+    //   console.log("fetch brandguide " + state.currentBGSPages);
+    //   brandGuideService.getBrandGuide(state.currentBGSPages).then((data) => {
+        
+    //     console.log(data);
+    //   });
+    // },
   },
 });
 

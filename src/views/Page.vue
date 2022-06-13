@@ -2,7 +2,7 @@
   <div class="container_logo">
     <div class="logos" id="template_div">
       <TitlePage :name="$props.pageName"></TitlePage>
-
+      {{$props.assets}}
       <Container
         v-for="asset in assets"
         :key="asset"

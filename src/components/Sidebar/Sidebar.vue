@@ -16,7 +16,7 @@
             </span>
           </div>
 
-          <CategoryContainer :showText="showText"></CategoryContainer>
+          <SidebarContent :showText="showText"></SidebarContent>
 
           <!-- <li id="new_side" class="items">
               <router-link to="/stuurmen">
@@ -31,7 +31,7 @@
             </li>-->
 
 
-          <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
+          <!-- <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
 
             <div class="brand_title">
               <li id="t_2">
@@ -89,24 +89,9 @@
               </div>
             </div>
 
-            <div v-if="showText" class="new_element">
-              <li class="dropdownbtn">
-                <a id="extra_element">
-                  <button id="add_side">
-                    <i class="bi bi-plus"></i>Add Page
-                  </button>
-                </a>
-              </li>
-              <!-- menu -->
-              <div class="dropdownPost-content">
-                <a><span>Video</span> </a>
-                <a><span>Audio</span> </a>
-                <a><span>Text</span> </a>
-                <a><span>Others</span> </a>
-              </div>
-            </div>
+            <AddElement :showText="showText"></AddElement>
 
-            <li class="items">
+             <li class="items">
               <router-link to="/stuurmen">
                 <span contenteditable="false" class="item">New Item</span>
               </router-link>
@@ -122,11 +107,11 @@
               <router-link to="/stuurmen">
                 <span contenteditable="false" class="item">Extra Item</span>
               </router-link>
-            </li>
+            </li> -->
 
-            <!-- three dot menu -->
-            <!-- <div class="dropdownPosts"> -->
-            <!-- three dots
+          <!-- three dot menu -->
+          <!-- <div class="dropdownPosts"> -->
+          <!-- three dots
                 <ul
                   class="dropdownbtn icons btn-right showLeft"
                   
@@ -136,7 +121,7 @@
                   <li></li>
                 </ul> -->
 
-            <!-- <li>
+          <!-- <li>
               <a href="#">
                 <span class="item">Application Examples</span>
               </a>
@@ -152,8 +137,8 @@
               <a href="#">
                 <span class="item">Application Examples</span>
               </a>
-            </li> -->
-          </ul>
+            </li>
+          </ul> -->
 
           <article v-if="$route.params.bgsName !== undefined" class="user-profile">
             <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
@@ -206,12 +191,22 @@
 
 <script setup>
 import { ref, defineExpose, onMounted } from "vue";
-import UserDropdown from "../UserDropdown.vue";
+import UserDropdown from "./UserDropdown.vue";
 import VueDragResize from "vue-drag-resize";
 import { h, Transition } from "vue";
 import { useStore } from "vuex";
 import Logo from "./Logo.vue";
 import CategoryContainer from "./CategoryContainer.vue";
+import AddElement from "./AddElement.vue";
+import SidebarElement from "./SidebarElement.vue";
+import SidebarContent from "./SidebarContent.vue";
+
+
+const pages = ref([]);
+
+const props = defineProps({
+  getPages: Boolean
+})
 
 const store = useStore();
 // const sidebar = ref(null);
@@ -222,7 +217,6 @@ let showSidebar = ref(true);
 
 function toggleSidebar() {
   store.state.showSidebar = !store.state.showSidebar;
-
 }
 let showText = ref(false);
 
@@ -592,91 +586,6 @@ props: {
     position: absolute;
     top: 0.24em;
 } */
-
-/*Extra elements Dropdown */
-
-.dropdownbtn {
-  /* color: white;
-    font-size: 16px; */
-  border: none;
-  cursor: pointer;
-  /* margin-top: 6%;
-    margin-right: 30%; */
-  /* display: inline-flex; */
-}
-.dropdownPosts {
-  position: absolute;
-  display: inline-block;
-  right: 0.4em;
-}
-.dropdownPost-content {
-  display: none;
-  position: absolute;
-  margin-top: 50px;
-  color: #fff;
-  background-color: #191827;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  right: 40px;
-  border-top: #e9baed 2px solid;
-  margin-bottom: 50px;
-}
-
-.dropdownPost-content a {
-  color: #fff;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdownPosts a:hover {
-  background-color: #2b2942;
-}
-
-.show {
-  display: block;
-}
-
-/*/////////ADD NEW SIDEBAR ELEMENT////////////*/
-
-.new_element {
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-}
-
-#extra_element {
-  padding: unset;
-  margin-left: 5px;
-}
-
-#add_b {
-  padding: unset;
-}
-
-.bi-plus {
-  font-size: 2rem;
-  vertical-align: middle;
-  color: #e9baed;
-}
-
-#add_side {
-  cursor: pointer;
-  width: max-content;
-  height: min-content;
-  background-color: transparent;
-  border: transparent;
-  font-size: 1.2rem;
-  border-radius: 20%;
-  color: #fff;
-  font-weight: 600;
-}
-
-.items {
-  display: none;
-}
 
 /*/////////USER ICON MENU/////////*/
 
