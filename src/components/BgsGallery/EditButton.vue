@@ -11,7 +11,7 @@
           <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
         </a>
 
-        <a @click="addImage()"><i class="bi bi-card-image"></i></a>
+        <a @mouseenter="hover = true" @mouseleave="hover = false"><i class="bi bi-card-images"></i></a>
 
         <a><i class="bi bi-film"></i></a>
 
@@ -37,12 +37,12 @@
 
 
   <!--Texts Dropdown-->
-  <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" id="textsDropdown"
+  <div v-if="hover" @mouseenter="hover = true" @click="hover = false" id="textsDropdown"
     class="dropdown-content-texts dropdown">
-    <a class="title-a">
+    <!-- <a class="title-a">
       <h2>Title</h2>
       <font-awesome-icon class="chevron" icon="chevron-right" />
-    </a>
+    </a> -->
 
     <a @click="addSubtitle()" class="subtitle-a">
       <h3>Subtitle</h3>
@@ -51,6 +51,24 @@
 
     <a @click="addParagraph()" class="paragraph">
       <p>Paragraph</p>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+  </div>
+
+  <!--Images Dropdown-->
+  <div v-if="hover" @click="hover = false" id="imagesDropdown" class="dropdown-content-images dropdown">
+    <a @mouseenter="hover = true" @click="addImage()" class="image-a">
+      <p>Image (250 x 250)</p>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+
+    <a @click="addSubtitle()" class="vertical-a">
+      <p>Image (350 x 450)</p>
+      <font-awesome-icon class="chevron" icon="chevron-right" />
+    </a>
+
+    <a @click="addParagraph()" class="banner">
+      <p>Banner (850 x 350)</p>
       <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
   </div>
@@ -99,6 +117,7 @@ function addBannerImage() {
 </script>
 
 <style scoped lang="scss">
+
 /*/////EDIT BUTTON/////*/
 
 #edit_b {
@@ -293,7 +312,7 @@ function addBannerImage() {
   height: fit-content;
   margin-left: 65px;
   align-items: center;
-  bottom: 57px;
+  bottom: 60px;
   background-color: #191827;
   width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
@@ -341,6 +360,93 @@ function addBannerImage() {
 
 /* Change color of dropdown links on hover */
 .dropdown-content-texts a:hover {
+  background-color: #2c2a45;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show_edit {
+  display: block;
+  transform: translateY(2%);
+  /* transition-timing-function: ease-in; */
+  animation-name: drop;
+  animation-duration: 0.4s;
+  animation-timing-function: linear;
+}
+
+@keyframes drop {
+  from {
+    transform: translateY(-1%);
+  }
+
+  to {
+    transform: translateY(2%);
+  }
+}
+
+/*Images Dropdown */
+
+.dropdown-content-images {
+  /* transform: translateY(-100%);
+    will-change: transform; */
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  border-top: #e9baed 2px solid;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  position: relative;
+  height: fit-content;
+  margin-left: 102px;
+  align-items: center;
+  bottom: 188px;
+  background-color: #191827;
+  width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  text-align: center;
+  -moz-box-shadow: 0 0 4px black;
+  -webkit-box-shadow: 0 0 4px black;
+  box-shadow: 0 0 4px black;
+}
+
+.dropdown-content-images a {
+  color: #fff;
+  padding: 8px 30px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: #e9baed 1px solid;
+  width: inherit;
+}
+
+.chevron {
+  color: #e9baed;
+}
+
+.image-a {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.vertical-a {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  font-size: 1rem;
+}
+
+.banner {
+  display: flex;
+  align-items: baseline;
+  gap: 45px;
+  font-size: 1rem;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content-images a:hover {
   background-color: #2c2a45;
 }
 

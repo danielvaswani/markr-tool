@@ -11,6 +11,7 @@ import {
   faEye,
   faGear,
   faGripLines,
+  faImages,
   faPaintbrush,
   faPencil,
   faTriangleExclamation,
@@ -43,7 +44,8 @@ library.add(
   faClapperboard,
   faGripLines,
   faXmark,
-  faChevronRight
+  faChevronRight,
+  faImages
 );
 
 import { BootstrapIconsPlugin } from "bootstrap-icons-vue";

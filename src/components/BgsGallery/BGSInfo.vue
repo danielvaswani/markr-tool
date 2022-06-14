@@ -38,7 +38,7 @@
         </div>
         <div class="save-changes-container">
           <p>back to Default</p>
-          <button >Save changes</button>
+          <button @click="toggleModal()">Save changes</button>
         </div>
       </div>
     </div>
@@ -213,5 +213,13 @@ h5 {
   border: #e9baed 2px solid;
   padding: 10px 25px;
   border-radius: 5px;
+  cursor: pointer;
 }
+
+.save-changes-container button:hover{
+  transform: translateX(2px);
+  transform: translateY(1px);
+  transition: all .2s;
+}
+
 </style>

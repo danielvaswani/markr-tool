@@ -60,7 +60,7 @@ const hover = ref(false);
   // margin-left: 140px;
   overflow: hidden;
   width: fit-content;
-  margin: auto;
+  // margin: auto;
 }
 
 .image-container {

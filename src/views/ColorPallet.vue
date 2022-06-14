@@ -27,7 +27,7 @@
       <div class="addtemp" @click="createPalette">
         <img class="addtemp-icon" src="../assets/images/add.png" />
       </div>
-      <div v-for="colors in predefindeColors">
+      <div v-for="colors in predefindeColors" :key="colors">
         <ColorTemp :predefindeColors="colors" />
       </div>
     </div>

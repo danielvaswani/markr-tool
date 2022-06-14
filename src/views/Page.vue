@@ -29,9 +29,18 @@ const store = useStore();
 const props = defineProps({
   pageName: String,
   assets: Array,
+  isDefault: Boolean
 });
 
 const assets = ref(props.assets);
+
+if(props.isDefault){
+  assets.value = [
+    {content: {variant: 'subtitle', value: 'Subtitle me this'}, name: 'new subtitle', type: 'text', }, 
+    { content: { variant: 'image', url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png' }, name: 'new image', type: 'image', }, 
+    { content: { variant: 'paragraph', value: 'Write here...' }, name: 'new paragraph', type: 'text', }, 
+    ]
+}
 
 function addAsset(asset){
   assets.value.push(asset)
