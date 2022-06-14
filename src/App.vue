@@ -47,16 +47,16 @@ function toggleSidebar() {
 
 <template>
   <div class="home">
-    <Transition name="slide-fade">
+   
       <Sidebar>
       </Sidebar>
-    </Transition>
 
-    <Transition name="slide-fade">
+
+    
       <router-view class="app-router-view"
         :style="{ 'width': store.state.showSidebar ? '100% - 250px': '100%', 'transform': 'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')', 'transition': 'all 0.3s ease-in-out'}">
       </router-view>
-    </Transition>
+   
   </div>
 </template>
 

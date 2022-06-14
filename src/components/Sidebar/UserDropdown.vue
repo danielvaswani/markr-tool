@@ -1,54 +1,57 @@
 <template>
-  <div class="dpdw-menu">
-                <div class="content-list">
-                  <ul class="list-wrapper">
-                    <li>
-                      <div class="menu-icon">
-                        <font-awesome-icon class="bi" icon="user"/>
-                      </div>
-                      <div class="menu-text">Edit Profile</div>
-                    </li>
-                    <li id="tasks">
-                      <div class="menu-icon">
-                        <font-awesome-icon class="bi" icon="list-check"/>
-                      </div>
-                      <div class="menu-text">Tasks</div>
-                    </li>
-                    <li>
-                      <div class="menu-icon">
-                        <font-awesome-icon class="bi" icon="lock"/>
-                      </div>
-                      <div class="menu-text">Privacy</div>
-                    </li>
-                    <li>
-                      <div class="menu-icon">
-                        <font-awesome-icon class="bi" icon="gear"/>
-                      </div>
-                      <div class="menu-text">Settings</div>
-                    </li>
-                    <li id="logout">
-                      <div class="menu-icon">
-                        <font-awesome-icon class="bi" icon="arrow-right-from-bracket"/>
-                      </div>
-                      <div class="menu-text">Log Out</div>
-                    </li>
+	<div class="dpdw-menu">
+		<div class="content-list">
+			<ul class="list-wrapper">
+				<li>
+					<div class="menu-icon">
+						<font-awesome-icon class="bi" icon="user" />
+					</div>
+					<div class="menu-text">
+						<router-link :to="'/stuurmen' + '/userprofile'">
+							<span>Edit Profile</span></router-link>
+					</div>
+				</li>
+				<li id="tasks">
+					<div class="menu-icon">
+						<font-awesome-icon class="bi" icon="list-check" />
+					</div>
+					<div class="menu-text">Tasks</div>
+				</li>
+				<li>
+					<div class="menu-icon">
+						<font-awesome-icon class="bi" icon="lock" />
+					</div>
+					<div class="menu-text">Privacy</div>
+				</li>
+				<li>
+					<div class="menu-icon">
+						<font-awesome-icon class="bi" icon="gear" />
+					</div>
+					<div class="menu-text">Settings</div>
+				</li>
+				<li id="logout">
+					<div class="menu-icon">
+						<font-awesome-icon class="bi" icon="arrow-right-from-bracket" />
+					</div>
+					<div class="menu-text">Log Out</div>
+				</li>
 
-                    <li>
-                      <div class="menu-icon">
-                        <font-awesome-icon class="bi" icon="circle-question"/>
-                      </div>
-                      <div class="menu-text">Help</div>
-                    </li>
+				<li>
+					<div class="menu-icon">
+						<font-awesome-icon class="bi" icon="circle-question" />
+					</div>
+					<div class="menu-text">Help</div>
+				</li>
 
-                    <li>
-                      <div class="menu-icon">
-                        <font-awesome-icon class="bi" icon="triangle-exclamation"/>
-                      </div>
-                      <div ref="userDropdown" class="menu-text">Report a problem</div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+				<li>
+					<div class="menu-icon">
+						<font-awesome-icon class="bi" icon="triangle-exclamation" />
+					</div>
+					<div ref="userDropdown" class="menu-text">Report a problem</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 </template>
 
 <script setup>

@@ -13,7 +13,7 @@ import CategoryContainer from "./CategoryContainer.vue";
 const store = useStore();
 const props = defineProps({
     showText: Boolean,
-    pageNames: Promise,
+    pageNames: Array,
     name: String,
     page: Array
 })

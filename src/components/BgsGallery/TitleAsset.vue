@@ -31,8 +31,7 @@ function toggleDrag(){
 
 .title-container {
     text-align: justify;
-    width: 90%;
-    word-wrap: break-word;
+    width: fit-content;
     padding: 5px;
     display: flex;
     gap: 25px;
@@ -62,7 +61,6 @@ function toggleDrag(){
     border: transparent;
     width: fit-content;
     font-weight: 600;
-    word-wrap: break-word;
     height: fit-content;
     // border: 1px solid #19182753;
     // border-radius: 5px;

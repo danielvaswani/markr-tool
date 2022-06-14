@@ -14,13 +14,13 @@
                 </div>
             </div>
 
-            <div v-for="page in page" :key="page" class="li-text">
+            <div v-for="p in page" :key="p"  class="li-text">
                 <div v-if="$props.showText" class="move-element">
                     <font-awesome-icon class="grip-lines" icon="grip-lines" />
                 </div>
                 <li>
                     <router-link :to="p">
-                        <span id="text1" contenteditable="false" class="item">{{page}}</span>
+                        <span id="text1" contenteditable="false" class="item">{{ props.page }}</span>
                     </router-link>
                 </li>
                 <div class="space-li"></div>
@@ -44,8 +44,7 @@
                 <div class="brand_title">
                     <li id="t_2">
                         <router-link to="/stuurmen">
-                            <span v-if="editText" contenteditable="false" class="item" id="brand_name2">BRAND
-                                IDENTITY</span>
+                            <span v-if="editText" contenteditable="false" class="item" id="brand_name2">BRAND IDENTITY</span>
                         </router-link>
                     </li>
                     <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
@@ -53,13 +52,13 @@
                     </div>
                 </div>
 
-                <div v-for="page in page" :key="page" class="li-text">
+                <div v-for="p in page" :key="p" class="li-text">
                     <div v-if="$props.showText" class="move-element">
                         <font-awesome-icon class="grip-lines" icon="grip-lines" />
                     </div>
                     <li>
                         <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
-                            <span id="text2" contenteditable="false" class="item">{{page}}</span>
+                            <span id="text2" contenteditable="false" class="item">{{props.page}}</span>
                         </router-link>
                     </li>
                     <div class="space-li"></div>
@@ -161,11 +160,13 @@ function toggleEditText(){
 
 const props = defineProps({
     showText: Boolean,
-    pageNames: Promise,
+    pageNames: Array,
     pageName: Array,
-    page: Array
+    page: String
     // bgsName: String
 });
+
+console.log(props.page)
 
 let showText = ref(false);
 
@@ -186,14 +187,6 @@ function toggleText() {
 </script>
 
 <style scoped lang="scss">
-
-
-#new-element{
-    display: block;
-}
-
-
-
 
 
 

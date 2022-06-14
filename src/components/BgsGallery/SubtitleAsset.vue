@@ -33,10 +33,9 @@ defineProps({
 <style scoped lang="scss">
 .subtitle-container {
   text-align: justify;
-  width: 90%;
+  width: fit-content;
   display: flex;
   gap: 25px;
-  word-wrap: break-word;
   padding: 5px;
   font-size: 1.2rem;
 }
@@ -64,7 +63,6 @@ defineProps({
   border: transparent;
   width: 300px;
   font-weight: 600;
-  word-wrap: break-word;
   height: fit-content;
   // border: 1px solid #19182753;
   // border-radius: 5px;
