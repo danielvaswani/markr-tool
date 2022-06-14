@@ -2,8 +2,8 @@
   <div v-if="store.state.currentBGSName === undefined">YOU SUCK</div>
   <Page
     v-else
-    :pageName="pages[currentPageIndex].name"
-    :assets="pages[currentPageIndex].Assets"
+    :pageName="pages[0].name"
+    :assets="pages[0].Assets"
   ></Page>
 </template>
 

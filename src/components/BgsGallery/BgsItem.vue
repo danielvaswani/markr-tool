@@ -1,23 +1,21 @@
 <template>
+  <BGSInfo v-if="showBGSInfo" />
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
     <div class="preview-icon">
       <span class="preview">
-        <a
-          target="_blank"
-          :href="'https://' + $props.subdomain + '.markrtool.nl'"
-        >
+        <a target="_blank" :href="'https://' + $props.subdomain + '.markrtool.nl'">
           <font-awesome-icon class="bi" icon="eye" />
         </a>
       </span>
     </div>
 
     <div class="edit-bgs">
-      <label for="uploadmyfile">
-        <span class="edit-button">
-          <font-awesome-icon class="bi" id="pen" icon="wand-magic-sparkles" />
-        </span>
-      </label>
-      <input style="display: none" type="file" id="uploadmyfile" />
+
+      <span @click="toggleBrandGuide()" class="edit-button">
+        <font-awesome-icon class="bi" id="pen" icon="wand-magic-sparkles" />
+      </span>
+      <!-- 
+      <input style="display: none" type="file" id="uploadmyfile" /> -->
     </div>
   </div>
   <!-- <router-link
@@ -27,23 +25,31 @@
     :to="'/stuurmen' + '/' + $props.name"
   >
   </router-link> -->
-  <img
-    class="prev"
-    @mouseenter="hover = true"
-    @mouseleave="hover = false"
-    :src="$props.imageUrl"
-    @click="handleRouteChange"
-  />
+  <a @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade">
+    <img class="prev" :src="$props.imageUrl" @click="handleRouteChange()" />
+  </a>
+
+
 </template>
 
 //
 <script setup>
+import BGSInfo from "./BGSInfo.vue";
+
+
+function toggleBrandGuide() {
+  showBGSInfo.value = !showBGSInfo.value;
+}
+
+
+let showBGSInfo = ref(false);
 // import { ref } from "vue";
 // import { useStore } from "vuex";
 // import { useRouter, useRoute } from "vue-router";
 
 // const router = useRouter();
 // const route = useRoute();
+const hover = ref(false);
 
 // const store = useStore();
 
@@ -89,7 +95,7 @@ export default {
 
     const store = useStore();
 
-    const hover = ref(false);
+    
   },
   methods: {
     async handleRouteChange() {
@@ -122,6 +128,10 @@ export default {
   margin-left: 60px;
   margin-top: 120px;
   font-family: "Gilroy Extrabold";
+}
+
+.gallery-asset{
+  cursor: pointer;
 }
 
 .container {

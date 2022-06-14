@@ -1,5 +1,6 @@
 <template>
-  <div class="bgs-info-container">
+  <div @click="toggleModal()" class="modal-container" v-if="close"></div>
+  <div class="bgs-info-container" v-if="close">
     <div class="bgs-info-row">
       <div class="info-column">
         <h2>
@@ -7,7 +8,14 @@
           <span style="color: #fabdff">image</span>
         </h2>
         <div class="content-container">
-          <img src="" alt="Brand guide image image" />
+          <div class="image-container">
+            <img src="../../assets/images/341e5560369787.5bfc0508d0638.jpg" alt="Brand guide image image" />
+          </div>
+
+          <div class="upload-image">
+            <label for="photo"><button class="image-button">Choose image</button></label>
+            <input style="display: none" type="file" id="uploadmyfile" accept="image/*" />
+          </div>
         </div>
       </div>
       <div class="info-column">
@@ -25,16 +33,20 @@
         <div class="field-row">
           <h5>Online Status</h5>
           <div style="width: 45%">
-            <Toggle
-              @click="toggleLive()"
-              :value="isLive"
-              style="margin-right: auto"
-            />
+            <Toggle @click="toggleLive()" :value="isLive" style="margin-right: auto" />
           </div>
+        </div>
+        <div class="save-changes-container">
+          <p>back to Default</p>
+          <button >Save changes</button>
         </div>
       </div>
     </div>
   </div>
+  <div><span @click="toggleModal()" class="close">
+      <font-awesome-icon icon="fa-solid fa-xmark" />
+    </span></div>
+
 </template>
 
 <script setup>
@@ -47,6 +59,12 @@ let subdomainName = ref("");
 defineProps({
   isEdit: Boolean,
 });
+
+const close = ref(true)
+
+function toggleModal() {
+  close.value = !close.value;
+}
 
 let generatedSubdomain = computed(() => {
   return brandName.value
@@ -66,23 +84,43 @@ function toggleLive() {
 </script>
 
 <style scoped>
-.bgs-info-container {
-  position: absolute;
 
-  z-index: 999;
+.close {
+  z-index: 1000;
+  color: #e9baed;
+  font-size: 2rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.modal-container {
+  /* padding: 200px 500px; */
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vw;
+  background-color: #191827a1;
+  z-index: 3;
+}
+
+.bgs-info-container {
+  z-index: 1000;
+  position: fixed;
   background-color: #191827;
   color: white;
+  border: 5px solid #e9baed;
   width: 786px;
   height: 606px;
-
-  margin: 0 auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   left: 0;
   right: 0;
-  top: 50%;
+  top: 45%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -99,6 +137,28 @@ function toggleLive() {
   display: flex;
   justify-content: space-evenly;
   /* align-items: center; */
+}
+
+.content-container img {
+  width: 250px;
+  height: 350px;
+}
+
+.image-container {
+  width: fit-content;
+  height: fit-content;
+  border: 2px dotted #e9baed;
+  border-radius: 3px;
+}
+
+.upload-image {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+}
+
+.image-button {
+  padding: 4px 8px;
 }
 
 .info-column {
@@ -132,5 +192,26 @@ h5 {
 .subdomainUrl {
   width: 100%;
   text-align: center;
+}
+
+.save-changes-container{
+  display: flex;
+  gap: 10px;
+  align-content: center;
+  margin-top: 100px;
+}
+
+.save-changes-container p {
+  color: rgba(136, 136, 136, 0.616) ;
+  cursor:pointer;
+  align-self: flex-end;
+}
+
+.save-changes-container button{
+  color: white;
+  background-color: #191827;
+  border: #e9baed 2px solid;
+  padding: 10px 25px;
+  border-radius: 5px;
 }
 </style>

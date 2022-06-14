@@ -1,16 +1,13 @@
 <template>
   <main>
     <!-- <UserProfile></UserProfile> -->
+    <BGSInfo v-if="showBGSInfo" />
     <article class="gallery-container">
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
         <div class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
-          <BgsItem
-            :name="bgs.name"
-            :image-url="bgs.imageUrl"
-            :subdomain="bgs.subdomain"
-          ></BgsItem>
+          <BgsItem  :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
         </div>
 
         <!-- <div class="bgs" id="bgs">

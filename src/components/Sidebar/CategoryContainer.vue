@@ -9,7 +9,7 @@
                 </li> -->
         <div class="brand_title">
             <li id="t_1">
-                <router-link to="/stuurmen">
+                <router-link :to="'/stuurmen' + '/' + $route.params.bgsName + '/' + $props.name">
                     <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
                 </router-link>
             </li>
@@ -33,10 +33,23 @@
             </div>
         </div>
 
+        <div v-for="(element, index) in addedElements" :key="index" class="li-text">
+            <div v-if="$props.showText" class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+            </div>
+            <li>
+                <router-link to="/stuurmen">
+                    <span id="text1" contenteditable="false" class="item">{{element}}</span>
+                </router-link>
+            </li>
+            <div class="space-li"></div>
+            <div v-if="$props.showText" class="text_edit">
+                <font-awesome-icon icon="pen" />
+            </div>
+        </div>
+
         <li v-if="$props.showText">
-            <router-link to="/stuurmen" id="add_b">
-                <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
-            </router-link>
+            <button @click="addElement('New page')" id="add_side"><i class="bi bi-plus"></i>Add Element</button>
         </li>
     </ul>
 </template>
@@ -52,6 +65,11 @@ defineProps({
 // onMounted(() => {
 //     console.log(props.showText)
 // })
+const addedElements = ref([])
+
+function addElement(name){
+    addedElements.value.push(name)
+}
 
 
 </script>

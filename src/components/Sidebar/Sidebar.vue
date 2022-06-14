@@ -18,6 +18,10 @@
 
           <CategoryContainer :showText="showText"></CategoryContainer>
 
+
+
+          <SidebarElement></SidebarElement>
+
           <!-- <li id="new_side" class="items">
               <router-link to="/stuurmen">
                 <span contenteditable="false" class="item">Item 2</span>
@@ -93,7 +97,7 @@
               <li class="dropdownbtn">
                 <a id="extra_element">
                   <button id="add_side">
-                    <i class="bi bi-plus"></i>Add Page
+                    <i class="bi bi-plus"></i>Add Element
                   </button>
                 </a>
               </li>
@@ -212,6 +216,7 @@ import { h, Transition } from "vue";
 import { useStore } from "vuex";
 import Logo from "./Logo.vue";
 import CategoryContainer from "./CategoryContainer.vue";
+import SidebarElement from "./SidebarElement.vue";
 
 const store = useStore();
 // const sidebar = ref(null);
@@ -496,6 +501,7 @@ props: {
   /* display: flex; */
   height: min-content;
   width: fit-content;
+  min-width: fit-content;
 }
 
 .wrapper .sidebar ul li a {
