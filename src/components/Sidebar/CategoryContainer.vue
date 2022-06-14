@@ -49,7 +49,13 @@
         </div>
 
         <li v-if="$props.showText">
+<<<<<<< HEAD
             <button @click="addElement('New page')" id="add_side"><i class="bi bi-plus"></i>Add Element</button>
+=======
+            <router-link to="/stuurmen" id="add_b">
+                <button id="add_side"><i class="bi bi-plus"></i>Add Element</button>
+            </router-link>
+>>>>>>> 59f51215775ae23d4d7e5dc292f0002cf6cb47f0
         </li>
     </ul>
 </template>

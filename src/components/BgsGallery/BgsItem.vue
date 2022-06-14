@@ -25,10 +25,15 @@
     :to="'/stuurmen' + '/' + $props.name"
   >
   </router-link> -->
+<<<<<<< HEAD
   <a @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade">
     <img class="prev" :src="$props.imageUrl" @click="handleRouteChange()" />
   </a>
 
+=======
+  <a class="gallery-asset" @mouseenter="hover = true" @mouseleave="hover = false"><img class="prev" :src="$props.imageUrl"
+      @click="handleRouteChange" /></a>
+>>>>>>> 59f51215775ae23d4d7e5dc292f0002cf6cb47f0
 
 </template>
 
