@@ -3,18 +3,11 @@
     <div class="logos" id="template_div">
       <TitlePage :name="$props.pageName"></TitlePage>
 
-      <Container
-        v-for="asset in assets"
-        :key="asset"
-        :name="asset.name"
-        :content="asset.content"
-        :type="asset.type"
-      >
+      <Container v-for="asset in assets" :key="asset" :name="asset.name" :content="asset.content" :type="asset.type">
       </Container>
 
-
       <ColorPalette></ColorPalette>
-      <EditButton></EditButton>
+      <EditButton @add-subtitle="addSubtitle" @add-paragraph="addParagraph" @add-image="addImage"></EditButton>
     </div>
   </div>
 </template>
@@ -39,6 +32,67 @@ const props = defineProps({
 });
 
 const assets = ref(props.assets);
+
+function addAsset(asset){
+  assets.value.push(asset)
+}
+
+function addSubtitle(){
+  addAsset({
+    content:{variant: 'subtitle', 
+    value: 'Subtitle me this'
+    },
+    name: 'subT',
+    type: 'text',
+  })
+}
+
+
+function addParagraph() {
+  addAsset({
+    content: {
+      variant: 'paragraph',
+      value: 'Write here...'
+    },
+    name: 'para',
+    type: 'text',
+  })
+}
+
+
+function addImage() {
+  addAsset({
+    content: {
+      variant: 'regular',
+      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+    },
+    name: 'img',
+    type: 'image',
+  })
+}
+
+
+function addBigImage() {
+  addAsset({
+    content: {
+      variant: 'big',
+      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+    },
+    name: 'subT',
+    type: 'image',
+  })
+}
+
+function addBannerImage() {
+  addAsset({
+    content: {
+      variant: 'banner',
+      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+    },
+    name: 'subT',
+    type: 'image',
+  })
+}
 
 let showDropdown = ref(false);
 

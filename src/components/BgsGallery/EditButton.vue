@@ -11,7 +11,7 @@
           <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
         </a>
 
-        <a><i class="bi bi-card-image"></i></a>
+        <a @click="addImage()"><i class="bi bi-card-image"></i></a>
 
         <a><i class="bi bi-film"></i></a>
 
@@ -44,12 +44,12 @@
       <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
 
-    <a class="subtitle-a">
+    <a @click="addSubtitle()" class="subtitle-a">
       <h3>Subtitle</h3>
       <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
 
-    <a class="paragraph">
+    <a @click="addParagraph()" class="paragraph">
       <p>Paragraph</p>
       <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
@@ -73,6 +73,29 @@ function toggleEdit() {
   // console.log(this.$refs.sidebar);
   // this.$refs.userDropdown.scrollIntoView();
 }
+
+const emit = defineEmits(['addSubtitle'])
+
+function addSubtitle() {
+  emit('addSubtitle')
+}
+
+function addParagraph(){
+  emit('addParagraph')
+}
+
+function addImage() {
+  emit('addImage')
+}
+
+function addBigImage() {
+  emit('addBigImage')
+}
+
+function addBannerImage() {
+  emit('addBannerImage')
+}
+
 </script>
 
 <style scoped lang="scss">

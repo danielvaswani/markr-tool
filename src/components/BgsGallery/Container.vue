@@ -47,6 +47,8 @@ const props = defineProps({
   content: Object,
   type: String,
 });
+
+
 </script>
 
 <style scoped></style>
