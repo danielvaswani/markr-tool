@@ -21,12 +21,6 @@ const router = createRouter({
       component: UserProfilePage,
     },
     {
-      path: "/:user",
-      name: "Gallery",
-      component: Gallery,
-      props: true,
-    },
-    {
       path: "/:user/:bgsName",
       name: "BGSContainer",
       component: BGSContainer,
@@ -43,6 +37,12 @@ const router = createRouter({
       path: "/:user/:bgsName/asset-gallery",
       name: "AssetGallery",
       component: AssetGallery,
+    },
+    {
+      path: "/:user",
+      name: "Gallery",
+      component: Gallery,
+      props: true,
     },
   ],
 });

@@ -5,11 +5,10 @@ import Sidebar from "./components/Sidebar/Sidebar.vue";
 import { ref } from "vue";
 import { h, Transition } from "vue";
 import { useStore } from "vuex";
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from "vue-router";
 
-
-const router = useRouter()
-const route = useRoute()
+const router = useRouter();
+const route = useRoute();
 
 const store = useStore();
 let showSidebar = ref(true);
@@ -39,32 +38,29 @@ function toggleSidebar() {
 
 //       vm.initializeSearch();
 //       next();
-//     }) 
+//     })
 //   }
 // }
-
 </script>
 
 <template>
   <div class="home">
-   
-      <Sidebar>
-      </Sidebar>
+    <Sidebar> </Sidebar>
 
-
-    
-      <router-view class="app-router-view"
-        :style="{ 'width': store.state.showSidebar ? '100% - 250px': '100%', 'transform': 'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')', 'transition': 'all 0.3s ease-in-out'}">
-      </router-view>
-   
+    <router-view
+      class="app-router-view"
+      :style="{
+        width: store.state.showSidebar ? '100% - 250px' : '100%',
+        transform:
+          'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')',
+        transition: 'all 0.3s ease-in-out',
+      }"
+    >
+    </router-view>
   </div>
 </template>
 
 <style>
-
-
-
-
 * {
   margin: 0;
   padding: 0;

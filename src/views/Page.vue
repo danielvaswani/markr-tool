@@ -12,7 +12,6 @@
       >
       </Container>
 
-      <ColorPalette></ColorPalette>
       <EditButton></EditButton>
     </div>
   </div>
@@ -63,7 +62,6 @@ function getCurrentBgsName() {
 const brandGuide = computed(async () => {
   return await store.state.currentBrandGuide;
 });
-
 
 const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
 

@@ -1,66 +1,83 @@
 <template>
-
   <div id="box">
     <div class="wrapper">
       <!--Top menu -->
-      <Transition name="slide-fade">
-        <div v-if="store.state.showSidebar"
-          :style="{ 'transform': 'translateX(' + (store.state.showSidebar ? '0px' : '250px') + ')', 'transition': 'all 0.3s ease-in-out'}"
-          class="sidebar">
+      <div
+        v-if="store.state.showSidebar"
+        :style="{
+          transform:
+            'translateX(' + (store.state.showSidebar ? '0px' : '250px') + ')',
+          transition: 'all 0.3s ease-in-out',
+        }"
+        class="sidebar"
+      >
+        <Logo :showText="showText"></Logo>
 
-          <Logo :showText="showText"></Logo>
+        <div v-if="$route.params.bgsName !== undefined">
+          <span @click="toggleText()" class="edit_ico">
+            <font-awesome-icon class="magic-edit" icon="wand-magic-sparkles" />
+          </span>
+        </div>
 
-          <div v-if="$route.params.bgsName !== undefined">
-            <span @click="toggleText()" class="edit_ico">
-              <font-awesome-icon class="magic-edit" icon="wand-magic-sparkles" />
-            </span>
-          </div>
+        <SidebarContent
+          v-if="$route.params.bgsName !== undefined"
+          :showText="showText"
+        ></SidebarContent>
 
-          <SidebarContent :showText="showText"></SidebarContent>
-
-
-          <article v-if="$route.params.bgsName !== undefined" class="user-profile">
-            <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
-            <!-- <div v-else style="display: flex">
+        <article
+          v-if="$route.params.bgsName !== undefined"
+          class="user-profile"
+        >
+          <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
+          <!-- <div v-else style="display: flex">
             <div  class="brand-title">
               <img src="../assets/images/stuurmen.jpg" alt="" />
             </div>
           </div> -->
-            <ul class="user_bar">
-              <li>
-                <span class="user_icon" id="user_ico">
-                  <img id="u-icon" src="../../assets/images/user.png" alt="user icon" />
-                </span>
-              </li>
-              <li id="user_name" class="user_name">
-                <a>
-                  <span class="drop-btn" @click="toggleUser()">User Name</span>
-                  <span class="drop-btn"> <i class="bi bi-caret-down"></i></span>
-                </a>
-              </li>
+          <ul class="user_bar">
+            <li>
+              <span class="user_icon" id="user_ico">
+                <img
+                  id="u-icon"
+                  src="../../assets/images/user.png"
+                  alt="user icon"
+                />
+              </span>
+            </li>
+            <li id="user_name" class="user_name">
+              <a>
+                <span class="drop-btn" @click="toggleUser()">User Name</span>
+                <span class="drop-btn"> <i class="bi bi-caret-down"></i></span>
+              </a>
+            </li>
 
-              <div v-if="showUser" id="userDropdown" class="user-dropdown">
-                <UserDropdown></UserDropdown>
-              </div>
-            </ul>
-          </article>
-
-          <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
-            <div class="side-edit-color">
-              <font-awesome-icon class="gear" icon="gear" />
+            <div v-if="showUser" id="userDropdown" class="user-dropdown">
+              <UserDropdown></UserDropdown>
             </div>
+          </ul>
+        </article>
+
+        <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
+          <div class="side-edit-color">
+            <font-awesome-icon class="gear" icon="gear" />
           </div>
         </div>
-      </Transition>
+      </div>
     </div>
-
   </div>
 
   <!--HIDE/SHOW SIDEBAR-->
   <Transition name="slide-fade">
-    <div v-if="$route.params.bgsName !== undefined" class="hide_container"
-      :style="{ 'transform': 'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')', 'transition': 'all 0.3s ease-in-out' }"
-      @click="toggleSidebar()">
+    <div
+      v-if="$route.params.bgsName !== undefined"
+      class="hide_container"
+      :style="{
+        transform:
+          'translateX(' + (store.state.showSidebar ? '250px' : '0px') + ')',
+        transition: 'all 0.3s ease-in-out',
+      }"
+      @click="toggleSidebar()"
+    >
       <div class="hide_icon">
         <i class="bi bi-caret-left-fill"></i>
       </div>
@@ -80,12 +97,11 @@ import AddElement from "./AddElement.vue";
 import SidebarElement from "./SidebarElement.vue";
 import SidebarContent from "./SidebarContent.vue";
 
-
 const pages = ref([]);
 
 const props = defineProps({
-  getPages: Boolean
-})
+  getPages: Boolean,
+});
 
 const store = useStore();
 // const sidebar = ref(null);
@@ -100,13 +116,12 @@ function toggleSidebar() {
 let showText = ref(false);
 
 function toggleText() {
-  console.log(showText.value)
+  console.log(showText.value);
   showText.value = !showText.value;
   // this.$refs.userDropdown.scrollIntoView();
 }
 
 store.state.showSidebar = true;
-
 
 // function data(){
 //   return {contenteditable: false}
@@ -146,9 +161,6 @@ props: {
 </script>
 
 <style scoped lang="scss">
-
-
-
 /*
   Enter and leave animations can use different
   durations and timing functions.
@@ -242,7 +254,6 @@ props: {
   scrollbar-highlight-color: #e9baed;
 }
 
-
 /*Sidebar Edit Icon*/
 
 .show_edit {
@@ -334,7 +345,6 @@ props: {
   font-size: 14px;
 }
 
-
 /* Sidebar elements */
 
 .wrapper .sidebar ul li {
@@ -375,7 +385,6 @@ props: {
   background-color: whitesmoke;
 }
 
-
 .wrapper .sidebar ul li a:hover .icon,
 .wrapper .sidebar ul li a.active .icon {
   color: #191827;
@@ -385,7 +394,6 @@ props: {
 .wrapper .sidebar ul li a.active:before {
   display: block;
 }
-
 
 /*/////////USER ICON MENU/////////*/
 

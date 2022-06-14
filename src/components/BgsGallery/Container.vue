@@ -25,6 +25,10 @@
     v-if="$props.type === 'image' && $props.content.variant === 'banner'"
     :url="$props.content.url"
   ></BannerImageAsset>
+
+  <ColorPalette
+    v-if="$props.type === 'color' && $props.content.variant === 'banner'"
+  ></ColorPalette>
 </template>
 
 <script setup>
