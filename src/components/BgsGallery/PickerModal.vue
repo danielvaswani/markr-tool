@@ -3,22 +3,21 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-header">
-          </div>
+          <div class="modal-header"></div>
 
           <div class="modal-body">
-            <ColorPicker :color="color" @color-change="updateColor" />
-        </div>
+            <ColorPicker :color="color" @color-change="getPickedColor" />
+          </div>
 
-        <div class="modal-footer">
-          <!-- <slot name="footer">
+          <div class="modal-footer">
+            <!-- <slot name="footer">
             <button class="modal-default-button">
               Confirm
             </button>
           </slot> -->
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </Transition>
 </template>
@@ -28,32 +27,27 @@ import ColorAsset from "./ColorAsset.vue";
 import { ColorPicker } from "vue-accessible-color-picker";
 import { ref, reactive, toRefs } from "vue";
 
+const emit = defineEmits(["updateColor"]);
+const props = defineProps({
+  color: String,
+});
 
+function getPickedColor(eventData) {
+  emit("updateColor", eventData);
+}
 
-  defineProps ({
-    color: String,
-  })
+//Convert to rgb
 
-  // components: { ColorPicker },
-  // setup(props) {
-  //   let pickedcolor = ref(props.color);
+// components: { ColorPicker },
+// setup(props) {
+//   let pickedcolor = ref(props.color);
 
-  //   return {pickedcolor}
+//   return {pickedcolor}
 
-  // }
-  
+// }
 </script>
 
 <style>
-
-
-
-
-
-
-
-
-
 .modal-mask {
   /* transform: translateY(240px); */
   /* position: absolute; */
@@ -100,31 +94,31 @@ import { ref, reactive, toRefs } from "vue";
   background: #e9baed;
 }
 
-.vacp-color-picker{
+.vacp-color-picker {
   display: flex;
   flex-direction: column-reverse;
   font-family: Gilroy !important;
 }
 
-.vacp-color-space{
+.vacp-color-space {
   border-radius: 10px;
 }
 
-.vacp-color-input{
+.vacp-color-input {
   width: 48px;
 }
 
-.vacp-format-switch-button{
+.vacp-format-switch-button {
   margin-top: 100px;
   position: absolute;
   border: #e9baed 3px solid;
 }
 
-.vacp-copy-button{
+.vacp-copy-button {
   margin-left: 140px;
 }
 
-#color-picker-color-hex{
+#color-picker-color-hex {
   width: 72px !important;
 }
 
@@ -134,7 +128,7 @@ import { ref, reactive, toRefs } from "vue";
   font-weight: bold;
 }
 
-.vacp-color-input{
+.vacp-color-input {
   font-weight: normal;
 }
 

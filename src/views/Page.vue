@@ -3,11 +3,21 @@
     <div class="logos" id="template_div">
       <TitlePage :name="$props.pageName"></TitlePage>
 
-      <Container v-for="asset in assets" :key="asset" :name="asset.name" :content="asset.content" :type="asset.type">
+      <Container
+        v-for="asset in assets"
+        :key="asset"
+        :name="asset.name"
+        :content="asset.content"
+        :type="asset.type"
+      >
       </Container>
 
-      <ColorPalette></ColorPalette>
-      <EditButton @add-subtitle="addSubtitle" @add-paragraph="addParagraph" @add-image="addImage"></EditButton>
+      <EditButton
+        @add-subtitle="addSubtitle"
+        @add-paragraph="addParagraph"
+        @add-image="addImage"
+        @add-color="addColorPalette"
+      ></EditButton>
     </div>
   </div>
 </template>
@@ -33,65 +43,74 @@ const props = defineProps({
 
 const assets = ref(props.assets);
 
-function addAsset(asset){
-  assets.value.push(asset)
-}
+const predefinedColors = [
+  { red: 235, green: 54, blue: 23, name: "Color1" },
+  { red: 25, green: 46, blue: 87, name: "Color2" },
+  { red: 213, green: 90, blue: 200, name: "Color3" },
+];
 
-function addSubtitle(){
+function addColorPalette() {
   addAsset({
-    content:{variant: 'subtitle', 
-    value: 'Subtitle me this'
-    },
-    name: 'subT',
-    type: 'text',
-  })
+    content: { colors: predefinedColors },
+    name: "Primary Colors",
+    type: "color",
+  });
 }
 
+function addAsset(asset) {
+  assets.value.push(asset);
+}
+
+function addSubtitle() {
+  addAsset({
+    content: { variant: "subtitle", value: "Subtitle me this" },
+    name: "subT",
+    type: "text",
+  });
+}
 
 function addParagraph() {
   addAsset({
     content: {
-      variant: 'paragraph',
-      value: 'Write here...'
+      variant: "paragraph",
+      value: "Write here...",
     },
-    name: 'para',
-    type: 'text',
-  })
+    name: "para",
+    type: "text",
+  });
 }
-
 
 function addImage() {
   addAsset({
     content: {
-      variant: 'regular',
-      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+      variant: "regular",
+      url: "https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png",
     },
-    name: 'img',
-    type: 'image',
-  })
+    name: "img",
+    type: "image",
+  });
 }
-
 
 function addBigImage() {
   addAsset({
     content: {
-      variant: 'big',
-      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+      variant: "big",
+      url: "https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png",
     },
-    name: 'subT',
-    type: 'image',
-  })
+    name: "subT",
+    type: "image",
+  });
 }
 
 function addBannerImage() {
   addAsset({
     content: {
-      variant: 'banner',
-      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+      variant: "banner",
+      url: "https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png",
     },
-    name: 'subT',
-    type: 'image',
-  })
+    name: "subT",
+    type: "image",
+  });
 }
 
 let showDropdown = ref(false);
@@ -120,12 +139,11 @@ const brandGuide = computed(() => {
   return store.state.currentBrandGuide;
 });
 
-const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
+// const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
 
-function getColors() {
-  return colors;
-}
-
+// function getColors() {
+//   return colors;
+// }
 </script>
 
 <style scoped lang="scss">

@@ -9,51 +9,66 @@
         <!-- <button class="btn-del" @click="deleteCard(color)">X</button> -->
         <div class="colorpicker-active"></div>
         <div class="pickedcolor"></div>
-        <div class="colorpicker-preview" :style="{'background-color' : $props.color }"></div>
+        <div
+          class="colorpicker-preview"
+          :style="{ 'background-color': $props.color }"
+        ></div>
       </div>
       <div class="btn-wrap">
         <!-- <button class="btn-select">Select</button> -->
-        <font-awesome-icon @click="showModal()" class="paintbrush" icon="paintbrush" />
-
+        <font-awesome-icon
+          @click="showModal()"
+          class="paintbrush"
+          icon="paintbrush"
+        />
       </div>
     </div>
-    <PickerModal :color="color" v-if="displayModal">
+    <PickerModal
+      :color="rgbToHex"
+      @update-color="updateColor(newColor)"
+      v-if="displayModal"
+    >
     </PickerModal>
   </div>
-
 </template>
 
 <script setup>
 import { ref, reactive, toRefs } from "vue";
 import PickerModal from "./PickerModal.vue";
 
+const emit = defineEmits([""]);
+const props = defineProps({
+  color: Object,
+});
 
+function updateColor(newColor) {
+  console.log(newColor);
+}
+const color = ref(props.color);
 
-  defineProps ({
-    color: String
-  })
+const rgbToHex = computed(
+  () =>
+    "#" +
+    ((1 << 24) + (props.color.r << 16) + (props.color.g << 8) + props.color.b)
+      .toString(16)
+      .slice(1)
+);
+// let pickedcolor = ref(props.color);
 
-    // let pickedcolor = ref(props.color);
+// let bgc = ref({ backgroundColor: pickedcolor.value })
 
-    // let bgc = ref({ backgroundColor: pickedcolor.value })
+let displayModal = ref(false);
 
-    let displayModal = ref(false)
+function showModal() {
+  displayModal.value = !displayModal.value;
+}
 
-    function showModal() {
-      displayModal.value = !displayModal.value;
-    }
-
-    // function updateColor(eventData) {
-    //   pickedcolor.value = eventData.colors?.hex;
-    //   bgc.value.backgroundColor = pickedcolor.value;
-    // }
-
-
-
+// function updateColor(eventData) {
+//   pickedcolor.value = eventData.colors?.hex;
+//   bgc.value.backgroundColor = pickedcolor.value;
+// }
 </script>
 <style scoped>
-
-
 .cardcontainer {
   display: flex;
   flex-direction: column;
@@ -69,7 +84,7 @@ import PickerModal from "./PickerModal.vue";
   box-sizing: border-box;
 }
 
-.trio-container{
+.trio-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -77,12 +92,12 @@ import PickerModal from "./PickerModal.vue";
   gap: 20px;
 }
 
-.color-name{
+.color-name {
   font-size: 1.2rem;
   padding: 2px;
 }
 
-.color-name:hover{
+.color-name:hover {
   border: #e9baed 2px solid;
   padding: 2px;
 }
@@ -148,19 +163,18 @@ import PickerModal from "./PickerModal.vue";
   font-size: 16px;
 }
 
-.btn-wrap{
+.btn-wrap {
   display: flex;
 }
 
-.paintbrush{
+.paintbrush {
   cursor: pointer;
   color: rgba(136, 136, 136, 0.414);
   font-size: 1.3rem;
 }
 
-.paintbrush:hover{
+.paintbrush:hover {
   color: #e9baed;
   transform: scale(120%);
 }
-
 </style>

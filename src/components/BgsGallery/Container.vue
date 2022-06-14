@@ -25,6 +25,10 @@
     v-if="$props.type === 'image' && $props.content.variant === 'banner'"
     :url="$props.content.url"
   ></BannerImageAsset>
+  <!-- <ColorPallete
+    v-if="$props.type === 'color'"
+    :colors="$props.content.colors"
+  ></ColorPallete> -->
 </template>
 
 <script setup>
@@ -42,13 +46,15 @@ import VideoAsset from "./VideoAsset.vue";
 
 const store = useStore();
 
+const getRandomUUID = computed(() => getRandomUUID());
+
 const props = defineProps({
   name: String,
   content: Object,
   type: String,
 });
 
-
+const content = ref(props.content);
 </script>
 
 <style scoped></style>

@@ -1,7 +1,6 @@
 <template>
   <div class="color-temp">
-    <div class="colortext">
-    </div>
+    <div class="colortext"></div>
 
     <div class="colors">
       <TitleAsset></TitleAsset>
@@ -17,7 +16,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -27,11 +25,11 @@ import ColorAsset from "./ColorAsset.vue";
 import { ref, reactive } from "vue";
 import TitleAsset from "./TitleAsset.vue";
 
-
 defineProps({
-  colors: Array
-})
+  colors: Array,
+});
 
+const emit = defineEmit([""]);
 
 // let colorList = ref(colors);
 
@@ -41,23 +39,17 @@ defineProps({
 //   colorList.value.splice(cardToDeleteIndex, 1);
 // }
 
-
 // function addColorCard() {
 //   colorList.value.push("#101B37");
 // }
 // return { colorList, addColorCard, deleteCard };
 
-
-
 // function myFunction() {
 //   document.getElementById("myDropdown").classList.toggle("show");
 // }
-
-
 </script>
 
 <style scoped>
-
 .pickersContainer {
   display: flex;
   flex-direction: row;
@@ -70,7 +62,6 @@ defineProps({
 
 .color-temp {
   width: 100%;
-
 }
 
 .colors {
@@ -93,7 +84,7 @@ defineProps({
   color: #2c2a45;
 }
 
-.add-color-container{
+.add-color-container {
   border: #191827 2px solid;
   border-radius: 15px;
   width: 220px;
@@ -113,7 +104,7 @@ defineProps({
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  border:2px solid #e7cee9;
+  border: 2px solid #e7cee9;
   align-items: center;
   background: #191827;
 }
@@ -125,9 +116,9 @@ defineProps({
   margin-top: 8px;
 }
 
-.del-icon:hover{
+.del-icon:hover {
   color: #eab4ee;
   transform: scale(98%);
-  transition: all .4s;
+  transition: all 0.4s;
 }
 </style>

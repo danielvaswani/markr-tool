@@ -1,13 +1,27 @@
 <template>
   <!--Edit Button-->
   <Transition>
-    <div id="edit_sidebar" class="sidesnip"
-      :style="{ 'transform': 'translateX(10px)', 'transition': 'all 0.3s ease-in-out'}">
+    <div
+      id="edit_sidebar"
+      class="sidesnip"
+      :style="{
+        transform: 'translateX(10px)',
+        transition: 'all 0.3s ease-in-out',
+      }"
+    >
       <span @click="toggleEdit()" class="edit" id="edit_b">
         <i class="bi bi-plus-square-dotted"></i>
       </span>
-      <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
-        <a @mouseenter="hover = true" @mouseleave="hover = false" style="padding: 12px 8px">
+      <div
+        v-if="showDropdown"
+        id="myDropdown"
+        class="dropdown-content dropdown"
+      >
+        <a
+          @mouseenter="hover = true"
+          @mouseleave="hover = false"
+          style="padding: 12px 8px"
+        >
           <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
         </a>
 
@@ -20,36 +34,43 @@
           <i id="small_plus" class="bi bi-plus"></i>
         </div>
 
-        <span style="padding: 12px 8px" id="edit_icon"><i style="font-size: 1.6rem" class="bi bi-paint-bucket"></i>
+        <span style="padding: 12px 8px" id="edit_icon"
+          ><i style="font-size: 1.6rem" class="bi bi-paint-bucket"></i>
           <!-- <p class="drop_p">Edit</p> -->
         </span>
 
-        <a><i class="bi bi-palette-fill"></i></a>
+        <a @click="addColorPalette()"><i class="bi bi-palette-fill"></i></a>
 
         <a><i class="bi bi-share-fill"></i></a>
 
-        <a onclick="printDiv('printIt')" value="print a div!"><i class="bi bi-printer-fill"></i></a>
+        <a onclick="printDiv('printIt')" value="print a div!"
+          ><i class="bi bi-printer-fill"></i
+        ></a>
 
         <!-- <a id="delete"> <i id="delete_icon" class="bi bi-trash3"></i></a> -->
       </div>
     </div>
   </Transition>
 
-
   <!--Texts Dropdown-->
-  <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" id="textsDropdown"
-    class="dropdown-content-texts dropdown">
-    <a class="title-a">
+  <div
+    v-if="hover"
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
+    id="textsDropdown"
+    class="dropdown-content-texts dropdown"
+  >
+    <!-- <a class="title-a">
       <h2>Title</h2>
       <font-awesome-icon class="chevron" icon="chevron-right" />
-    </a>
+    </a> -->
 
-    <a @click="addSubtitle()" class="subtitle-a">
+    <a @click="addSubtitle" class="subtitle-a">
       <h3>Subtitle</h3>
       <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
 
-    <a @click="addParagraph()" class="paragraph">
+    <a @click="addParagraph" class="paragraph">
       <p>Paragraph</p>
       <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
@@ -74,28 +95,31 @@ function toggleEdit() {
   // this.$refs.userDropdown.scrollIntoView();
 }
 
-const emit = defineEmits(['addSubtitle'])
+const emit = defineEmits(["addSubtitle", "addParagraph", "addColorPalette"]);
 
-function addSubtitle() {
-  emit('addSubtitle')
+function addColorPalette() {
+  emit("addColorPalette");
 }
 
-function addParagraph(){
-  emit('addParagraph')
+function addSubtitle() {
+  emit("addSubtitle");
+}
+
+function addParagraph() {
+  emit("addParagraph");
 }
 
 function addImage() {
-  emit('addImage')
+  emit("addImage");
 }
 
 function addBigImage() {
-  emit('addBigImage')
+  emit("addBigImage");
 }
 
 function addBannerImage() {
-  emit('addBannerImage')
+  emit("addBannerImage");
 }
-
 </script>
 
 <style scoped lang="scss">
