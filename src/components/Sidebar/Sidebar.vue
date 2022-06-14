@@ -93,7 +93,7 @@
               <li class="dropdownbtn">
                 <a id="extra_element">
                   <button id="add_side">
-                    <i class="bi bi-plus"></i>Add Page
+                    <i class="bi bi-plus"></i>Add Element
                   </button>
                 </a>
               </li>

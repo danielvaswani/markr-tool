@@ -2,10 +2,7 @@
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
     <div class="preview-icon">
       <span class="preview">
-        <a
-          target="_blank"
-          :href="'https://' + $props.subdomain + '.markrtool.nl'"
-        >
+        <a target="_blank" :href="'https://' + $props.subdomain + '.markrtool.nl'">
           <font-awesome-icon class="bi" icon="eye" />
         </a>
       </span>
@@ -27,13 +24,9 @@
     :to="'/stuurmen' + '/' + $props.name"
   >
   </router-link> -->
-  <img
-    class="prev"
-    @mouseenter="hover = true"
-    @mouseleave="hover = false"
-    :src="$props.imageUrl"
-    @click="handleRouteChange"
-  />
+  <a class="gallery-asset" @mouseenter="hover = true" @mouseleave="hover = false"><img class="prev" :src="$props.imageUrl"
+      @click="handleRouteChange" /></a>
+
 </template>
 
 //
@@ -44,6 +37,7 @@
 
 // const router = useRouter();
 // const route = useRoute();
+const hover = ref(false);
 
 // const store = useStore();
 
@@ -89,7 +83,7 @@ export default {
 
     const store = useStore();
 
-    const hover = ref(false);
+    
   },
   methods: {
     async handleRouteChange() {
@@ -122,6 +116,10 @@ export default {
   margin-left: 60px;
   margin-top: 120px;
   font-family: "Gilroy Extrabold";
+}
+
+.gallery-asset{
+  cursor: pointer;
 }
 
 .container {

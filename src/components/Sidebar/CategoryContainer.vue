@@ -9,7 +9,7 @@
                 </li> -->
         <div class="brand_title">
             <li id="t_1">
-                <router-link to="/stuurmen">
+                <router-link :to="'/stuurmen' + '/' + $route.params.bgsName + '/' + $props.name">
                     <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
                 </router-link>
             </li>
@@ -35,7 +35,7 @@
 
         <li v-if="$props.showText">
             <router-link to="/stuurmen" id="add_b">
-                <button id="add_side"><i class="bi bi-plus"></i>Add Page</button>
+                <button id="add_side"><i class="bi bi-plus"></i>Add Element</button>
             </router-link>
         </li>
     </ul>

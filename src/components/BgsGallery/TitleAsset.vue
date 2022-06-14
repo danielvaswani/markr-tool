@@ -5,7 +5,7 @@
             <font-awesome-icon class="grip-lines" icon="grip-lines" />
         </div>
 
-        <h2 @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-title" id="template_title" contenteditable="true">{{$props.name}}QUACK</h2>
+        <h2 @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-title" id="template_title" contenteditable="true">Primary colors</h2>
     </div>
 
 </template>
