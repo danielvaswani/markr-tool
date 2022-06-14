@@ -4,7 +4,7 @@
     </div>
 
     <div class="colors">
-      <TitleAsset></TitleAsset>
+      <TitleAsset name="Colors"></TitleAsset>
       <div class="pickersContainer">
         <div v-for="color in $props.colors" :color="color" :key="color">
           <ColorAsset :color="color"></ColorAsset>
@@ -26,12 +26,33 @@ import TitlePage from "./TitlePage.vue";
 import ColorAsset from "./ColorAsset.vue";
 import { ref, reactive } from "vue";
 import TitleAsset from "./TitleAsset.vue";
+import { emit } from "process";
 
 
 defineProps({
   colors: Array
 })
 
+const emit = defineEmits(['addColors'])
+
+const colors = ref([]);
+
+const predefinedColors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"]
+
+colors.value.push(...predefinedColors)
+
+function addColorPaletteToAssets(){
+  emit('addColorPallete', colors.value)
+
+}
+
+function addColorToColorPallete(color){
+  colors.value.push(color)
+}
+
+// function getColors() {
+//   return colors;
+// }
 
 // let colorList = ref(colors);
 

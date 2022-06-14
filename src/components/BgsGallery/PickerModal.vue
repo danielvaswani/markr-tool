@@ -7,18 +7,18 @@
           </div>
 
           <div class="modal-body">
-            <ColorPicker :color="color" @color-change="updateColor" />
-        </div>
+            <ColorPicker :color="color" :visible-formats="['hex']" @color-change="updateColor" />
+          </div>
 
-        <div class="modal-footer">
-          <!-- <slot name="footer">
+          <div class="modal-footer">
+            <!-- <slot name="footer">
             <button class="modal-default-button">
               Confirm
             </button>
           </slot> -->
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </Transition>
 </template>
@@ -27,12 +27,22 @@
 import ColorAsset from "./ColorAsset.vue";
 import { ColorPicker } from "vue-accessible-color-picker";
 import { ref, reactive, toRefs } from "vue";
+import { propsToAttrMap } from "@vue/shared";
 
 
+const emit = defineEmits(['changeColor'])
 
-  defineProps ({
+  const props = defineProps ({
     color: String,
   })
+
+const pickedColor = ref("");
+pickedColor.value = props.color
+
+function updateColor(eventData) {
+  pickedColor.value = eventData.cssColor
+  emit('colorChange', pickedColor.value)
+}
 
   // components: { ColorPicker },
   // setup(props) {

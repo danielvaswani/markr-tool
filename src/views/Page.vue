@@ -120,11 +120,7 @@ const brandGuide = computed(() => {
   return store.state.currentBrandGuide;
 });
 
-const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
 
-function getColors() {
-  return colors;
-}
 
 </script>
 

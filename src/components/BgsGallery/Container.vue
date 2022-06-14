@@ -1,30 +1,23 @@
 <template>
   <!-- <TitleAsset  :name="$props.name"></TitleAsset> -->
 
-  <SubtitleAsset
-    v-if="$props.type === 'text' && $props.content.variant === 'subtitle'"
-    :value="$props.content.value"
-  ></SubtitleAsset>
+  <SubtitleAsset v-if="$props.type === 'text' && $props.content.variant === 'subtitle'" :value="$props.content.value">
+  </SubtitleAsset>
 
-  <ParagraphAsset
-    v-if="$props.type === 'text' && $props.content.variant === 'paragraph'"
-    :value="$props.content.value"
-  ></ParagraphAsset>
+  <ParagraphAsset v-if="$props.type === 'text' && $props.content.variant === 'paragraph'" :value="$props.content.value">
+  </ParagraphAsset>
 
-  <ImageAsset
-    v-if="$props.type === 'image' && $props.content.variant === 'regular'"
-    :url="$props.content.url"
-  ></ImageAsset>
+  <ImageAsset v-if="$props.type === 'image' && $props.content.variant === 'regular'" :url="$props.content.url">
+  </ImageAsset>
 
-  <BigImageAsset
-    v-if="$props.type === 'image' && $props.content.variant === 'big'"
-    :url="$props.content.url"
-  ></BigImageAsset>
+  <BigImageAsset v-if="$props.type === 'image' && $props.content.variant === 'big'" :url="$props.content.url">
+  </BigImageAsset>
 
-  <BannerImageAsset
-    v-if="$props.type === 'image' && $props.content.variant === 'banner'"
-    :url="$props.content.url"
-  ></BannerImageAsset>
+  <BannerImageAsset v-if="$props.type === 'image' && $props.content.variant === 'banner'" :url="$props.content.url">
+  </BannerImageAsset>
+
+  <ColorPalette v-if="$props.type === 'color'" :colors="$props.content.colors">
+  </ColorPalette>
 </template>
 
 <script setup>

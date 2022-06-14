@@ -1,6 +1,6 @@
 <template>
   <div class="container_color">
-    <Sidebar />
+    <!-- <Sidebar />
 
     <div class="colors">
       <div class="dropdown2">
@@ -28,9 +28,9 @@
         <img class="addtemp-icon" src="../assets/images/add.png" />
       </div>
       <div v-for="colors in predefindeColors">
-        <ColorTemp :predefindeColors="colors" />
+        <ColorPalette :predefindeColors="colors" />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

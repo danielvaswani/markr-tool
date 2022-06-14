@@ -17,21 +17,37 @@
 
       </div>
     </div>
-    <PickerModal :color="color" v-if="displayModal">
+    <PickerModal :color="color" @change-color="changeColor(newColor)" v-if="displayModal">
     </PickerModal>
   </div>
 
 </template>
 
 <script setup>
+import { randomUUID } from "crypto";
 import { ref, reactive, toRefs } from "vue";
 import PickerModal from "./PickerModal.vue";
 
 
 
-  defineProps ({
+  const props = defineProps ({
     color: String
   })
+
+  const color = ref('')
+  color.value = props.color
+
+  const emit = defineEmits(['addColor'])
+
+  function addColorToColorPallete(){
+    emit('addColor', {
+      red: 0, green:0, blue: 0, name: "New Color " + randomUUID()
+    })
+  }
+
+  function changeColor(newColor){
+    color.value = newColor
+  }
 
     // let pickedcolor = ref(props.color);
 

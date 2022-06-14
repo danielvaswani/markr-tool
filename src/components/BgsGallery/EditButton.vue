@@ -24,7 +24,7 @@
           <!-- <p class="drop_p">Edit</p> -->
         </span>
 
-        <a><i class="bi bi-palette-fill"></i></a>
+        <a @click="addColorPalette()"><i class="bi bi-palette-fill"></i></a>
 
         <a><i class="bi bi-share-fill"></i></a>
 
@@ -74,7 +74,7 @@ function toggleEdit() {
   // this.$refs.userDropdown.scrollIntoView();
 }
 
-const emit = defineEmits(['addSubtitle'])
+const emit = defineEmits(['addSubtitle', 'addParagraph', 'addImage', 'addBigImage', 'addBannerImage', 'addColorPalette'])
 
 function addSubtitle() {
   emit('addSubtitle')
@@ -94,6 +94,10 @@ function addBigImage() {
 
 function addBannerImage() {
   emit('addBannerImage')
+}
+
+function addColorPalette(){
+  emit('addColorPalette')
 }
 
 </script>
