@@ -84,6 +84,7 @@ function toggleLive() {
 
 
 .close{
+  
   color: #e9baed;
   font-size: 2rem;
   margin: auto;

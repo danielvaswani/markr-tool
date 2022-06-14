@@ -14,12 +14,12 @@
                 </div>
             </div>
 
-            <div v-for="p in page" :key="p"  class="li-text">
+            <div  class="li-text">
                 <div v-if="$props.showText" class="move-element">
                     <font-awesome-icon class="grip-lines" icon="grip-lines" />
                 </div>
                 <li>
-                    <router-link :to="p">
+                    <router-link>
                         <span id="text1" contenteditable="false" class="item">{{ props.page }}</span>
                     </router-link>
                 </li>
@@ -30,11 +30,11 @@
             </div>
 
 
-            <SidebarElement></SidebarElement>
+            <!-- <SidebarElement></SidebarElement> -->
 
-            <component v-for="field in fields" v-bind:is="field.type" :key="field.id" type="template" id="new-element">
+            <!-- <component v-for="field in fields" v-bind:is="field.type" :key="field.id" type="template" id="new-element">
                 <SidebarElement></SidebarElement>
-            </component>
+            </component> -->
 
 
             <AddElement v-on:click="addElement('new-element')" v-if="$props.showText" :showText="showText"></AddElement>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                <div v-for="p in page" :key="p" class="li-text">
+                <div  class="li-text">
                     <div v-if="$props.showText" class="move-element">
                         <font-awesome-icon class="grip-lines" icon="grip-lines" />
                     </div>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <div v-for="p in page" :key="p" class="li-text">
+                <div class="li-text">
                     <div v-if="$props.showText" class="move-element">
                         <font-awesome-icon class="grip-lines" icon="grip-lines" />
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
 
-                <div v-for="p in page" :key="p" class="li-text">
+                <div class="li-text">
                     <div v-if="$props.showText" class="move-element">
                         <font-awesome-icon class="grip-lines" icon="grip-lines" />
                     </div>

@@ -12,7 +12,10 @@
       >
       </Container>
 
-      <ColorPalette></ColorPalette>
+      <SidebarSettings></SidebarSettings>
+
+
+
       <EditButton></EditButton>
     </div>
   </div>
@@ -25,6 +28,7 @@ import TitlePage from "../components/BgsGallery/TitlePage.vue";
 import Container from "../components/BgsGallery/Container.vue";
 import EditButton from "../components/BgsGallery/EditButton.vue";
 import ColorPalette from "../components/BgsGallery/ColorPalette.vue";
+import SidebarSettings from "../components/Sidebar/SidebarSettings.vue";
 
 const store = useStore();
 

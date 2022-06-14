@@ -25,25 +25,26 @@ const router = createRouter({
       name: "Gallery",
       component: Gallery,
       props: true,
+      children: []
     },
     {
-      path: "/:user/:bgsName",
-      name: "BGSContainer",
-      component: BGSContainer,
-      props: true,
-      children: [],
-    },
-    {
-      path: "/:user/:bgsName/:pageName",
-      name: "Page",
-      component: Page,
-      props: true,
-    },
-    {
-      path: "/:user/:bgsName/asset-gallery",
-      name: "AssetGallery",
-      component: AssetGallery,
-    },
+    path: "/:user/:bgsName",
+    name: "BGSContainer",
+    component: BGSContainer,
+    props: true,
+    children: [],
+  },
+  {
+    path: "/:user/:bgsName/:pageName",
+    name: "Page",
+    component: Page,
+    props: true,
+  },
+  {
+    path: "/:user/:bgsName/asset-gallery",
+    name: "AssetGallery",
+    component: AssetGallery,
+  },
   ],
 });
 
