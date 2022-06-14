@@ -24,6 +24,7 @@ const router = createRouter({
       path: "/:user",
       name: "Gallery",
       component: Gallery,
+      props: true,
     },
     {
       path: "/:user/:bgsName",

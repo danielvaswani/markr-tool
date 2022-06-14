@@ -1,16 +1,16 @@
 <template>
 
-    <div v-if="$props.showText" class="li-text">
-        <div v-if="showText" class="move-element">
+    <div :showText="showText" class="li-text">
+        <div v-if="$props.showText" class="move-element">
             <font-awesome-icon class="grip-lines" icon="grip-lines" />
         </div>
-        <li id="new-side" class="items">
-            <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">New Element</span>
+        <li v-for="p in pageNames" :key="p" id="new-side" class="items">
+            <router-link :to="p">
+                <span :contenteditable="false" class="item">New Element</span>
             </router-link>
         </li>
-        <div class="space-li"></div>
-        <div v-if="showText" class="text_edit">
+        <div @click="toggleEditText()" class="space-li"></div>
+        <div v-if="$props.showText" class="text_edit">
             <font-awesome-icon icon="pen" />
         </div>
     </div>
@@ -20,14 +20,30 @@
 <script setup>
 import { ref, defineExpose, onMounted } from "vue";
 
-defineProps({
-    showText: Boolean
+const props = defineProps({
+    showText: Boolean,
+     pageNames: Array
 });
+
+
+
+let showText = ref(false);
+
+function toggleText() {
+    console.log(showText.value)
+    showText.value = !showText.value;
+    // this.$refs.userDropdown.scrollIntoView();
+}
+
+const editText = ref(false)
+
+function toggleEditText() {
+    toggleEditText.value = !toggleEditText.value
+}
+
 </script>
 
 <style scoped lang="scss">
-
-
 
 
 .li-text {

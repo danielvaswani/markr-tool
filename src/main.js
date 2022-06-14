@@ -25,7 +25,21 @@ import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(
+
+
+// import { BootstrapIconsPlugin } from "bootstrap-icons-vue";
+import VueDragResize from "vue-drag-resize";
+
+const app = createApp(App)
+  .use(router)
+  .use(store)
+  // .use(BootstrapIconsPlugin)
+  .component("vue-drag-resize", VueDragResize)
+  .component("font-awesome-icon", FontAwesomeIcon)
+  .mount("#app");
+
+
+  library.add(
   faWandMagicSparkles,
   faPen,
   faBrush,
@@ -45,14 +59,3 @@ library.add(
   faXmark,
   faChevronRight
 );
-
-import { BootstrapIconsPlugin } from "bootstrap-icons-vue";
-import VueDragResize from "vue-drag-resize";
-
-const app = createApp(App)
-  .use(router)
-  .use(store)
-  .use(BootstrapIconsPlugin)
-  .component("vue-drag-resize", VueDragResize)
-  .component("font-awesome-icon", FontAwesomeIcon)
-  .mount("#app");

@@ -18,30 +18,30 @@ function toggleSidebar() {
   showSidebar.value = !showSidebar.value;
 }
 
-return {
+// return {
 
-  data() {
-    return {
-      searchInitialized: false
-    }
-  },
-  methods: {
-    initializeSearch() {
-      setTimeout(() => {
-        this.searchInitialized = true;
-      }, 1000)
-    }
-  },
+//   data() {
+//     return {
+//       searchInitialized: false
+//     }
+//   },
+//   methods: {
+//     initializeSearch() {
+//       setTimeout(() => {
+//         this.searchInitialized = true;
+//       }, 1000)
+//     }
+//   },
 
-  beforeRouteEnter(to, from, next){
-    next(vm => {
-      // access to component's instance using `vm` . this is done because this navigation guard is called before the component is created.
+//   beforeRouteEnter(to, from, next){
+//     next(vm => {
+//       // access to component's instance using `vm` . this is done because this navigation guard is called before the component is created.
 
-      vm.initializeSearch();
-      next();
-    }) 
-  }
-}
+//       vm.initializeSearch();
+//       next();
+//     }) 
+//   }
+// }
 
 </script>
 

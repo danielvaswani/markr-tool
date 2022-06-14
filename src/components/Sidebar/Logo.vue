@@ -1,6 +1,6 @@
 <template>
     <div class="logo">
-        <router-link :to="'/stuurmen'">
+        <router-link :to="'/stuurmen' + '/'">
             <span>
                 <img src="../../assets/images/Markr_w.png" alt="logo" />
             </span>

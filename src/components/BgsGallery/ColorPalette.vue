@@ -28,7 +28,7 @@ import { ref, reactive } from "vue";
 import TitleAsset from "./TitleAsset.vue";
 
 
-defineProps({
+const props = defineProps({
   colors: Array
 })
 
@@ -44,14 +44,10 @@ defineProps({
 
 // function addColorCard() {
 //   colorList.value.push("#101B37");
+//   return { colorList, addColorCard, deleteCard };
 // }
-// return { colorList, addColorCard, deleteCard };
 
 
-
-// function myFunction() {
-//   document.getElementById("myDropdown").classList.toggle("show");
-// }
 
 
 </script>

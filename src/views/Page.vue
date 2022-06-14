@@ -2,7 +2,7 @@
   <div class="container_logo">
     <div class="logos" id="template_div">
       <TitlePage :name="$props.pageName"></TitlePage>
-      {{$props.assets}}
+      <!-- {{$props.assets}} -->
       <Container
         v-for="asset in assets"
         :key="asset"
@@ -11,6 +11,8 @@
         :type="asset.type"
       >
       </Container>
+
+      <ColorPalette></ColorPalette>
       <EditButton></EditButton>
     </div>
   </div>
@@ -22,6 +24,7 @@ import { useStore } from "vuex";
 import TitlePage from "../components/BgsGallery/TitlePage.vue";
 import Container from "../components/BgsGallery/Container.vue";
 import EditButton from "../components/BgsGallery/EditButton.vue";
+import ColorPalette from "../components/BgsGallery/ColorPalette.vue";
 
 const store = useStore();
 
@@ -40,7 +43,6 @@ let showDropdown = ref(false);
 
 function toggleEdit() {
   showDropdown.value = !showDropdown.value;
-  console.log("Im working");
   // console.log(this.$refs.sidebar);
   // this.$refs.userDropdown.scrollIntoView();
 }
@@ -58,9 +60,10 @@ function getCurrentBgsName() {
 //     return store.getters.getBrandGuide;
 // });
 
-const brandGuide = computed(() => {
-  return store.state.currentBrandGuide;
+const brandGuide = computed(async () => {
+  return await store.state.currentBrandGuide;
 });
+
 
 const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
 

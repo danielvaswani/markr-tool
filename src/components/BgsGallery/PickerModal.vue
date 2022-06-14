@@ -26,22 +26,19 @@
 <script setup>
 import ColorAsset from "./ColorAsset.vue";
 import { ColorPicker } from "vue-accessible-color-picker";
-import { ref, reactive, toRefs } from "vue";
+import { ref, reactive, toRefs, computed } from "vue";
 
 
 
-  defineProps ({
+ const props = defineProps ({
     color: String,
   })
 
-  // components: { ColorPicker },
-  // setup(props) {
+  // computed(() =>{
+
   //   let pickedcolor = ref(props.color);
-
   //   return {pickedcolor}
-
-  // }
-  
+  // })
 </script>
 
 <style>

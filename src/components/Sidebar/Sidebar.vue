@@ -18,127 +18,6 @@
 
           <SidebarContent :showText="showText"></SidebarContent>
 
-          <!-- <li id="new_side" class="items">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">Item 2</span>
-              </router-link>
-            </li>
-
-            <li class="items" id="t_3">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">Item 3</span>
-              </router-link>
-            </li>-->
-
-
-          <!-- <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
-
-            <div class="brand_title">
-              <li id="t_2">
-                <router-link to="/stuurmen">
-                  <span contenteditable="false" class="item" id="brand_name2">BRAND IDENTITY</span>
-                </router-link>
-              </li>
-              <div v-if="showText" class="text_edit">
-                <font-awesome-icon @click="contenteditable = !contenteditable" class="fa-pen" icon="pen" />
-              </div>
-            </div>
-
-            <div class="li-text">
-              <div v-if="showText" class="move-element">
-                <font-awesome-icon class="grip-lines" icon="grip-lines" />
-              </div>
-              <li>
-                <router-link to="/stuurmen">
-                  <span id="text2" contenteditable="false" class="item">Logo</span>
-                </router-link>
-              </li>
-              <div class="space-li"></div>
-              <div v-if="showText" class="text_edit">
-                <font-awesome-icon icon="pen" />
-              </div>
-            </div>
-
-            <div class="li-text">
-              <div v-if="showText" class="move-element">
-                <font-awesome-icon class="grip-lines" icon="grip-lines" />
-              </div>
-              <li>
-                <router-link to="/stuurmen">
-                  <span id="text3" contenteditable="false" class="item">Color Palette</span>
-                </router-link>
-              </li>
-              <div class="space-li2"></div>
-              <div v-if="showText" class="text_edit">
-                <font-awesome-icon icon="pen" />
-              </div>
-            </div>
-
-            <div class="li-text">
-              <div v-if="showText" class="move-element">
-                <font-awesome-icon class="grip-lines" icon="grip-lines" />
-              </div>
-              <li>
-                <router-link to="/stuurmen">
-                  <span id="text4" contenteditable="false" class="item">Typography</span>
-                </router-link>
-              </li>
-              <div class="space-li2"></div>
-              <div v-if="showText" class="text_edit">
-                <font-awesome-icon icon="pen" />
-              </div>
-            </div>
-
-            <AddElement :showText="showText"></AddElement>
-
-             <li class="items">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">New Item</span>
-              </router-link>
-            </li>
-
-            <li class="items">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">New Item</span>
-              </router-link>
-            </li>
-
-            <li class="items">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">Extra Item</span>
-              </router-link>
-            </li> -->
-
-          <!-- three dot menu -->
-          <!-- <div class="dropdownPosts"> -->
-          <!-- three dots
-                <ul
-                  class="dropdownbtn icons btn-right showLeft"
-                  
-                >
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul> -->
-
-          <!-- <li>
-              <a href="#">
-                <span class="item">Application Examples</span>
-              </a>
-            </li>
-
-             <li>
-              <a href="#">
-                <span class="item">Application Examples</span>
-              </a>
-            </li>
-
-             <li>
-              <a href="#">
-                <span class="item">Application Examples</span>
-              </a>
-            </li>
-          </ul> -->
 
           <article v-if="$route.params.bgsName !== undefined" class="user-profile">
             <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
@@ -229,9 +108,9 @@ function toggleText() {
 store.state.showSidebar = true;
 
 
-function data(){
-  return {contenteditable: false}
-}
+// function data(){
+//   return {contenteditable: false}
+// }
 
 // function getShowText(){
 //   return showText.value
@@ -455,34 +334,6 @@ props: {
   font-size: 14px;
 }
 
-/*Menu Titles*/
-
-.brand_title {
-  display: flex;
-  height: 40px;
-  justify-content: space-between;
-  width: 85%;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-#brand_con {
-  margin-bottom: 50px;
-  display: flex;
-  /* align-self: flex-start; */
-  flex-direction: column;
-  margin-left: 5px;
-  gap: 10px;
-  margin-bottom: 50px;
-}
-
-#brand_con2 {
-  margin-bottom: 80px;
-  display: flex;
-  /* align-self: flex-start; */
-  flex-direction: column;
-  margin-left: 5px;
-  gap: 10px;
-}
 
 /* Sidebar elements */
 
@@ -523,10 +374,7 @@ props: {
 .wrapper .sidebar ul li a.active {
   background-color: whitesmoke;
 }
-#home {
-  font-family: Gilroy Extrabold;
-  font-size: 1.4rem;
-}
+
 
 .wrapper .sidebar ul li a:hover .icon,
 .wrapper .sidebar ul li a.active .icon {
@@ -538,54 +386,6 @@ props: {
   display: block;
 }
 
-#brand_name,
-#brand_name2 {
-  font-family: Gilroy Extrabold !important;
-  color: #e9baed;
-}
-
-#brand_name {
-  cursor: default;
-}
-#brand_name2 {
-  cursor: default;
-}
-#t_2 {
-  margin-bottom: 20px;
-  text-align: center;
-  width: fit-content;
-}
-
-/* 
-.showLeft {
-    color: #fff !important;
-    padding: 10px;
-}
-
-.icons li {
-    background: none repeat scroll 0 0 #fff;
-    height: 7px;
-    width: 7px;
-    line-height: 0;
-    list-style: none outside none;
-    margin-left: 5px;
-    margin-top: 3px;
-    vertical-align: top;
-    border-radius: 50%;
-    pointer-events: none;
-}
-.btn-left {
-    left: 9.6em;
-}
-.btn-right {
-    right: 9.6em;
-}
-
-.btn-left,
-.btn-right {
-    position: absolute;
-    top: 0.24em;
-} */
 
 /*/////////USER ICON MENU/////////*/
 

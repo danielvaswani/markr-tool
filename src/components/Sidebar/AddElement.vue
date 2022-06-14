@@ -1,14 +1,14 @@
 <template>
-    <div v-if="$props.showText" class="new_element">
+    <div :showText="showText" class="new_element">
         <li class="dropdownbtn">
             <a id="extra_element">
-                <button id="add_side">
+                <button @click="toggleDrop()" id="add_side">
                     <i class="bi bi-plus"></i>Add Element
                 </button>
             </a>
         </li>
         <!-- menu -->
-        <div class="dropdownPost-content">
+        <div v-if="$props.showDrop" class="dropdownPost-content">
             <a><span>Video</span> </a>
             <a><span>Audio</span> </a>
             <a><span>Text</span> </a>
@@ -21,8 +21,9 @@
 
 import { ref, defineExpose, onMounted } from "vue";
 
-defineProps({
-    showText: Boolean
+const props = defineProps({
+    showText: Boolean,
+    showDrop: Boolean
 });
 
 let showDrop = ref(false);

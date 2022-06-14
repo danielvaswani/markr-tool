@@ -57,11 +57,11 @@
 
         <!-- <div class="bgs" id="new_bgs" style="display: none"></div> -->
 
-        <AddBgs @click="toggleBrandGuide()"></AddBgs>
+        <AddBgs></AddBgs>
       </div>
     </article>
   </main>
-  <BGSInfo v-if="showBGSInfo" />
+ 
 </template>
 
 <script setup>
@@ -93,16 +93,16 @@ onMounted(() => {
   store.dispatch("fetchBrandGuides");
 });
 
-let showBGSInfo = ref(false);
+
+
+
 // function addComponent() {
 //   this.components.push(Comp);
 // }
 // function addBrandGuide(bgsName) {
 //   store.dispatch("addBrandGuide", bgsName);
 // }
-function toggleBrandGuide() {
-  showBGSInfo.value = !showBGSInfo.value;
-}
+
 
 // function updateCurrentBGS(name) {
 //   console.log(name)
@@ -122,7 +122,7 @@ function toggleBrandGuide() {
 .title_bg {
   color: #191827;
   font-size: 2rem;
-  margin-left: 310px;
+  margin-left: 60px;
   // margin-left: 60px;
   margin-top: 50px;
   font-family: "Gilroy Extrabold";
@@ -133,7 +133,7 @@ function toggleBrandGuide() {
   flex-wrap: wrap;
   gap: 40px;
   max-width: 100%;
-  margin-left: 250px;
+  // margin-left: 250px;
   /* position: absolute;
   left: 250px;
   top: 150px; */

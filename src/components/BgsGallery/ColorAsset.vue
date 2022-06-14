@@ -29,7 +29,7 @@ import PickerModal from "./PickerModal.vue";
 
 
 
-  defineProps ({
+  const props = defineProps ({
     color: String
   })
 
@@ -37,11 +37,11 @@ import PickerModal from "./PickerModal.vue";
 
     // let bgc = ref({ backgroundColor: pickedcolor.value })
 
-    let displayModal = ref(false)
+    // let displayModal = ref(false)
 
-    function showModal() {
-      displayModal.value = !displayModal.value;
-    }
+    // function showModal() {
+    //   displayModal.value = !displayModal.value;
+    // }
 
     // function updateColor(eventData) {
     //   pickedcolor.value = eventData.colors?.hex;

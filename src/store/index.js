@@ -62,7 +62,7 @@ const store = createStore({
       brandGuideService.getBrandGuide(state.currentBGSName).then((data) => {
         // commit("SET_CURRENTBRANDGUIDE", data);
         commit("SET_CURRENTPAGES", data.pages);
-        console.log(data);
+        console.log(data.pages);
       });
     },
 

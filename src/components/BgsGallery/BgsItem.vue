@@ -1,4 +1,5 @@
 <template>
+  <BGSInfo v-if="showBGSInfo" />
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
     <div class="preview-icon">
       <span class="preview">
@@ -9,12 +10,12 @@
     </div>
 
     <div class="edit-bgs">
-      <label for="uploadmyfile">
-        <span class="edit-button">
-          <font-awesome-icon class="bi" id="pen" icon="wand-magic-sparkles" />
-        </span>
-      </label>
-      <input style="display: none" type="file" id="uploadmyfile" />
+
+      <span @click="toggleBrandGuide()" class="edit-button">
+        <font-awesome-icon class="bi" id="pen" icon="wand-magic-sparkles" />
+      </span>
+      <!-- 
+      <input style="display: none" type="file" id="uploadmyfile" /> -->
     </div>
   </div>
   <!-- <router-link
@@ -25,12 +26,23 @@
   >
   </router-link> -->
   <a @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade">
-    <img class="prev" :src="$props.imageUrl" @click="handleRouteChange" />
+    <img class="prev" :src="$props.imageUrl" @click="handleRouteChange()" />
   </a>
+
+
 </template>
 
 //
 <script setup>
+import BGSInfo from "./BGSInfo.vue";
+
+
+function toggleBrandGuide() {
+  showBGSInfo.value = !showBGSInfo.value;
+}
+
+
+let showBGSInfo = ref(false);
 // import { ref } from "vue";
 // import { useStore } from "vuex";
 // import { useRouter, useRoute } from "vue-router";
@@ -90,14 +102,13 @@ export default {
   methods: {
     async handleRouteChange() {
       this.$store.state.currentBGSName = this.$props.name;
-      this.$store.dispatch("fetchBrandGuide");
-      console.log(this.$props.name)
+      await this.$store.dispatch("fetchBrandGuide").then(() => this.$router.push(`/${this.$route.params.user}/${this.$props.name}/`));
+      console.log("This is called", this.$props.name)
       // console.log(this.$store.currentBGSName);
       // console.log(this.$store.currentBGSImageUrl);
       // console.log(this.$store.currentBGSSubdomain);
       // console.log(this.$store.currentBGSPages);
       // const firstPageName = brandGuide.pages[0].name;
-      this.$router.push(`/stuurmen/${this.$props.name}`);
     },
   },
 

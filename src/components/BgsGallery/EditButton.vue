@@ -1,4 +1,12 @@
 <template>
+
+  <component v-for="field in fields" v-bind:is="field.type" :key="field.id" type="x-template" id="new-element">
+    <SubtitleAsset></SubtitleAsset>
+  </component>
+
+  <component v-for="field in fields" v-bind:is="field.type" :key="field.id" type="x-template" id="new-element">
+    <ParagraphAsset></ParagraphAsset>
+  </component>
   <!--Edit Button-->
   <Transition>
     <div id="edit_sidebar" class="sidesnip"
@@ -6,7 +14,7 @@
       <span @click="toggleEdit()" class="edit" id="edit_b">
         <i class="bi bi-plus-square-dotted"></i>
       </span>
-      <div v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
+      <div v-on:click="addElement('new-element')" v-if="showDropdown" id="myDropdown" class="dropdown-content dropdown">
         <a @mouseenter="hover = true" @mouseleave="hover = false" style="padding: 12px 8px">
           <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
         </a>
@@ -58,10 +66,22 @@
 
 <script setup>
 import { ref, defineExpose } from "vue";
+import SubtitleAsset from "./SubtitleAsset.vue";
 
 const hover = ref(false);
 
 const dropdown = ref(null);
+
+
+const fields = ref([])
+const count = ref(0)
+
+function addElement(type) {
+  this.fields.push({
+    type: 'type',
+    id: this.count++
+  })
+}
 
 defineExpose({ dropdown });
 
@@ -318,7 +338,7 @@ function toggleEdit() {
 
 /* Change color of dropdown links on hover */
 .dropdown-content-texts a:hover {
-  background-color: #2c2a45;
+  background-color: #2c2a45 !important;
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */

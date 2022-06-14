@@ -1,63 +1,181 @@
 <template>
     <!--menu item-->
+    <div v-if="$route.params.bgsName !== undefined">
+        <ul v-for="p in page" :key="p" class="category1" id="brand_con">
+            <div class="brand_title">
+                <li id="t_1">
+                    <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
+                        <span class="item" id="brand_name" :contenteditable="false">YOUR BRAND</span>
+                    </router-link>
+                </li>
 
-    <ul class="category1" v-if="$route.params.bgsName !== undefined" id="brand_con">
-        <!-- <li>
-                    <a href="#" class="active">
-                        <span class="icon"><i class="fas fa-home"></i></span>
-                        <span class="item" id="home">HOME</span>
-                    </a>
-                </li> -->
-        <div class="brand_title">
-            <li id="t_1">
-                <router-link :to="'/stuurmen/' + $props.pageNames[0]">
-                    <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
+                <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
+                    <font-awesome-icon class="fa-pen" icon="pen" />
+                </div>
+            </div>
+
+            <div v-for="page in page" :key="page" class="li-text">
+                <div v-if="$props.showText" class="move-element">
+                    <font-awesome-icon class="grip-lines" icon="grip-lines" />
+                </div>
+                <li>
+                    <router-link :to="p">
+                        <span id="text1" contenteditable="false" class="item">{{page}}</span>
+                    </router-link>
+                </li>
+                <div class="space-li"></div>
+                <div v-if="$props.showText" class="text_edit">
+                    <font-awesome-icon icon="pen" />
+                </div>
+            </div>
+
+
+            <SidebarElement></SidebarElement>
+
+            <component v-for="field in fields" v-bind:is="field.type" :key="field.id" type="template" id="new-element">
+                <SidebarElement></SidebarElement>
+            </component>
+
+
+            <AddElement v-on:click="addElement('new-element')" v-if="$props.showText" :showText="showText"></AddElement>
+
+            <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
+
+                <div class="brand_title">
+                    <li id="t_2">
+                        <router-link to="/stuurmen">
+                            <span v-if="editText" contenteditable="false" class="item" id="brand_name2">BRAND
+                                IDENTITY</span>
+                        </router-link>
+                    </li>
+                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
+                        <font-awesome-icon @click="contenteditable = !contenteditable" class="fa-pen" icon="pen" />
+                    </div>
+                </div>
+
+                <div v-for="page in page" :key="page" class="li-text">
+                    <div v-if="$props.showText" class="move-element">
+                        <font-awesome-icon class="grip-lines" icon="grip-lines" />
+                    </div>
+                    <li>
+                        <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
+                            <span id="text2" contenteditable="false" class="item">{{page}}</span>
+                        </router-link>
+                    </li>
+                    <div class="space-li"></div>
+                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
+                        <font-awesome-icon icon="pen" />
+                    </div>
+                </div>
+
+                <div v-for="p in page" :key="p" class="li-text">
+                    <div v-if="$props.showText" class="move-element">
+                        <font-awesome-icon class="grip-lines" icon="grip-lines" />
+                    </div>
+                    <li>
+                        <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
+                            <span id="text3" contenteditable="false" class="item">Color Palette</span>
+                        </router-link>
+                    </li>
+                    <div class="space-li2"></div>
+                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
+                        <font-awesome-icon icon="pen" />
+                    </div>
+                </div>
+
+                <div v-for="p in page" :key="p" class="li-text">
+                    <div v-if="$props.showText" class="move-element">
+                        <font-awesome-icon class="grip-lines" icon="grip-lines" />
+                    </div>
+                    <li>
+                        <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
+                            <span id="text4" contenteditable="false" class="item">Typography</span>
+                        </router-link>
+                    </li>
+                    <div class="space-li2"></div>
+                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
+                        <font-awesome-icon icon="pen" />
+                    </div>
+                </div>
+
+                <template type="x-template" id="new-element2">
+                    <SidebarElement></SidebarElement>
+                </template>
+
+                <component v-for="field in fields" v-bind:is="field.type" :key="field.id"></component>
+
+                <AddElement v-on:click="addElement('new-element2')" v-if="$props.showText" :showText="showText">
+                </AddElement>
+                <!-- 
+            <li class="items">
+                <router-link to="/stuurmen">
+                    <span contenteditable="false" class="item">New Item</span>
                 </router-link>
             </li>
-            <div v-if="$props.showText" class="text_edit">
-                <font-awesome-icon class="fa-pen" icon="pen" />
-            </div>
-        </div>
 
-
-        <SidebarElement v-for="p in pageNames" :key="p.name"></SidebarElement>
-
-        <!-- <div class="li-text">
-            <div v-if="$props.showText" class="move-element">
-                <font-awesome-icon class="grip-lines" icon="grip-lines" />
-            </div>
-            <li>
-                <router-link>
-                    <span id="text1" contenteditable="false" class="item">About</span>
+            <li class="items">
+                <router-link to="/stuurmen">
+                    <span contenteditable="false" class="item">New Item</span>
                 </router-link>
             </li>
-            <div class="space-li"></div>
-            <div v-if="$props.showText" class="text_edit">
-                <font-awesome-icon icon="pen" />
-            </div>
-        </div> -->
 
-
-        <SidebarElement :showText="showText"></SidebarElement>
-
-
-        <AddElement :showText="showText"></AddElement>
+            <li class="items">
+                <router-link to="/stuurmen">
+                    <span contenteditable="false" class="item">Extra Item</span>
+                </router-link>
+            </li> -->
+            </ul>
 
 
 
-    </ul>
+        </ul>
+    </div>
 </template>
 
+
+
 <script setup>
-import { ref, defineExpose, onMounted } from "vue";
+import { ref, defineExpose, onMounted, markRaw, defineAsyncComponent } from "vue";
 import AddElement from "./AddElement.vue";
 import SidebarElement from "./SidebarElement.vue";
 
+function render() {
+    return h('new-element', [h(SidebarElement)])
+}
+
+const fields = ref([])
+const count = ref(0)
+
+function addElement(type) {
+    this.fields.push({
+        type: 'template',
+        id: this.count++
+    })
+}
+
+const editText = ref(true)
+
+function toggleEditText(){
+    editText.contenteditable.value = !editText.contenteditable.value
+}
 
 const props = defineProps({
     showText: Boolean,
-    pageNames: Array
-})
+    pageNames: Promise,
+    pageName: Array,
+    page: Array
+    // bgsName: String
+});
+
+let showText = ref(false);
+
+function toggleText() {
+    console.log(showText.value)
+    showText.value = !showText.value;
+    // this.$refs.userDropdown.scrollIntoView();
+}
+
+
 
 
 // onMounted(() => {
@@ -68,6 +186,66 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
+
+
+#new-element{
+    display: block;
+}
+
+
+
+
+
+
+/*Menu Titles*/
+
+.brand_title {
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    width: 85%;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#brand_con {
+    margin-bottom: 50px;
+    display: flex;
+    /* align-self: flex-start; */
+    flex-direction: column;
+    margin-left: 5px;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+#brand_con2 {
+    margin-bottom: 80px;
+    display: flex;
+    /* align-self: flex-start; */
+    flex-direction: column;
+    margin-left: 5px;
+    gap: 10px;
+}
+
+#brand_name,
+#brand_name2 {
+    font-family: Gilroy Extrabold !important;
+    color: #e9baed;
+}
+
+#brand_name {
+    cursor: default;
+}
+
+#brand_name2 {
+    cursor: default;
+}
+
+#t_2 {
+    margin-bottom: 20px;
+    text-align: center;
+    width: fit-content;
+}
 
 /*Sidebar Edit Icon*/
 
@@ -93,12 +271,12 @@ const props = defineProps({
     margin-bottom: 20px;
 }
 
-.wrapper .sidebar .edit_ico .magic-edit {
+.category1 .edit_ico .magic-edit {
     color: #888 !important;
     font-size: 1.3em;
 }
 
-.wrapper .sidebar .edit_ico .magic-edit:hover {
+.category1 .edit_ico .magic-edit:hover {
     color: #e9baed !important;
     transform: scale(105%);
 }
@@ -170,13 +348,13 @@ const props = defineProps({
 
 /* Sidebar elements */
 
-.wrapper .sidebar ul li {
+.category1 li {
     /* display: flex; */
     height: min-content;
     width: fit-content;
 }
 
-.wrapper .sidebar ul li a {
+.category1 li a {
     display: block;
     padding: 12px 12px;
     color: #fff;
@@ -190,7 +368,7 @@ const props = defineProps({
     text-decoration: none;
 }
 
-.wrapper .sidebar ul li a .icon {
+.category1 li a .icon {
     color: #dee4ec;
     width: 30px;
     display: inline-block;
@@ -201,11 +379,11 @@ const props = defineProps({
     background-color: whitesmoke;
 } */
 
-.wrapper .sidebar ul .li-text:hover {
+.category1 .li-text:hover {
     text-decoration: underline #e9baed 2px;
 }
 
-.wrapper .sidebar ul li a.active {
+.category1 li a.active {
     background-color: whitesmoke;
 }
 
@@ -232,6 +410,10 @@ const props = defineProps({
 }
 
 /*/////////ADD NEW SIDEBAR ELEMENT////////////*/
+
+#new-element{
+    display: block;
+}
 
 .new_element {
     display: flex;
