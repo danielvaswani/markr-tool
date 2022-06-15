@@ -2,9 +2,14 @@
   <div v-if="showAsset" class="image-container" id="printIt">
     <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" class="image-icons">
       <div class="edit-image">
+
         <a class="edit-link">
-          <font-awesome-icon class="pencil" icon="wand-magic" />
+          <label for="photo">
+            <font-awesome-icon class="pencil" icon="wand-magic" />
+            <input style="display:none" type="file" id="uploadmyfile" accept="image/*" />
+          </label>
         </a>
+
       </div>
 
       <div class="space"></div>
@@ -89,6 +94,7 @@ function deleteAsset(){
   position: relative;
   color: #e9baed;
   font-size: 1.4rem;
+  cursor: pointer;
 }
 
 .delete {

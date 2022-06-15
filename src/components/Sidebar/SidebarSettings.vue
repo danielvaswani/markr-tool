@@ -3,21 +3,20 @@
     <div class="bgs-settings-container" v-if="close">
         <div class="bgs-info-row">
             <div class="info-column">
-
                 <div class="consettings-container">
                     <div class="image-settings-container">
                         <img src="../../assets/images/Component_14.png" alt="Brand guide image image" />
                     </div>
 
-                    <div class="upload-image">
+                    <!-- <div class="upload-image">
                         <label for="photo"><button class="image-button">Choose image</button></label>
                         <input style="display: none" type="file" id="uploadmyfile" accept="image/*" />
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
-    <div><span @click="toggleModal()" class="close">
+    <div v-if="close"><span @click="toggleModal()" class="close">
             <font-awesome-icon class="xmark" icon="xmark" />
         </span></div>
 
@@ -38,10 +37,13 @@ function toggleModal() {
 
 <style scoped lang="scss">
 .close .xmark {
+    cursor: pointer;
     position: absolute;
     color: #e9baed;
-    font-size: 2rem;
+    font-size: 3rem;
     margin: auto;
+    top: 20px;
+    right: 20px;
     z-index: 1000;
 }
 
@@ -56,6 +58,8 @@ function toggleModal() {
     height: 100%;
     right: 100px;
     top: 0;
+    left: 0;
+    right: 0;
     background-color: #191827a1;
     z-index: 999;
     display: flex;
@@ -68,7 +72,7 @@ function toggleModal() {
     color: white;
     width: 786px;
     height: 606px;
-    margin: auto 150px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

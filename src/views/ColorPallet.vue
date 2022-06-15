@@ -1,34 +1,15 @@
 <template>
+
+  <TitlePage :name="$props.pageName"></TitlePage>
   <div class="container_color">
-    <Sidebar />
 
     <div class="colors">
-      <div class="dropdown2">
-        <img
-          @click="myFunction"
-          class="dropbtn"
-          src="../assets/images/icons8-edit-64.png"
-        />
-        <div id="myDropdown" class="dropdown-content">
-          <a><i class="bi bi-share-fill"></i> Share</a>
-          <a href="images/jw_logo.png" download="logo_preview"
-            ><i class="bi bi-box-arrow-down"></i> Download</a
-          >
-          <a onclick="printDiv('printIt')" value="print a div!"
-            ><i class="bi bi-printer-fill"></i> Print</a
-          >
-          <a id="delete">
-            <i id="delete_icon" class="bi bi-trash3"></i> Delete</a
-          >
-        </div>
 
-        <div id="printIt"></div>
-      </div>
       <div class="addtemp" @click="createPalette">
         <img class="addtemp-icon" src="../assets/images/add.png" />
       </div>
       <div v-for="colors in predefindeColors" :key="colors">
-        <ColorTemp :predefindeColors="colors" />
+        <ColorPalette :predefindeColors="colors"></ColorPalette>
       </div>
     </div>
   </div>
@@ -36,14 +17,15 @@
 
 <script>
 import Sidebar from "../components/Sidebar/Sidebar.vue";
-import ColorTemp from "../components/ColorTemp.vue";
+import ColorPalette from "../components/BgsGallery/ColorPalette.vue";
 import { ref, reactive } from "vue";
+import ColorPaletteVue from "../components/BgsGallery/ColorPalette.vue";
 
 export default {
   components: {
     Sidebar,
-    ColorTemp,
-  },
+    ColorPaletteVue
+},
   setup() {
     let predefindeColors = ref([["#101B37", "#f6f6e3", "#ffd700"]]);
 
@@ -57,9 +39,9 @@ export default {
   },
 
   methods: {
-    myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    },
+    // myFunction() {
+    //   document.getElementById("myDropdown").classList.toggle("show");
+    // },
   },
 };
 </script>

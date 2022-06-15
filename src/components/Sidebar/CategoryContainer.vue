@@ -9,7 +9,7 @@
                 </li> -->
         <div class="brand_title">
             <li id="t_1">
-                <router-link :to="'/stuurmen' + '/' + $route.params.bgsName + '/' + $props.name">
+                <router-link :to="'/stuurmen' + '/' ">
                     <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
                 </router-link>
             </li>
@@ -23,8 +23,8 @@
                 <font-awesome-icon class="grip-lines" icon="grip-lines" />
             </div>
             <li>
-                <router-link to="/stuurmen">
-                    <span id="text1" contenteditable="false" class="item">About</span>
+                <router-link :to="'/stuurmen' + '/' + $route.params.bgsName + '/'">
+                    <span contenteditable="false" class="item">About</span>
                 </router-link>
             </li>
             <div class="space-li"></div>
@@ -38,11 +38,11 @@
                 <font-awesome-icon class="grip-lines" icon="grip-lines" />
             </div>
             <li>
-                <router-link to="/stuurmen">
+                <router-link :to="'/stuurmen'">
                     <span id="text1" contenteditable="false" class="item">{{element}}</span>
                 </router-link>
             </li>
-            <div class="space-li"></div>
+            
             <div v-if="$props.showText" class="text_edit">
                 <font-awesome-icon icon="pen" />
             </div>
@@ -57,7 +57,7 @@
 <script setup>
 import { ref, defineExpose, onMounted } from "vue";
 
-defineProps({
+const props = defineProps({
     showText: Boolean
 });
 
@@ -181,6 +181,12 @@ function addElement(name){
     /* display: flex; */
     height: min-content;
     width: fit-content;
+}
+
+#text1{
+    min-width: fit-content;
+    width: fit-content;
+    display: ruby;
 }
 
 .wrapper .sidebar ul li a {

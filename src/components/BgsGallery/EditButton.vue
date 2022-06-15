@@ -59,18 +59,18 @@
   <div v-if="hover" @mouseenter="hover = true" @click="hover = false" id="imagesDropdown"
     class="dropdown-content-images dropdown">
     <a @click="addImage()" class="image-a">
-      <font-awesome-icon icon="fa-solid fa-image" />
-      <p>Image (250 x 250)</p>
+      <i class="bi bi-image-fill"></i>
+      <p>250 x 250</p>
     </a>
 
     <a @click="addBigImage()" class="vertical-a">
-      <font-awesome-icon icon="fa-solid fa-image" />
-      <p>Image (350 x 450)</p>
+      <i class="bi bi-file-image"></i>
+      <p>350 x 450</p>
     </a>
 
     <a @click="addBannerImage()" class="banner">
-      <font-awesome-icon icon="fa-solid fa-image" />
-      <p>Banner (850 x 350)</p>
+      <i class="bi bi-card-image"></i>
+      <p>850 x 350</p>
     </a>
   </div>
 </template>
@@ -427,23 +427,35 @@ function addBannerImage() {
 .image-a {
   display: flex;
   align-items: baseline;
-  gap: 1px;
+  gap: 8px;
   font-size: 1rem;
   font-weight: bolder;
+}
+
+.image-a i{
+    color: #e9baed;
 }
 
 .vertical-a {
   display: flex;
   align-items: baseline;
-  gap: 40px;
+  gap: 8px;
   font-size: 1rem;
+}
+
+.vertical-a i{
+    color: #e9baed;
 }
 
 .banner {
   display: flex;
   align-items: baseline;
-  gap: 45px;
+  gap: 8px;
   font-size: 1rem;
+}
+
+.banner i{
+  color: #e9baed;
 }
 
 /* Change color of dropdown links on hover */
