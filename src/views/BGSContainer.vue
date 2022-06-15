@@ -6,7 +6,7 @@
     :assets="pages[0].Assets"
   ></Page>
 
-  <Page :isDefault="pages === undefined || pages[0].Assets === [] || pages === []" ></Page>
+  <!-- <Page :isDefault="pages === undefined || pages[0].Assets === [] || pages === []" ></Page> -->
 </template>
 
 <script setup>

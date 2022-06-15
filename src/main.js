@@ -11,6 +11,7 @@ import {
   faEye,
   faGear,
   faGripLines,
+  faImagePortrait,
   faImages,
   faPaintbrush,
   faPencil,

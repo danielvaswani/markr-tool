@@ -1,16 +1,19 @@
 <template>
-  <div class="subtitle-container">
-    <div v-if="showDrag" class="move-element">
-      <font-awesome-icon class="grip-lines" icon="grip-lines" />
+  <div v-if="showAsset" class="subtitle-container">
+    <div v-if="showDrag" class="edit-icons">
+      <div class="delete">
+        <a @click="deleteAsset()" class="delete-button">
+          <font-awesome-icon class="xmark" icon="xmark" />
+        </a>
+      </div>
+      <div class="move-element">
+        <font-awesome-icon class="grip-lines" icon="grip-lines" />
+      </div>
+
     </div>
 
-    <h3
-      @mouseenter="toggleDrag()"
-      @mouseleave="toggleDrag()"
-      class="template-subtitle"
-      id="template_subtitle"
-      contenteditable="true"
-    >
+    <h3 @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-subtitle" id="template_subtitle"
+      contenteditable="true">
       {{ $props.value }}
     </h3>
   </div>
@@ -28,9 +31,16 @@ function toggleDrag() {
 defineProps({
   value: String,
 });
+
+const showAsset = ref(true);
+
+function deleteAsset() {
+  showAsset.value = false
+}
 </script>
 
 <style scoped lang="scss">
+
 .subtitle-container {
   text-align: justify;
   width: 90%;
@@ -43,6 +53,26 @@ defineProps({
 
 .move-element {
   margin-top: 8px;
+}
+
+.edit-icons {
+  display: flex;
+  justify-content:flex-start;
+  gap: 8px;
+}
+
+.delete {
+  cursor: pointer;
+  position: relative;
+  align-self: flex-end;
+}
+
+.xmark {
+  align-self:flex-start;
+  margin-bottom: 5px;
+  position: relative;
+  color: rgb(140, 10, 36);
+  font-size: 1.6rem;
 }
 
 .grip-lines {

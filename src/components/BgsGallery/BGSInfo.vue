@@ -13,8 +13,11 @@
           </div>
 
           <div class="upload-image">
-            <label for="photo"><button class="image-button">Choose image</button></label>
-            <input style="display: none" type="file" id="uploadmyfile" accept="image/*" />
+            <label for="photo">
+              <div class="image-button"><input type="file" id="uploadmyfile" accept="image/*" />
+              </div>
+            </label>
+
           </div>
         </div>
       </div>
@@ -23,11 +26,11 @@
         <div class="content-container"></div>
         <div class="field-row">
           <h5>Brand Name</h5>
-          <input type="text" placeholder="Write here... " />
+          <input v-model="editBgsName" type="text" placeholder="Write here... " />
         </div>
         <div class="field-row">
           <h5>Subdomain name</h5>
-          <input type="text" placeholder="Write here... " />
+          <input v-model="editSubdomainName" type="text" placeholder="Write here... " />
         </div>
         <h5 class="subdomainUrl">example.markrtool.nl</h5>
         <div class="field-row">
@@ -53,12 +56,47 @@
 import { ref, computed } from "vue";
 import Toggle from "../Toggle.vue";
 
-let brandName = ref("Johnnyt564645@#$%^& Walker");
-let subdomainName = ref("");
 
-defineProps({
-  isEdit: Boolean,
+
+let brandName = ref("");
+let isLive = ref(false);
+
+function toggleLive() {
+  isLive.value = !isLive.value;
+}
+
+let subdomainName = ref("");
+let imageUrl = ref("");
+
+
+if(props.editBgsName !== undefined){
+  brandName.value = props.editBgsName
+  subdomainName.value = props.editSubdomainName
+  imageUrl.value = props.editImageUrl
+  isLive.value = props.editIsLive
+}
+
+
+const props = defineProps({
+  editBgsName: String,
+  editSubdomainName: String,
+  editImageUrl: String,
+  editIsLive: Boolean
 });
+
+const emit = defineEmits(['saveEditBrandGuide', 'addBrandGuide'])
+
+function handleSaveChanges(){
+    if(props.editBgsName !== ""){
+      emit('saveEditBrandGuide', brandName.value, subdomainName.value, imageUrl.value, isLive.value)
+      console.log(brandName.value)
+    }
+    else{
+      emit('addBrandGuide', brandName.value, subdomainName.value, imageUrl.value, isLive.value)
+    }
+}
+
+
 
 const close = ref(true)
 
@@ -76,11 +114,7 @@ let generatedSubdomain = computed(() => {
 
 console.log(generatedSubdomain.value);
 
-let isLive = ref(false);
 
-function toggleLive() {
-  isLive.value = !isLive.value;
-}
 </script>
 
 <style scoped>
@@ -114,7 +148,7 @@ function toggleLive() {
   border: 5px solid #e9baed;
   width: 786px;
   height: 606px;
-  margin: auto;
+  margin: auto 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;

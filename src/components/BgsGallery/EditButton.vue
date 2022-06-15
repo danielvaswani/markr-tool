@@ -11,7 +11,7 @@
           <i style="font-size: 1.6rem" class="bi bi-fonts"></i>
         </a>
 
-        <a @mouseenter="hover = true" @mouseleave="hover = false"><i class="bi bi-card-images"></i></a>
+        <a @mouseenter="hover = true" @mouseleave="hover = false"><i class="bi bi-images"></i></a>
 
         <a><i class="bi bi-film"></i></a>
 
@@ -56,20 +56,21 @@
   </div>
 
   <!--Images Dropdown-->
-  <div v-if="hover" @click="hover = false" id="imagesDropdown" class="dropdown-content-images dropdown">
-    <a @mouseenter="hover = true" @click="addImage()" class="image-a">
+  <div v-if="hover" @mouseenter="hover = true" @click="hover = false" id="imagesDropdown"
+    class="dropdown-content-images dropdown">
+    <a @click="addImage()" class="image-a">
+      <font-awesome-icon icon="fa-solid fa-image" />
       <p>Image (250 x 250)</p>
-      <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
 
-    <a @click="addSubtitle()" class="vertical-a">
+    <a @click="addBigImage()" class="vertical-a">
+      <font-awesome-icon icon="fa-solid fa-image" />
       <p>Image (350 x 450)</p>
-      <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
 
-    <a @click="addParagraph()" class="banner">
+    <a @click="addBannerImage()" class="banner">
+      <font-awesome-icon icon="fa-solid fa-image" />
       <p>Banner (850 x 350)</p>
-      <font-awesome-icon class="chevron" icon="chevron-right" />
     </a>
   </div>
 </template>

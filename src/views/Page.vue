@@ -6,8 +6,10 @@
       <Container v-for="asset in assets" :key="asset" :name="asset.name" :content="asset.content" :type="asset.type">
       </Container>
 
-      <ColorPalette></ColorPalette>
-      <EditButton @add-subtitle="addSubtitle" @add-paragraph="addParagraph" @add-image="addImage"></EditButton>
+      <!-- <ColorPalette></ColorPalette> -->
+      <EditButton @add-subtitle="addSubtitle" @add-paragraph="addParagraph" @add-image="addImage" @add-big-image="addBigImage"
+        @add-banner-image="addBannerImage">
+      </EditButton>
     </div>
   </div>
 </template>

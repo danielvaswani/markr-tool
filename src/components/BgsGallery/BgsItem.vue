@@ -1,5 +1,4 @@
 <template>
-  <BGSInfo v-if="showBGSInfo" />
   <div v-if="hover" @mouseenter="hover = true" class="bgs-icons">
     <div class="preview-icon">
       <span class="preview">
@@ -11,7 +10,7 @@
 
     <div class="edit-bgs">
 
-      <span @click="toggleBrandGuide()" class="edit-button">
+      <span @click="emit('editBrandGuide', $props.bgsName)" class="edit-button">
         <font-awesome-icon class="bi" id="pen" icon="wand-magic-sparkles" />
       </span>
       <!-- 
@@ -36,10 +35,10 @@
 <script setup>
 import BGSInfo from "./BGSInfo.vue";
 
-
-function toggleBrandGuide() {
-  showBGSInfo.value = !showBGSInfo.value;
-}
+const emit = defineEmits(['editBrandGuide'])
+// function editBrandGuide() {
+//   emit('editBrandGuide', props.bgsName)
+// }
 
 
 let showBGSInfo = ref(false);
@@ -102,9 +101,6 @@ export default {
       // console.log("i am clicked");
       this.$store.state.currentBGSName = this.$props.name;
       this.$store.dispatch("fetchBrandGuide");
-      console.log(this.$store.currentBGSName);
-      console.log(this.$store.currentBGSImageUrl);
-      console.log(this.$store.currentBGSSubdomain);
       console.log(this.$store.currentBGSPages);
       // const firstPageName = brandGuide.pages[0].name;
       // console.log(brandGuide.name);
