@@ -1,14 +1,15 @@
 <template>
   <div class="container_logo">
     <div class="logos" id="template_div">
-      <TitlePage :name="$props.pageName"></TitlePage>
+      <TitlePage :name="$props.pageName">LOGO</TitlePage>
 
-      <Container v-for="asset in assets" :key="asset" :name="asset.name" :content="asset.content" :type="asset.type">
-      </Container>
+      <!-- <Container v-for="asset in assets" :key="asset" :name="asset.name" :content="asset.content" :type="asset.type">
+      </Container> -->
 
-      <!-- <ColorPalette></ColorPalette> -->
-      <EditButton @add-subtitle="addSubtitle" @add-paragraph="addParagraph" @add-image="addImage" @add-big-image="addBigImage"
-        @add-banner-image="addBannerImage">
+      <BigImageAsset></BigImageAsset>
+      
+      <EditButton @add-subtitle="addSubtitle" @add-paragraph="addParagraph" @add-image="addImage"
+        @add-big-image="addBigImage" @add-banner-image="addBannerImage">
       </EditButton>
     </div>
   </div>
@@ -36,22 +37,23 @@ const props = defineProps({
 
 const assets = ref(props.assets);
 
-if(props.isDefault){
+if (props.isDefault) {
   assets.value = [
-    {content: {variant: 'subtitle', value: 'Subtitle me this'}, name: 'new subtitle', type: 'text', }, 
-    { content: { variant: 'image', url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png' }, name: 'new image', type: 'image', }, 
-    { content: { variant: 'paragraph', value: 'Write here...' }, name: 'new paragraph', type: 'text', }, 
-    ]
+    { content: { variant: 'subtitle', value: 'Subtitle me this' }, name: 'new subtitle', type: 'text', },
+    { content: { variant: 'image', url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png' }, name: 'new image', type: 'image', },
+    { content: { variant: 'paragraph', value: 'Write here...' }, name: 'new paragraph', type: 'text', },
+  ]
 }
 
-function addAsset(asset){
+function addAsset(asset) {
   assets.value.push(asset)
 }
 
-function addSubtitle(){
+function addSubtitle() {
   addAsset({
-    content:{variant: 'subtitle', 
-    value: 'Subtitle me this'
+    content: {
+      variant: 'subtitle',
+      value: 'Subtitle me this'
     },
     name: 'subT',
     type: 'text',
@@ -131,7 +133,11 @@ const brandGuide = computed(() => {
   return store.state.currentBrandGuide;
 });
 
+const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
 
+function getColors() {
+  return colors;
+}
 
 </script>
 

@@ -1,31 +1,27 @@
 <template>
-  <div class="image-container" id="printIt">
-    <div
-      v-if="hover"
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-      class="image-icons"
-    >
+  <div v-if="showAsset" class="image-container" id="printIt">
+    <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" class="image-icons">
       <div class="edit-image">
+
         <a class="edit-link">
-          <font-awesome-icon class="pencil" icon="wand-magic" />
+          <label for="photo">
+            <font-awesome-icon class="pencil" icon="wand-magic" />
+            <input style="display:none" type="file" id="uploadmyfile" accept="image/*" />
+          </label>
         </a>
+
       </div>
 
       <div class="space"></div>
 
       <div class="delete">
-        <a class="delete-button">
+        <a @click="deleteAsset()" class="delete-button">
           <font-awesome-icon class="xmark" icon="xmark" />
         </a>
       </div>
     </div>
 
-    <div
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-      class="image-cont"
-    >
+    <div @mouseenter="hover = true" @mouseleave="hover = false" class="image-cont">
       <img id="image" :src="$props.url" alt="Image" />
     </div>
 
@@ -51,6 +47,13 @@ defineProps({
 });
 
 const hover = ref(false);
+
+const showAsset = ref(true);
+
+function deleteAsset(){
+  showAsset.value = false
+}
+
 </script>
 
 <style scoped lang="scss">
@@ -60,7 +63,7 @@ const hover = ref(false);
   // margin-left: 140px;
   overflow: hidden;
   width: fit-content;
-  margin: auto;
+  // margin: auto;
 }
 
 .image-container {
@@ -91,6 +94,7 @@ const hover = ref(false);
   position: relative;
   color: #e9baed;
   font-size: 1.4rem;
+  cursor: pointer;
 }
 
 .delete {

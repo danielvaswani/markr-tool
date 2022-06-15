@@ -1,11 +1,20 @@
 <template>
 
-    <div class="title-container">
-        <div v-if="showDrag" class="move-element">
-            <font-awesome-icon class="grip-lines" icon="grip-lines" />
+    <div v-if="showAsset" class="title-container">
+        <div v-if="showDrag" class="edit-icons">
+            <div class="delete">
+                <a @click="deleteAsset()" class="delete-button">
+                    <font-awesome-icon class="xmark" icon="xmark" />
+                </a>
+            </div>
+            <div class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+            </div>
+
         </div>
 
-        <h2 @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-title" id="template_title" contenteditable="true">Primary colors</h2>
+        <h2 @mouseenter="toggleDrag()" @mouseleave="toggleDrag()" class="template-title" id="template_title"
+            contenteditable="true">Primary colors</h2>
     </div>
 
 </template>
@@ -21,6 +30,12 @@ let showDrag = ref(false)
 
 function toggleDrag(){
     showDrag.value = !showDrag.value
+}
+
+const showAsset = ref(true);
+
+function deleteAsset() {
+    showAsset.value = false
 }
 
 </script>

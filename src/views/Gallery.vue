@@ -1,13 +1,14 @@
 <template>
   <main>
+
     <!-- <UserProfile></UserProfile> -->
-    <BGSInfo v-if="showBGSInfo" />
     <article class="gallery-container">
       <h2 class="title_bg">BRAND GUIDE SYSTEMS</h2>
 
       <div class="container" id="container">
         <div class="bgs" id="bgs" v-for="bgs in brandGuides" :key="bgs.name">
-          <BgsItem  :name="bgs.name" :image-url="bgs.imageUrl" :subdomain="bgs.subdomain"></BgsItem>
+          <BgsItem @edit-brand-guide="editBrandGuide(name)" :name="bgs.name" :image-url="bgs.imageUrl"
+            :subdomain="bgs.subdomain"></BgsItem>
         </div>
 
         <!-- <div class="bgs" id="bgs">
@@ -57,8 +58,10 @@
         <AddBgs @click="toggleBrandGuide()"></AddBgs>
       </div>
     </article>
+    <BGSInfo @save-edit-brand-guide="saveEditBrandGuide(name, subdomain, imageUrl, isLive)"
+      @add-brand-guide="addBrandGuide(name, subdomain, imageUrl, isLive)" :editBgsName="editBgsName"
+      v-if="showBGSInfo" />
   </main>
-  <BGSInfo v-if="showBGSInfo" />
 </template>
 
 <script setup>
@@ -97,9 +100,29 @@ let showBGSInfo = ref(false);
 // function addBrandGuide(bgsName) {
 //   store.dispatch("addBrandGuide", bgsName);
 // }
+
+const editBgsName = ref("")
+
+function editBrandGuide(name){
+  editBgsName.value = name
+  toggleBrandGuide()
+}
+
+function saveEditBrandGuide(){
+
+}
+
+function addBrandGuide(name){
+
+}
+
+
+
 function toggleBrandGuide() {
   showBGSInfo.value = !showBGSInfo.value;
 }
+
+
 
 // function updateCurrentBGS(name) {
 //   console.log(name)
@@ -119,7 +142,7 @@ function toggleBrandGuide() {
 .title_bg {
   color: #191827;
   font-size: 2rem;
-  margin-left: 310px;
+  margin-left: 60px;
   // margin-left: 60px;
   margin-top: 50px;
   font-family: "Gilroy Extrabold";
@@ -130,7 +153,7 @@ function toggleBrandGuide() {
   flex-wrap: wrap;
   gap: 40px;
   max-width: 100%;
-  margin-left: 250px;
+
   /* position: absolute;
   left: 250px;
   top: 150px; */

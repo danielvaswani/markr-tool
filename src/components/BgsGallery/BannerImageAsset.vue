@@ -1,11 +1,6 @@
 <template>
-  <div class="banner-container" id="printIt2">
-    <div
-      v-if="hover"
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-      class="banner-image-icons"
-    >
+  <div v-if="showAsset" class="banner-container" id="printIt2">
+    <div v-if="hover" @mouseenter="hover = true" @mouseleave="hover = false" class="banner-image-icons">
       <div class="edit-image">
         <a class="edit-link">
           <font-awesome-icon class="pencil" icon="wand-magic" />
@@ -15,17 +10,13 @@
       <div class="space"></div>
 
       <div class="delete">
-        <a class="delete-button">
+        <a @click="deleteAsset()" class="delete-button">
           <font-awesome-icon class="xmark" icon="xmark" />
         </a>
       </div>
     </div>
 
-    <div
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-      class="banner-image-container"
-    >
+    <div @mouseenter="hover = true" @mouseleave="hover = false" class="banner-image-container">
       <img id="image2" :src="$props.url" alt="Image" />
     </div>
 
@@ -51,6 +42,12 @@ defineProps({
 });
 
 const hover = ref(false);
+
+const showAsset = ref(true);
+
+function deleteAsset() {
+  showAsset.value = false
+}
 </script>
 
 <style scoped lang="scss">

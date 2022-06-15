@@ -53,7 +53,7 @@
                 <font-awesome-icon class="grip-lines" icon="grip-lines" />
               </div>
               <li>
-                <router-link to="/stuurmen">
+                <router-link to="/stuurmen/Johnnie Walker/logo">
                   <span id="text2" contenteditable="false" class="item">Logo</span>
                 </router-link>
               </li>
@@ -68,7 +68,7 @@
                 <font-awesome-icon class="grip-lines" icon="grip-lines" />
               </div>
               <li>
-                <router-link to="/stuurmen">
+                <router-link to="/stuurmen/Johnnie Walker/color-palette">
                   <span id="text3" contenteditable="false" class="item">Color Palette</span>
                 </router-link>
               </li>
@@ -83,7 +83,7 @@
                 <font-awesome-icon class="grip-lines" icon="grip-lines" />
               </div>
               <li>
-                <router-link to="/stuurmen">
+                <router-link to="/stuurmen/Johnnie Walker/typography">
                   <span id="text4" contenteditable="false" class="item">Typography</span>
                 </router-link>
               </li>
@@ -110,53 +110,6 @@
               </div>
             </div>
 
-            <li class="items">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">New Item</span>
-              </router-link>
-            </li>
-
-            <li class="items">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">New Item</span>
-              </router-link>
-            </li>
-
-            <li class="items">
-              <router-link to="/stuurmen">
-                <span contenteditable="false" class="item">Extra Item</span>
-              </router-link>
-            </li>
-
-            <!-- three dot menu -->
-            <!-- <div class="dropdownPosts"> -->
-            <!-- three dots
-                <ul
-                  class="dropdownbtn icons btn-right showLeft"
-                  
-                >
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul> -->
-
-            <!-- <li>
-              <a href="#">
-                <span class="item">Application Examples</span>
-              </a>
-            </li>
-
-             <li>
-              <a href="#">
-                <span class="item">Application Examples</span>
-              </a>
-            </li>
-
-             <li>
-              <a href="#">
-                <span class="item">Application Examples</span>
-              </a>
-            </li> -->
           </ul>
 
           <article v-if="$route.params.bgsName !== undefined" class="user-profile">
@@ -186,16 +139,15 @@
           </article>
 
           <div v-if="$route.params.bgsName !== undefined" class="color-sidebar">
-            <div class="side-edit-color">
+            <div @click="toggleSettings()" class="side-edit-color">
               <font-awesome-icon class="gear" icon="gear" />
             </div>
           </div>
         </div>
       </Transition>
     </div>
-
   </div>
-
+  <SidebarSettings v-if="showSettings"></SidebarSettings>
   <!--HIDE/SHOW SIDEBAR-->
   <Transition name="slide-fade">
     <div v-if="$route.params.bgsName !== undefined" class="hide_container"
@@ -217,6 +169,7 @@ import { useStore } from "vuex";
 import Logo from "./Logo.vue";
 import CategoryContainer from "./CategoryContainer.vue";
 import SidebarElement from "./SidebarElement.vue";
+import SidebarSettings from "./SidebarSettings.vue";
 
 const store = useStore();
 // const sidebar = ref(null);
@@ -227,7 +180,6 @@ let showSidebar = ref(true);
 
 function toggleSidebar() {
   store.state.showSidebar = !store.state.showSidebar;
-
 }
 let showText = ref(false);
 
@@ -242,6 +194,12 @@ store.state.showSidebar = true;
 
 function data(){
   return {contenteditable: false}
+}
+
+let showSettings = ref(false);
+
+function toggleSettings(){
+  showSettings.value = !showSettings.value
 }
 
 // function getShowText(){
