@@ -1,7 +1,6 @@
 <template>
   <div class="color-temp">
-    <div class="colortext">
-    </div>
+    <div class="colortext"></div>
 
     <div class="colors">
       <TitleAsset name="Colors"></TitleAsset>
@@ -17,7 +16,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -26,29 +24,22 @@ import TitlePage from "./TitlePage.vue";
 import ColorAsset from "./ColorAsset.vue";
 import { ref, reactive } from "vue";
 import TitleAsset from "./TitleAsset.vue";
-import { emit } from "process";
 
+const props = defineProps({
+  colors: Array,
+});
 
-defineProps({
-  colors: Array
-})
+const emit = defineEmits(["addColors"]);
 
-const emit = defineEmits(['addColors'])
+const colors = ref(props.colors);
 
-const colors = ref([]);
-
-const predefinedColors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"]
-
-colors.value.push(...predefinedColors)
-
-function addColorPaletteToAssets(){
-  emit('addColorPallete', colors.value)
-
+function addColorPaletteToAssets() {
+  emit("addColorPallete", colors.value);
 }
 
-function addColorToColorPallete(color){
-  colors.value.push(color)
-}
+// function addColorToColorPallete(color) {
+
+// }
 
 // function getColors() {
 //   return colors;
@@ -62,23 +53,17 @@ function addColorToColorPallete(color){
 //   colorList.value.splice(cardToDeleteIndex, 1);
 // }
 
-
 // function addColorCard() {
 //   colorList.value.push("#101B37");
 // }
 // return { colorList, addColorCard, deleteCard };
 
-
-
 // function myFunction() {
 //   document.getElementById("myDropdown").classList.toggle("show");
 // }
-
-
 </script>
 
 <style scoped>
-
 .pickersContainer {
   display: flex;
   flex-direction: row;
@@ -91,7 +76,6 @@ function addColorToColorPallete(color){
 
 .color-temp {
   width: 100%;
-
 }
 
 .colors {
@@ -114,7 +98,7 @@ function addColorToColorPallete(color){
   color: #2c2a45;
 }
 
-.add-color-container{
+.add-color-container {
   border: #191827 2px solid;
   border-radius: 15px;
   width: 220px;
@@ -134,7 +118,7 @@ function addColorToColorPallete(color){
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  border:2px solid #e7cee9;
+  border: 2px solid #e7cee9;
   align-items: center;
   background: #191827;
 }
@@ -146,9 +130,9 @@ function addColorToColorPallete(color){
   margin-top: 8px;
 }
 
-.del-icon:hover{
+.del-icon:hover {
   color: #eab4ee;
   transform: scale(98%);
-  transition: all .4s;
+  transition: all 0.4s;
 }
 </style>

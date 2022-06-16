@@ -3,12 +3,24 @@
     <div class="logos" id="template_div">
       <TitlePage :name="$props.pageName"></TitlePage>
 
-      <Container v-for="asset in assets" :key="asset" :name="asset.name" :content="asset.content" :type="asset.type">
+      <Container
+        v-for="asset in assets"
+        :key="asset"
+        :name="asset.name"
+        :content="asset.content"
+        :type="asset.type"
+      >
       </Container>
 
       <!-- <ColorPalette></ColorPalette> -->
-      <EditButton @add-subtitle="addSubtitle" @add-paragraph="addParagraph" @add-image="addImage" @add-big-image="addBigImage"
-        @add-banner-image="addBannerImage">
+      <EditButton
+        @add-subtitle="addSubtitle"
+        @add-paragraph="addParagraph"
+        @add-image="addImage"
+        @add-big-image="addBigImage"
+        @add-banner-image="addBannerImage"
+        @add-color-palette="addColorPalette"
+      >
       </EditButton>
     </div>
   </div>
@@ -31,78 +43,98 @@ const store = useStore();
 const props = defineProps({
   pageName: String,
   assets: Array,
-  isDefault: Boolean
+  isDefault: Boolean,
 });
 
 const assets = ref(props.assets);
 
-if(props.isDefault){
-  assets.value = [
-    {content: {variant: 'subtitle', value: 'Subtitle me this'}, name: 'new subtitle', type: 'text', }, 
-    { content: { variant: 'image', url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png' }, name: 'new image', type: 'image', }, 
-    { content: { variant: 'paragraph', value: 'Write here...' }, name: 'new paragraph', type: 'text', }, 
-    ]
-}
-
-function addAsset(asset){
-  assets.value.push(asset)
-}
-
-function addSubtitle(){
-  addAsset({
-    content:{variant: 'subtitle', 
-    value: 'Subtitle me this'
+if (props.isDefault) {
+  assets.value.push(
+    {
+      content: { variant: "subtitle", value: "Subtitle me this" },
+      name: "new subtitle",
+      type: "text",
     },
-    name: 'subT',
-    type: 'text',
-  })
+    {
+      content: {
+        variant: "image",
+        url: "https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png",
+      },
+      name: "new image",
+      type: "image",
+    },
+    {
+      content: { variant: "paragraph", value: "Write here..." },
+      name: "new paragraph",
+      type: "text",
+    }
+  );
 }
 
+function addAsset(asset) {
+  assets.value.push(asset);
+}
+
+function addSubtitle() {
+  addAsset({
+    content: { variant: "subtitle", value: "Subtitle me this" },
+    name: "subT",
+    type: "text",
+  });
+}
 
 function addParagraph() {
   addAsset({
     content: {
-      variant: 'paragraph',
-      value: 'Write here...'
+      variant: "paragraph",
+      value: "Write here...",
     },
-    name: 'para',
-    type: 'text',
-  })
+    name: "para",
+    type: "text",
+  });
 }
-
 
 function addImage() {
   addAsset({
     content: {
-      variant: 'regular',
-      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+      variant: "regular",
+      url: "https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png",
     },
-    name: 'img',
-    type: 'image',
-  })
+    name: "img",
+    type: "image",
+  });
 }
-
 
 function addBigImage() {
   addAsset({
     content: {
-      variant: 'big',
-      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+      variant: "big",
+      url: "https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png",
     },
-    name: 'subT',
-    type: 'image',
-  })
+    name: "subT",
+    type: "image",
+  });
 }
 
 function addBannerImage() {
   addAsset({
     content: {
-      variant: 'banner',
-      url: 'https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png'
+      variant: "banner",
+      url: "https://cdn.discordapp.com/attachments/941271536046866446/986283891830710272/photo-placeholder-icon-14.png",
     },
-    name: 'subT',
-    type: 'image',
-  })
+    name: "subT",
+    type: "image",
+  });
+}
+
+function addColorPalette() {
+  addAsset({
+    content: {
+      colors: ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"],
+    },
+    name: "Green grey",
+    type: "color",
+  });
 }
 
 let showDropdown = ref(false);
@@ -130,9 +162,6 @@ function getCurrentBgsName() {
 const brandGuide = computed(() => {
   return store.state.currentBrandGuide;
 });
-
-
-
 </script>
 
 <style scoped lang="scss">

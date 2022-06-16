@@ -3,11 +3,15 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-header">
-          </div>
+          <div class="modal-header"></div>
 
           <div class="modal-body">
-            <ColorPicker :color="color" :visible-formats="['hex']" @color-change="updateColor" />
+            <ColorPicker
+              :color="color"
+              default-format="hex"
+              :visible-formats="['hex']"
+              @color-change="updateColor"
+            />
           </div>
 
           <div class="modal-footer">
@@ -29,41 +33,31 @@ import { ColorPicker } from "vue-accessible-color-picker";
 import { ref, reactive, toRefs } from "vue";
 import { propsToAttrMap } from "@vue/shared";
 
+const emit = defineEmits(["changeColor"]);
 
-const emit = defineEmits(['changeColor'])
-
-  const props = defineProps ({
-    color: String,
-  })
+const props = defineProps({
+  color: String,
+});
 
 const pickedColor = ref("");
-pickedColor.value = props.color
+pickedColor.value = props.color;
 
 function updateColor(eventData) {
-  pickedColor.value = eventData.cssColor
-  emit('colorChange', pickedColor.value)
+  pickedColor.value = eventData.cssColor;
+  console.log(pickedColor.value);
+  emit("colorChange", pickedColor.value);
 }
 
-  // components: { ColorPicker },
-  // setup(props) {
-  //   let pickedcolor = ref(props.color);
+// components: { ColorPicker },
+// setup(props) {
+//   let pickedcolor = ref(props.color);
 
-  //   return {pickedcolor}
+//   return {pickedcolor}
 
-  // }
-  
+// }
 </script>
 
 <style>
-
-
-
-
-
-
-
-
-
 .modal-mask {
   /* transform: translateY(240px); */
   /* position: absolute; */
@@ -110,31 +104,31 @@ function updateColor(eventData) {
   background: #e9baed;
 }
 
-.vacp-color-picker{
+.vacp-color-picker {
   display: flex;
   flex-direction: column-reverse;
   font-family: Gilroy !important;
 }
 
-.vacp-color-space{
+.vacp-color-space {
   border-radius: 10px;
 }
 
-.vacp-color-input{
+.vacp-color-input {
   width: 48px;
 }
 
-.vacp-format-switch-button{
+.vacp-format-switch-button {
   margin-top: 100px;
   position: absolute;
   border: #e9baed 3px solid;
 }
 
-.vacp-copy-button{
+.vacp-copy-button {
   margin-left: 140px;
 }
 
-#color-picker-color-hex{
+#color-picker-color-hex {
   width: 72px !important;
 }
 
@@ -144,7 +138,7 @@ function updateColor(eventData) {
   font-weight: bold;
 }
 
-.vacp-color-input{
+.vacp-color-input {
   font-weight: normal;
 }
 
