@@ -12,10 +12,8 @@
       >
       </Container>
 
-      <SidebarSettings></SidebarSettings>
 
-
-
+      <ColorPalette></ColorPalette>
       <EditButton></EditButton>
     </div>
   </div>
@@ -28,7 +26,6 @@ import TitlePage from "../components/BgsGallery/TitlePage.vue";
 import Container from "../components/BgsGallery/Container.vue";
 import EditButton from "../components/BgsGallery/EditButton.vue";
 import ColorPalette from "../components/BgsGallery/ColorPalette.vue";
-import SidebarSettings from "../components/Sidebar/SidebarSettings.vue";
 
 const store = useStore();
 
@@ -74,6 +71,7 @@ const colors = ["#191827", "#e0c22fff", "#930808ff", "#129456", "#463218"];
 function getColors() {
   return colors;
 }
+
 </script>
 
 <style scoped lang="scss">

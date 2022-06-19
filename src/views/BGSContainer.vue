@@ -1,8 +1,10 @@
 <template>
-    <!-- <div style="margin-left:700px; font-size: 3rem;" v-if="$route.params.bgsName === undefined">NOT LOADED</div> -->
-    <Page :pageName="pages[0].name" :assets="pages[0].Assets">
-    </Page>
-    <!-- <div v-for="p in pages" :key="p.name">{{p}}</div> -->
+  <div v-if="store.state.currentBGSName === undefined">YOU SUCK</div>
+  <Page
+    v-else
+    :pageName="pages[0].name"
+    :assets="pages[0].Assets"
+  ></Page>
 </template>
 
 <script setup>

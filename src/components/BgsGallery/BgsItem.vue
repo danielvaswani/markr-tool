@@ -25,10 +25,8 @@
     :to="'/stuurmen' + '/' + $props.name"
   >
   </router-link> -->
-  <a @mouseenter="hover = true" @mouseleave="hover = false" class="hvr-border-fade">
-    <img class="prev" :src="$props.imageUrl" @click="handleRouteChange()" />
-  </a>
-
+  <a class="gallery-asset" @mouseenter="hover = true" @mouseleave="hover = false"><img class="prev" :src="$props.imageUrl"
+      @click="handleRouteChange" /></a>
 
 </template>
 
@@ -49,6 +47,8 @@ let showBGSInfo = ref(false);
 
 // const router = useRouter();
 // const route = useRoute();
+const hover = ref(false);
+
 // const store = useStore();
 
 // const props = defineProps({
@@ -98,6 +98,9 @@ export default {
     // const route = useRoute();
     // const store = useStore();
 
+    const store = useStore();
+
+    
   },
   methods: {
     async handleRouteChange() {
@@ -129,6 +132,10 @@ export default {
   margin-left: 60px;
   margin-top: 120px;
   font-family: "Gilroy Extrabold";
+}
+
+.gallery-asset{
+  cursor: pointer;
 }
 
 .container {

@@ -1,114 +1,16 @@
 <template>
     <!--menu item-->
-    <div v-if="$route.params.bgsName !== undefined">
-        <ul v-for="p in page" :key="p" class="category1" id="brand_con">
-            <div class="brand_title">
-                <li id="t_1">
-                    <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
-                        <span class="item" id="brand_name" :contenteditable="false">YOUR BRAND</span>
-                    </router-link>
-                </li>
-
-                <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
-                    <font-awesome-icon class="fa-pen" icon="pen" />
-                </div>
-            </div>
-
-            <div  class="li-text">
-                <div v-if="$props.showText" class="move-element">
-                    <font-awesome-icon class="grip-lines" icon="grip-lines" />
-                </div>
-                <li>
-                    <router-link>
-                        <span id="text1" contenteditable="false" class="item">{{ props.page }}</span>
-                    </router-link>
-                </li>
-                <div class="space-li"></div>
-                <div v-if="$props.showText" class="text_edit">
-                    <font-awesome-icon icon="pen" />
-                </div>
-            </div>
-
-
-            <!-- <SidebarElement></SidebarElement> -->
-
-            <!-- <component v-for="field in fields" v-bind:is="field.type" :key="field.id" type="template" id="new-element">
-                <SidebarElement></SidebarElement>
-            </component> -->
-
-
-            <AddElement v-on:click="addElement('new-element')" v-if="$props.showText" :showText="showText"></AddElement>
-
-            <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
-
-                <div class="brand_title">
-                    <li id="t_2">
-                        <router-link to="/stuurmen">
-                            <span v-if="editText" contenteditable="false" class="item" id="brand_name2">BRAND IDENTITY</span>
-                        </router-link>
-                    </li>
-                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
-                        <font-awesome-icon @click="contenteditable = !contenteditable" class="fa-pen" icon="pen" />
-                    </div>
-                </div>
-
-                <div  class="li-text">
-                    <div v-if="$props.showText" class="move-element">
-                        <font-awesome-icon class="grip-lines" icon="grip-lines" />
-                    </div>
-                    <li>
-                        <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
-                            <span id="text2" contenteditable="false" class="item">{{props.page}}</span>
-                        </router-link>
-                    </li>
-                    <div class="space-li"></div>
-                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
-                        <font-awesome-icon icon="pen" />
-                    </div>
-                </div>
-
-                <div class="li-text">
-                    <div v-if="$props.showText" class="move-element">
-                        <font-awesome-icon class="grip-lines" icon="grip-lines" />
-                    </div>
-                    <li>
-                        <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
-                            <span id="text3" contenteditable="false" class="item">Color Palette</span>
-                        </router-link>
-                    </li>
-                    <div class="space-li2"></div>
-                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
-                        <font-awesome-icon icon="pen" />
-                    </div>
-                </div>
-
-                <div class="li-text">
-                    <div v-if="$props.showText" class="move-element">
-                        <font-awesome-icon class="grip-lines" icon="grip-lines" />
-                    </div>
-                    <li>
-                        <router-link :to="'/' + $route.params.user + '/' + $route.params.bgsName + '/' + $props.page">
-                            <span id="text4" contenteditable="false" class="item">Typography</span>
-                        </router-link>
-                    </li>
-                    <div class="space-li2"></div>
-                    <div @click="toggleEditText()" v-if="$props.showText" class="text_edit">
-                        <font-awesome-icon icon="pen" />
-                    </div>
-                </div>
-
-                <template type="x-template" id="new-element2">
-                    <SidebarElement></SidebarElement>
-                </template>
-
-                <component v-for="field in fields" v-bind:is="field.type" :key="field.id"></component>
-
-                <AddElement v-on:click="addElement('new-element2')" v-if="$props.showText" :showText="showText">
-                </AddElement>
-                <!-- 
-            <li class="items">
-                <router-link to="/stuurmen">
-                    <span contenteditable="false" class="item">New Item</span>
+    <ul class="category1" v-if="$route.params.bgsName !== undefined" id="brand_con">
+        <!-- <li>
+                    <a href="#" class="active">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="item" id="home">HOME</span>
+                    </a>
+                </li> -->
+        <div class="brand_title">
+            <li id="t_1">
+                <router-link :to="'/stuurmen' + '/' + $route.params.bgsName + '/' + $props.name">
+                    <span class="item" id="brand_name" contenteditable="false">YOUR BRAND</span>
                 </router-link>
             </li>
 
@@ -118,17 +20,12 @@
                 </router-link>
             </li>
 
-            <li class="items">
-                <router-link to="/stuurmen">
-                    <span contenteditable="false" class="item">Extra Item</span>
-                </router-link>
-            </li> -->
-            </ul>
-
-
-
-        </ul>
-    </div>
+        <li v-if="$props.showText">
+            <router-link to="/stuurmen" id="add_b">
+                <button id="add_side"><i class="bi bi-plus"></i>Add Element</button>
+            </router-link>
+        </li>
+    </ul>
 </template>
 
 

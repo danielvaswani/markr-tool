@@ -18,6 +18,142 @@
 
           <SidebarContent :showText="showText"></SidebarContent>
 
+          <!-- <li id="new_side" class="items">
+              <router-link to="/stuurmen">
+                <span contenteditable="false" class="item">Item 2</span>
+              </router-link>
+            </li>
+
+            <li class="items" id="t_3">
+              <router-link to="/stuurmen">
+                <span contenteditable="false" class="item">Item 3</span>
+              </router-link>
+            </li>-->
+
+
+          <ul v-if="$route.params.bgsName !== undefined" id="brand_con2">
+
+            <div class="brand_title">
+              <li id="t_2">
+                <router-link to="/stuurmen">
+                  <span contenteditable="false" class="item" id="brand_name2">BRAND IDENTITY</span>
+                </router-link>
+              </li>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon @click="contenteditable = !contenteditable" class="fa-pen" icon="pen" />
+              </div>
+            </div>
+
+            <div class="li-text">
+              <div v-if="showText" class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+              </div>
+              <li>
+                <router-link to="/stuurmen">
+                  <span id="text2" contenteditable="false" class="item">Logo</span>
+                </router-link>
+              </li>
+              <div class="space-li"></div>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon icon="pen" />
+              </div>
+            </div>
+
+            <div class="li-text">
+              <div v-if="showText" class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+              </div>
+              <li>
+                <router-link to="/stuurmen">
+                  <span id="text3" contenteditable="false" class="item">Color Palette</span>
+                </router-link>
+              </li>
+              <div class="space-li2"></div>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon icon="pen" />
+              </div>
+            </div>
+
+            <div class="li-text">
+              <div v-if="showText" class="move-element">
+                <font-awesome-icon class="grip-lines" icon="grip-lines" />
+              </div>
+              <li>
+                <router-link to="/stuurmen">
+                  <span id="text4" contenteditable="false" class="item">Typography</span>
+                </router-link>
+              </li>
+              <div class="space-li2"></div>
+              <div v-if="showText" class="text_edit">
+                <font-awesome-icon icon="pen" />
+              </div>
+            </div>
+
+            <div v-if="showText" class="new_element">
+              <li class="dropdownbtn">
+                <a id="extra_element">
+                  <button id="add_side">
+                    <i class="bi bi-plus"></i>Add Element
+                  </button>
+                </a>
+              </li>
+              <!-- menu -->
+              <div class="dropdownPost-content">
+                <a><span>Video</span> </a>
+                <a><span>Audio</span> </a>
+                <a><span>Text</span> </a>
+                <a><span>Others</span> </a>
+              </div>
+            </div>
+
+            <li class="items">
+              <router-link to="/stuurmen">
+                <span contenteditable="false" class="item">New Item</span>
+              </router-link>
+            </li>
+
+            <li class="items">
+              <router-link to="/stuurmen">
+                <span contenteditable="false" class="item">New Item</span>
+              </router-link>
+            </li>
+
+            <li class="items">
+              <router-link to="/stuurmen">
+                <span contenteditable="false" class="item">Extra Item</span>
+              </router-link>
+            </li>
+
+            <!-- three dot menu -->
+            <!-- <div class="dropdownPosts"> -->
+            <!-- three dots
+                <ul
+                  class="dropdownbtn icons btn-right showLeft"
+                  
+                >
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul> -->
+
+            <!-- <li>
+              <a href="#">
+                <span class="item">Application Examples</span>
+              </a>
+            </li>
+
+             <li>
+              <a href="#">
+                <span class="item">Application Examples</span>
+              </a>
+            </li>
+
+             <li>
+              <a href="#">
+                <span class="item">Application Examples</span>
+              </a>
+            </li> -->
+          </ul>
 
           <article v-if="$route.params.bgsName !== undefined" class="user-profile">
             <!-- <div v-if="$route.params.bgsName === undefined"></div> -->
