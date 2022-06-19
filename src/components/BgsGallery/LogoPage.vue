@@ -1,7 +1,7 @@
 <template>
     <div class="container_logo">
         <div class="logos" id="template_div">
-            <TitlePage :name="$props.pageName"></TitlePage>
+            <TitlePage>LOGO</TitlePage>
             <!-- {{ $props.assets }} -->
             <BannerImageAsset></BannerImageAsset>
             <ParagraphAsset></ParagraphAsset>
